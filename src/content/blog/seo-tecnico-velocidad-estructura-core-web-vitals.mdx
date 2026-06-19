@@ -1,0 +1,60 @@
+---
+title: "SEO técnico: velocidad, estructura y Core Web Vitals explicados sin tecnicismos"
+description: "Qué es el SEO técnico, por qué importa más que las palabras clave y cómo saber si tu sitio lo está haciendo bien."
+date: 2026-07-01
+category: "SEO"
+image: "/img/blog/articulo_7.png"
+---
+import Callout from '../../components/blog/Callout.astro';
+
+El SEO tiene dos caras. Una es el contenido: qué dices, cómo lo dices y a quién. La otra es la técnica: qué tan rápido carga tu sitio, cómo está estructurado y si Google puede entenderlo.
+
+La mayoría de los negocios se enfocan solo en la primera y se olvidan de la segunda. Error. Google le da cada vez más peso a la parte técnica. Aquí va, sin tecnicismos innecesarios.
+
+## Velocidad: el factor que más ha subido de peso
+
+Google mide la velocidad de tu sitio con tres indicadores que llama Core Web Vitals:
+
+| Métrica | Qué mide | Objetivo |
+|---------|----------|----------|
+| **LCP** | Tiempo que tarda en cargar lo más importante de la página | Menos de 2.5 segundos |
+| **INP** | Qué tan rápido responde la página cuando haces clic en algo | Menos de 200 milisegundos |
+| **CLS** | Qué tanto se mueven los elementos mientras carga (¿has intentado hacer clic y el botón se movió? Eso es CLS) | Menos de 0.1 |
+
+¿Tu sitio pasa estas tres? Entra a [PageSpeed Insights](https://pagespeed.web.dev/) y descúbrelo en 10 segundos.
+
+<Callout type="tip">
+  **Lo que más afecta la velocidad:** imágenes sin comprimir, plugins innecesarios, hosting barato. Arreglar eso suele resolver el 80% del problema.
+</Callout>
+
+## Estructura: Google necesita entender tu sitio
+
+Imagina que tu sitio web es una biblioteca. La estructura es cómo están organizados los libros. Si están tirados en el piso, nadie encuentra nada.
+
+Lo mínimo que necesita Google:
+- **Títulos jerárquicos:** Un solo H1 por página (el título principal), luego H2 para secciones, H3 para subsecciones. Como un índice de libro.
+- **URLs limpias:** `tusitio.com/precios` en vez de `tusitio.com/?p=4729`
+- **Enlaces internos:** Tus páginas deben linkearse entre sí con texto descriptivo. No "haz clic aquí", sino "conoce nuestros planes de diseño web".
+- **Sitemap:** Un archivo que le dice a Google qué páginas tienes. Se genera automáticamente con la mayoría de las plataformas.
+
+<!-- ⚡ HACK WEBIX: "Cuando migramos sitios de WordPress a Astro, el puntaje de PageSpeed suele saltar de 40 a 95+. La diferencia no es magia: es menos código basura corriendo." -->
+
+## Mobile-first: Google ya no evalúa tu sitio en escritorio
+
+Desde 2023, Google indexa y evalúa los sitios en su versión móvil primero. Si tu sitio se ve bien en computadora pero es un desastre en celular, Google lo considera un desastre. Punto.
+
+Revisa tu sitio en tu celular ahora mismo:
+- ¿El texto es legible sin hacer zoom?
+- ¿Los botones son lo bastante grandes para pulsarlos con el dedo?
+- ¿No hay elementos que se salgan de la pantalla?
+
+Si respondiste "no" a cualquiera, tienes trabajo que hacer.
+
+## Cómo auditar tu SEO técnico en 15 minutos
+
+1. Entra a **PageSpeed Insights** → anota tu puntaje en móvil
+2. Entra a **Google Search Console** → mira si tienes errores de indexación
+3. Revisa tu sitio en un celular real → navega como lo haría un cliente
+4. Prueba tu sitemap → `tusitio.com/sitemap.xml` debería mostrar tus páginas
+
+El SEO técnico no es sexy. Pero es lo que separa un sitio que Google ignora de uno que Google recomienda.

@@ -1,0 +1,35 @@
+---
+// src/components/blog/PricingCard.astro
+interface Props {
+  title: string;
+  price: string;
+  recommended?: boolean;
+}
+
+const { title, price, recommended = false } = Astro.props;
+---
+
+<div class={`flex flex-col p-5 md:p-6 rounded-2xl border transition-all duration-300 min-w-0 h-full ${
+  recommended
+    ? 'border-[#AF4D98] bg-purple/5 shadow-md relative ring-1 ring-[#AF4D98]/20'
+    : 'border-gray-200 bg-white shadow-sm'
+}`}>
+
+  {recommended && (
+    <span class="absolute -top-2.5 left-4 bg-[#FF7B00] text-white text-[9px] uppercase font-extrabold tracking-wide px-2.5 py-0.5 rounded-full shadow-sm z-10 whitespace-nowrap">
+      Recomendado por Webix
+    </span>
+  )}
+
+  <h3 class="font-title text-lg md:text-xl text-gray-900 mb-1 mt-2 font-semibold leading-tight">
+    {title}
+  </h3>
+
+  <p class="font-body font-black text-lg md:text-xl text-[#AF4D98] mb-4 leading-tight">
+    {price}
+  </p>
+
+  <div class="text-sm text-gray-600 flex-1 font-body leading-relaxed not-prose overflow-hidden">
+    <slot />
+  </div>
+</div>

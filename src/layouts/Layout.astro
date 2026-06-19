@@ -1,0 +1,70 @@
+---
+export interface Props {
+    title?: string;
+    description?: string;
+    ogImage?: string;
+}
+const {
+    title = 'Webix | Diseño y Desarrollo Web en México',
+    description = 'Agencia mexicana de diseño y desarrollo web. Creamos páginas corporativas, tiendas en línea, landing pages y aplicaciones web de alta calidad a precios competitivos. CDMX y todo México.',
+    ogImage = 'https://webix.com.mx/img/hero-mockups.png',
+} = Astro.props;
+
+import '../styles/global.css';
+import '../styles/style.css';
+---
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta name="keywords" content="diseño web México, desarrollo web CDMX, páginas web profesionales, agencia web México, webix">
+    <meta name="author" content="Webix">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#119DA4">
+    <link rel="canonical" href={`https://webix.com.mx${Astro.url.pathname}`}>
+    <link rel="icon" type="image/png" href="/img/icono_w.png">
+    <link rel="apple-touch-icon" href="/img/icono_w.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={`https://webix.com.mx${Astro.url.pathname}`}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={ogImage}>
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={ogImage}>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Webix",
+        "url": "https://webix.com.mx",
+        "email": "hola@webix.com.mx",
+        "telephone": "+52-55-3314-5233",
+        "areaServed": [{"@type":"Country","name":"México"},{"@type":"City","name":"Ciudad de México"}],
+        "serviceType": ["Diseño web","Desarrollo web","E-commerce","Landing pages"],
+        "sameAs": ["https://www.facebook.com/webixonline","https://www.instagram.com/webix__","https://www.tiktok.com/@webix__"]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Gerbil';
+            src: url('/fonts/gerbil.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <slot name="head" />
+</head>
+<body class="font-body text-black bg-cream overflow-x-hidden">
+    <slot />
+</body>
+</html>

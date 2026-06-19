@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+    title="Planes para Negocios Locales | Webix"
+    description="Páginas web profesionales diseñadas para negocios locales en México. Atrae más clientes de tu ciudad con un sitio rápido, bonito y accesible."
+>
+    <Header />
+    <main class="pt-0">
+
+        <!-- HERO -->
+        <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-[8%] py-24 bg-cream">
+            <p class="font-body text-sm font-bold tracking-widest uppercase text-purple mb-6">Negocios Locales</p>
+            <h1 class="font-title hero-3d text-[3rem] md:text-[5rem] leading-[1] tracking-[-2px] mb-8 max-w-[800px]">
+                Tu negocio en línea,<br>
+                <span class="highlight-orange">tu ciudad</span> como cliente.
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-[560px] mb-10">
+                Restaurantes, consultorios, talleres, salones, tiendas físicas — cualquier negocio local merece una presencia digital que convierta visitas en clientes reales.
+            </p>
+            <a href="https://wa.me/525650776884" target="_blank" rel="noopener noreferrer"
+               class="btn-hero inline-flex items-center bg-purple text-white no-underline px-10 py-4 rounded-full text-xl font-semibold">
+                Quiero mi página ▶
+            </a>
+        </section>
+
+        <!-- QUÉ INCLUYE -->
+        <section class="px-[8%] py-24 bg-white">
+            <div class="max-w-[1000px] mx-auto">
+                <h2 class="font-title text-[2.2rem] md:text-[3rem] font-normal mb-16 text-center">
+                    Todo lo que necesitas,<br><span class="highlight-teal-underline">sin complicaciones</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        { num: '01', title: 'Diseño personalizado', desc: 'Tu sitio refleja la identidad de tu negocio, no una plantilla genérica.' },
+                        { num: '02', title: 'Dominio y hosting incluidos', desc: 'Tu nombre en internet, configurado y listo desde el primer día.' },
+                        { num: '03', title: 'Entrega en 5 días', desc: 'Sin esperas eternas. Tu web lista en menos de una semana.' },
+                        { num: '04', title: 'SEO local básico', desc: 'Aparece en Google cuando alguien busca tu tipo de negocio en tu ciudad.' },
+                        { num: '05', title: 'Adaptado al móvil', desc: 'Perfecto en celular, tablet y computadora sin excepción.' },
+                        { num: '06', title: 'Soporte continuo', desc: 'No te dejamos solo. Ajustes básicos y asesoría incluidos.' },
+                    ].map(item => (
+                        <div class="servicio-card servicio-accent-purple p-8 rounded-2xl border border-gray-100">
+                            <span class="font-title text-5xl text-purple opacity-20 leading-none">{item.num}</span>
+                            <h3 class="font-bold text-xl mt-2 mb-2">{item.title}</h3>
+                            <p class="text-gray-500 leading-relaxed">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ NEGOCIOS LOCALES -->
+        <section class="px-[8%] py-20 bg-cream">
+            <div class="max-w-[860px] mx-auto">
+                <h2 class="font-title text-[2rem] md:text-[3rem] font-normal mb-2 text-center">Preguntas frecuentes</h2>
+                <p class="text-center text-gray-500 mb-12">Lo que más nos preguntan los negocios locales.</p>
+                <div class="faq-list border-t border-gray-300">
+                    {[
+                        { q: '¿Funciona para cualquier tipo de negocio local?', a: 'Sí. Hemos trabajado con restaurantes, consultorios, salones de belleza, talleres mecánicos, tiendas de ropa, papelerías, farmacias y muchos más. Si tienes un negocio con clientes en tu ciudad, podemos ayudarte.' },
+                        { q: '¿Realmente mi página estará lista en 5 días?', a: 'Sí, siempre y cuando nos entregues la información que necesitamos a tiempo. El plazo corre desde que confirmamos el proyecto y recibimos tus datos, textos e imágenes.' },
+                        { q: '¿Qué pasa si no tengo logo ni fotos profesionales?', a: 'No es problema. Si no tienes logo, podemos diseñarlo como parte del proyecto. Para fotos, podemos usar imágenes de banco de imágenes de alta calidad mientras consigues las tuyas.' },
+                        { q: '¿Pueden ayudarme a aparecer en Google Maps?', a: 'Sí. Te ayudamos a crear o reclamar tu perfil de Google Business y lo dejamos configurado para que aparezcas cuando alguien busca tu tipo de negocio cerca de ti.' },
+                        { q: '¿Cuánto cuesta el servicio para negocios locales?', a: 'Tenemos planes accesibles diseñados específicamente para negocios locales. El costo varía según las funciones que necesites. Contáctanos por WhatsApp y te damos una cotización exacta sin compromiso.' },
+                    ].map(item => (
+                        <div class="faq-item border-b border-gray-300 py-6">
+                            <div class="faq-question flex justify-between items-center cursor-pointer" aria-expanded="false">
+                                <h3 class="font-bold text-xl text-black mr-5">{item.q}</h3>
+                                <button class="faq-toggle w-11 h-11 rounded-full bg-white border-0 text-2xl text-gray-700 flex justify-center items-center flex-shrink-0 cursor-pointer">+</button>
+                            </div>
+                            <div class="faq-answer overflow-hidden" style="height:0">
+                                <p class="text-base text-gray-500 leading-relaxed pt-4 pr-14">{item.a}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="px-[8%] pt-20 pb-10 bg-cream text-center">
+            <h2 class="font-title text-[2rem] md:text-[3rem] font-normal mb-6">
+                ¿Listo para aparecer en <span class="highlight-orange-title">Google</span>?
+            </h2>
+            <p class="text-gray-600 text-lg max-w-[500px] mx-auto">Platicamos sin compromiso. Cuéntanos de tu negocio y te decimos cómo podemos ayudarte.</p>
+        </section>
+
+    </main>
+    <Footer />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+    <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const q      = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const toggle = item.querySelector('.faq-toggle');
+        q.addEventListener('click', () => {
+            const isOpen = item.classList.contains('active');
+            document.querySelectorAll('.faq-item.active').forEach(open => {
+                open.classList.remove('active');
+                gsap.to(open.querySelector('.faq-answer'), { height: 0, duration: 0.3, ease: 'power2.in' });
+                gsap.to(open.querySelector('.faq-toggle'), { rotation: 0, backgroundColor: '#fff', color: '#333', duration: 0.3 });
+                open.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('active');
+                gsap.fromTo(answer, { height: 0 }, { height: answer.scrollHeight, duration: 0.4, ease: 'power3.out', onComplete: () => gsap.set(answer, { height: 'auto' }) });
+                gsap.to(toggle, { rotation: 45, backgroundColor: '#AF4D98', color: '#fff', duration: 0.3 });
+                q.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+    </script>
+</Layout>

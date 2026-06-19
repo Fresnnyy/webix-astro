@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+    .filter(post => post.data.date <= new Date())
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))].sort();
+---
+
+<Layout
+    title="Blog | Webix — Diseño Web en México"
+    description="Artículos sobre diseño web, SEO, precios y estrategia digital para negocios en México."
+>
+    <Header />
+    <main class="pt-0">
+
+        <!-- HERO -->
+        <section class="hero-blog min-h-[50vh] flex flex-col justify-center items-center text-center px-[8%] py-24 bg-cream">
+            <img src="/img/doodle-orange.png" alt="" class="doodle doodle-orange" aria-hidden="true" />
+            <img src="/img/doodle-yellow.png" alt="" class="doodle doodle-yellow" aria-hidden="true" />
+            <p class="font-body text-sm font-bold tracking-widest uppercase text-purple mb-6">Blog</p>
+            <h1 class="font-title text-[3rem] md:text-[5rem] leading-[1] tracking-[-2px] mb-6 max-w-[700px]">
+                Lo que necesitas
+                saber antes de
+                <span class="highlight-orange">invertir</span> en web.
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-[480px]">
+                Guías directas sobre diseño, SEO y estrategia digital para negocios en México.
+            </p>
+        </section>
+
+        <!-- FILTROS -->
+        {categories.length > 1 && (
+        <section class="px-[8%] pt-16 pb-0 bg-white">
+            <div class="blog-filters flex flex-wrap justify-center gap-3 max-w-[1160px] mx-auto">
+                <button class="filter-pill active" data-cat="all">Todos</button>
+                {categories.map(cat => (
+                    <button class="filter-pill" data-cat={cat}>{cat}</button>
+                ))}
+            </div>
+        </section>
+        )}
+
+        <!-- ARTÍCULOS -->
+        <section class="px-[8%] pt-12 pb-24 bg-white">
+            <div class="blog-grid">
+                {posts.map((post, i) => (
+                    <div class="blog-card-wrap" data-category={post.data.category || ''} style={`--anim-order:${i};`}>
+                        <BlogCard
+                            title={post.data.title}
+                            description={post.data.description}
+                            date={post.data.date}
+                            slug={post.slug}
+                            category={post.data.category}
+                            image={post.data.image}
+                            readingTime={Math.ceil(post.body.split(/\s+/).length / 200)}
+                        />
+                    </div>
+                ))}
+            </div>
+        </section>
+
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+.hero-blog {
+    position: relative;
+    overflow: hidden;
+}
+.doodle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+.doodle-orange {
+    width: 300px;
+    top: -30px;
+    left: -10px;
+    opacity: 0.85;
+    transform: rotate(36deg);
+}
+.doodle-yellow {
+    width: 420px;
+    bottom: -20px;
+    right: -80px;
+    opacity: 0.9;
+}
+@media (max-width: 768px) {
+    .doodle-orange { width: 160px; left: -30px; }
+    .doodle-yellow { width: 260px; right: -40px; }
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+@media (max-width: 900px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+    .blog-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FILTROS ── */
+.blog-filters { padding-bottom: 2rem; }
+.filter-pill {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.5rem 1.5rem;
+    border-radius: 999px;
+    border: 2px solid #e5e5e5;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.filter-pill:hover {
+    border-color: #AF4D98;
+    color: #AF4D98;
+}
+.filter-pill.active {
+    background: #AF4D98;
+    border-color: #AF4D98;
+    color: #fff;
+}
+
+.blog-card-wrap {
+    display: contents;
+}
+.blog-card-wrap.filtered-out { display: none; }
+</style>
+
+<script>
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.blog-card-wrap');
+
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            const cat = pill.dataset.cat;
+
+            // actualizar active
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+
+            // filtrar
+            cards.forEach(card => {
+                if (cat === 'all' || card.dataset.category === cat) {
+                    card.classList.remove('filtered-out');
+                } else {
+                    card.classList.add('filtered-out');
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://nebula.uy/blog/desarrolladores-junior-inteligencia-artificial/\")",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml\" -H \"Accept-Language: es-MX,es;q=0.9\" \"https://nebula.uy/blog/desarrolladores-junior-inteligencia-artificial/\")",
+      "Bash(node *)"
+    ]
+  }
+}

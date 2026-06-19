@@ -1,0 +1,570 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import TableOfContents from '../../components/blog/TableOfContents.astro';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog');
+    return posts
+        .filter(post => post.data.date <= new Date())
+        .map(post => ({
+            params: { slug: post.slug },
+            props: { post },
+        }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const dateStr = post.data.date.toLocaleDateString('es-MX', {
+    year: 'numeric', month: 'long', day: 'numeric'
+});
+
+const wordCount = post.body.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+// Extraer headings del body para el ToC
+const slugify = (text: string) => text.toLowerCase()
+    .replace(/[^a-záéíóúüñ0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+
+const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+const headings = [...post.body.matchAll(headingRegex)].map(m => ({
+    depth: m[1].length,
+    slug: slugify(m[2]),
+    text: m[2],
+}));
+
+const otherPosts = (await getCollection('blog'))
+    .filter(p => p.data.date <= new Date() && p.slug !== post.slug)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const otherPostsJSON = JSON.stringify(otherPosts.map(p => ({
+    title: p.data.title,
+    date: p.data.date.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }),
+    slug: p.slug,
+    category: p.data.category || '',
+    image: p.data.image || '',
+})));
+
+const articleSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date.toISOString(),
+    "author": {
+        "@type": "Organization",
+        "name": "Webix",
+        "url": "https://webix.com.mx"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Webix",
+        "url": "https://webix.com.mx",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://webix.com.mx/img/logo.png"
+        }
+    },
+    ...(post.data.image && { "image": `https://webix.com.mx${post.data.image}` }),
+});
+---
+
+<Layout
+    title={`${post.data.title} | Blog Webix`}
+    description={post.data.description}
+    ogImage={post.data.image ? `https://webix.com.mx${post.data.image}` : undefined}
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={articleSchema} />
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content={post.data.date.toISOString()}>
+        <meta property="article:author" content="Webix">
+        {post.data.category && <meta property="article:section" content={post.data.category}>}
+    </Fragment>
+
+    <div id="read-progress"></div>
+    <Header />
+    <main class="pt-0">
+
+        <!-- HERO DEL ARTÍCULO -->
+        <section class="px-[8%] pt-20 pb-16 text-center">
+            {post.data.category && (
+                <p class="font-body text-sm font-bold tracking-widest uppercase text-purple mb-5">{post.data.category}</p>
+            )}
+            <h1 class="font-title text-[2.2rem] md:text-[3.8rem] leading-[1.05] tracking-[-1.5px] max-w-[820px] mx-auto mb-6">
+                {post.data.title}
+            </h1>
+            <p class="text-gray-500 text-lg max-w-[560px] mx-auto mb-8">{post.data.description}</p>
+            <div class="flex items-center justify-center gap-3 font-body text-sm text-gray-400">
+                <span>{dateStr}</span>
+                <span aria-hidden="true">·</span>
+                <span>{readingTime} min de lectura</span>
+            </div>
+        </section>
+
+        {post.data.image && (
+            <div class="article-hero-img px-[8%]">
+                <img
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="w-full max-w-[1140px] mx-auto block rounded-2xl object-cover"
+                    style="aspect-ratio:16/9"
+                    loading="eager"
+                >
+            </div>
+        )}
+
+        <!-- CONTENIDO -->
+        <div class="article-layout px-[8%] py-20">
+            <!-- Sidebar: ToC + Social -->
+            <aside class="article-sidebar">
+                <div class="sidebar-sticky">
+                    <TableOfContents headings={headings} />
+                    <div class="share-box">
+                        <p class="font-body text-[10px] font-black tracking-[0.25em] uppercase text-purple mb-4">
+                            Compartir
+                        </p>
+                    <div class="share-btns">
+                        <a href={`https://wa.me/?text=${encodeURIComponent(post.data.title + ' ' + Astro.url.href)}`}
+                           class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" fill-rule="evenodd"/></svg>
+                        </a>
+                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`}
+                           class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(post.data.title)}`}
+                           class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <button class="share-btn copy-link" aria-label="Copiar enlace"
+                                onclick={`navigator.clipboard.writeText('${Astro.url.href}');this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),2000);`}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <span class="copied-msg">¡Copiado!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </aside>
+
+            <!-- Cuerpo del artículo -->
+            <div class="article-main">
+                <div class="prose">
+                    <Content />
+                </div>
+            </div>
+        </div>
+
+        <!-- MÁS ARTÍCULOS -->
+        {otherPosts.length > 0 && (
+        <section class="px-[8%] py-20">
+            <div class="rel-container">
+                <h2 class="font-title text-[2rem] md:text-[2.5rem] font-normal mb-10 text-center">
+                    Más para <span class="highlight-orange">leer</span>
+                </h2>
+                <div class="rel-wrap">
+                    <button class="rel-arrow" id="rel-prev" aria-label="Anterior">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="rel-cards" id="rel-cards"></div>
+                    <button class="rel-arrow" id="rel-next" aria-label="Siguiente">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="rel-dots" id="rel-dots"></div>
+            </div>
+        </section>
+        )}
+
+        <!-- CTA -->
+        <section class="px-[8%] pt-16 pb-10 bg-cream text-center">
+            <h2 class="font-title text-[2rem] md:text-[2.8rem] font-normal mb-4">
+                ¿Listo para tener tu<br><span class="highlight-orange-title">página web</span>?
+            </h2>
+            <p class="text-gray-600 text-lg max-w-[440px] mx-auto">Hablamos, entendemos tu negocio y te damos un presupuesto claro ese mismo día.</p>
+        </section>
+
+    </main>
+    <Footer />
+
+    <script define:vars={{ otherPostsJSON }}>
+    const REL_COLORS = ['#AF4D98','#119DA4','#FF7B00','#111111'];
+    const relPosts = JSON.parse(otherPostsJSON);
+    const PER_PAGE = 2;
+    let current = 0;
+
+    function relRender() {
+        const container = document.getElementById('rel-cards');
+        const dotsWrap  = document.getElementById('rel-dots');
+        const prev      = document.getElementById('rel-prev');
+        const next      = document.getElementById('rel-next');
+        if (!container) return;
+
+        const visible = relPosts.slice(current, current + PER_PAGE);
+        container.innerHTML = visible.map((p, i) => {
+            const color = REL_COLORS[(current + i) % REL_COLORS.length];
+            const imgStyle = p.image
+                ? `background-image:url('${p.image}');background-size:cover;background-position:top;`
+                : `background:${color};`;
+            return `
+            <a href="/blog/${p.slug}" class="rel-card">
+                <div class="rel-card-img" style="${imgStyle}">
+                    ${p.image ? '<div class="rel-card-overlay"></div>' : ''}
+                </div>
+                <div class="rel-card-body">
+                    ${p.category ? `<span class="rel-card-cat">${p.category}</span>` : ''}
+                    <h3 class="rel-card-title">${p.title}</h3>
+                    <span class="rel-card-date">${p.date}</span>
+                    <span class="rel-card-link">Leer →</span>
+                </div>
+            </a>`;
+        }).join('');
+
+        const totalPages  = Math.ceil(relPosts.length / PER_PAGE);
+        const currentPage = Math.floor(current / PER_PAGE);
+        if (dotsWrap) {
+            dotsWrap.innerHTML = Array.from({ length: totalPages }, (_, i) =>
+                `<button class="rel-dot${i === currentPage ? ' active' : ''}" data-page="${i}"></button>`
+            ).join('');
+            dotsWrap.querySelectorAll('.rel-dot').forEach(d =>
+                d.addEventListener('click', () => { current = parseInt(d.dataset.page) * PER_PAGE; relRender(); })
+            );
+        }
+        if (prev) prev.style.opacity = current === 0 ? '0.3' : '1';
+        if (next) next.style.opacity = current + PER_PAGE >= relPosts.length ? '0.3' : '1';
+    }
+
+    document.getElementById('rel-prev')?.addEventListener('click', () => {
+        if (current > 0) { current -= PER_PAGE; relRender(); }
+    });
+    document.getElementById('rel-next')?.addEventListener('click', () => {
+        if (current + PER_PAGE < relPosts.length) { current += PER_PAGE; relRender(); }
+    });
+
+    relRender();
+
+    // Progress bar
+    const bar = document.getElementById('read-progress');
+    const article = document.querySelector('.article-layout');
+    if (bar && article) {
+        window.addEventListener('scroll', () => {
+            const rect = article.getBoundingClientRect();
+            const total = article.offsetHeight - window.innerHeight;
+            const scrolled = Math.max(0, -rect.top);
+            bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+        }, { passive: true });
+    }
+    </script>
+</Layout>
+
+<style is:global>
+/* ── PROGRESS BAR ── */
+#read-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #FF7B00, #AF4D98);
+    z-index: 999;
+    transition: width 0.1s linear;
+}
+
+.prose {
+    max-width: 720px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #333;
+    overflow: visible;
+}
+
+/* Primer párrafo destacado */
+.prose > p:first-of-type {
+    font-size: 1.18rem;
+    color: #222;
+    line-height: 1.75;
+    border-left: 3px solid #FF7B00;
+    padding-left: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.prose > h2 {
+    font-family: 'Gerbil', serif;
+    font-size: 2rem;
+    font-weight: normal;
+    color: #111;
+    margin: 3.5rem 0 1rem;
+    line-height: 1.1;
+    position: relative;
+    padding-bottom: 0.6rem;
+    scroll-margin-top: 110px;
+}
+.prose > h2::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 48px;
+    height: 3px;
+    background: #FF7B00;
+    border-radius: 2px;
+}
+
+.prose h3 {
+    font-family: 'Gerbil', serif;
+    font-size: 1.35rem;
+    font-weight: normal;
+    color: #111;
+    margin: 2.4rem 0 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    scroll-margin-top: 110px;
+}
+.prose h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #AF4D98;
+    flex-shrink: 0;
+}
+
+.prose p {
+    margin: 0 0 1.2rem;
+    color: #444;
+}
+
+/* Listas con bullets de marca */
+.prose ul {
+    padding-left: 0;
+    margin: 0 0 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    list-style: none;
+}
+.prose ul li {
+    color: #444;
+    padding-left: 1.6rem;
+    position: relative;
+}
+.prose ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF7B00;
+}
+
+.prose ol {
+    padding-left: 0;
+    margin: 0 0 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    list-style: none;
+    counter-reset: ol-counter;
+}
+.prose ol li {
+    color: #444;
+    padding-left: 2rem;
+    position: relative;
+    counter-increment: ol-counter;
+}
+.prose ol li::before {
+    content: counter(ol-counter);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: #AF4D98;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Pull quote */
+.prose blockquote {
+    margin: 2.5rem 0;
+    padding: 1.6rem 2rem;
+    background: #faf5f2;
+    border-left: 4px solid #FF7B00;
+    border-radius: 0 12px 12px 0;
+    font-size: 1.2rem;
+    color: #222;
+    font-style: italic;
+    line-height: 1.6;
+}
+.prose blockquote p { color: #222; margin: 0; }
+
+.prose strong { color: #111; font-weight: 700; }
+.prose a { color: #AF4D98; text-underline-offset: 3px; }
+.prose a:hover { opacity: 0.8; }
+.prose hr { border: none; border-top: 2px dashed #eee; margin: 3rem 0; }
+
+/* ── Reset para componentes dentro de artículos ── */
+.not-prose,
+.not-prose * {
+    max-width: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+.not-prose p { margin: 0; color: inherit; }
+.not-prose ul,
+.not-prose ol { padding-left: 0; margin: 0; list-style: none; display: block; }
+.not-prose li { padding-left: 0; color: inherit; }
+.not-prose li::before { display: none; }
+.not-prose strong { font-weight: 700; color: #111; }
+.not-prose a { color: #AF4D98; text-decoration: underline; }
+
+/* Anular estilos de .prose que se cuelan en componentes */
+.prose .not-prose h1,
+.prose .not-prose h2,
+.prose .not-prose h3,
+.prose .not-prose h4 { display: block; font-family: inherit; font-size: inherit; margin: 0; padding: 0; gap: normal; scroll-margin-top: 0; }
+.prose .not-prose h1::before,
+.prose .not-prose h2::before,
+.prose .not-prose h3::before,
+.prose .not-prose h4::before { display: none !important; content: none !important; }
+.prose .not-prose h2::after,
+.prose .not-prose h3::after { display: none !important; content: none !important; }
+
+.article-hero-img { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* ── MÁS ARTÍCULOS ── */
+.rel-container { max-width: 860px; margin: 0 auto; }
+.rel-wrap { display: flex; align-items: center; gap: 1.2rem; }
+.rel-arrow {
+    flex-shrink: 0; width: 44px; height: 44px;
+    border-radius: 50%; border: 2px solid #e5e5e5;
+    background: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #333; transition: border-color 0.3s, color 0.3s, opacity 0.3s;
+}
+.rel-arrow:hover { border-color: #AF4D98; color: #AF4D98; }
+.rel-cards {
+    flex: 1; display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.rel-card {
+    display: flex; flex-direction: column;
+    border-radius: 20px; overflow: hidden;
+    background: #fff; text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.10);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+}
+.rel-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 24px 48px rgba(0,0,0,0.14); }
+.rel-card-img { width: 100%; height: 200px; position: relative; overflow: hidden; }
+.rel-card-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.25) 100%); }
+.rel-card-body { padding: 1.3rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.rel-card-cat { font-family: 'Nunito Sans', sans-serif; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #AF4D98; }
+.rel-card-title { font-family: 'Gerbil', serif; font-size: 1.15rem; font-weight: normal; color: #111; line-height: 1.2; margin: 0; }
+.rel-card-date { font-family: 'Nunito Sans', sans-serif; font-size: 0.7rem; color: #aaa; }
+.rel-card-link { font-family: 'Nunito Sans', sans-serif; font-size: 0.82rem; font-weight: 700; color: #AF4D98; margin-top: 0.3rem; }
+.rel-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.4rem; }
+.rel-dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: #ddd; cursor: pointer; padding: 0; transition: background 0.3s; }
+.rel-dot.active { background: #AF4D98; }
+@media (max-width: 600px) {
+    .rel-cards { grid-template-columns: 1fr; }
+    .rel-arrow { width: 36px; height: 36px; }
+}
+
+/* ── ARTICLE LAYOUT (ToC + content + share) ── */
+.article-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+}
+.article-sidebar {
+    width: 180px;
+    flex-shrink: 0;
+}
+.sidebar-sticky {
+    position: sticky;
+    top: 120px;
+}
+.article-main {
+    flex: 0 1 860px;
+    min-width: 0;
+}
+.article-main .prose {
+    max-width: none;
+}
+.share-box {
+    margin-top: 2.5rem;
+}
+.share-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #e5e5e5;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    transition: border-color 0.25s, color 0.25s, background 0.25s;
+    position: relative;
+    text-decoration: none;
+}
+.share-btn:hover {
+    border-color: #AF4D98;
+    color: #AF4D98;
+}
+.copy-link .copied-msg {
+    position: absolute;
+    right: -70px;
+    background: #111;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.copy-link.copied .copied-msg {
+    opacity: 1;
+}
+
+/* ── RESPONSIVE: sidebar abajo en móvil ── */
+@media (max-width: 1279px) {
+    .article-layout {
+        flex-direction: column;
+        gap: 0;
+    }
+    .article-sidebar {
+        display: none; /* ToC y share se ocultan en mobile/tablet */
+    }
+}
+</style>

@@ -1,0 +1,416 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+    title="Portafolio de Proyectos | Webix"
+    description="Conoce los proyectos web que hemos desarrollado para negocios y empresas en México. Diseño, e-commerce, landing pages y más."
+>
+    <Header />
+    <main class="pt-0">
+
+        <!-- HERO -->
+        <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-[8%] py-24 bg-cream">
+            <p class="font-body text-sm font-bold tracking-widest uppercase text-orange mb-6">Proyectos</p>
+            <h1 class="font-title hero-3d text-[3rem] md:text-[5rem] leading-[1] tracking-[-2px] mb-6 max-w-[700px]">
+                Trabajo que<br>
+                <span class="highlight-orange">habla</span> por sí solo.
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-[500px]">
+                Empresas de investigación, marketing, reclutamiento especializado y arte. Sitios claros, funcionales y alineados a cada negocio.
+            </p>
+        </section>
+
+        <!-- ABANICO DE PROYECTOS -->
+        <section class="fan-section bg-white">
+            <div class="fan-wrap">
+
+                <!-- Card 1: Q&A Research -->
+                <div class="fan-card" data-i="0">
+                    <div class="fan-img-wrap">
+                        <img src="/img/qar.png" alt="Q&A Research" class="fan-img" loading="lazy">
+                    </div>
+                    <div class="fan-info">
+                        <span class="fan-cat">Investigación de Mercados</span>
+                        <p class="fan-name">Q&A Research</p>
+                        <a href="https://qar.com.mx/" target="_blank" rel="noopener noreferrer" class="fan-link">
+                            qar.com.mx <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: CM Marketing -->
+                <div class="fan-card" data-i="1">
+                    <div class="fan-img-wrap">
+                        <img src="/img/cmmkt.png" alt="CM Marketing" class="fan-img" loading="lazy">
+                    </div>
+                    <div class="fan-info">
+                        <span class="fan-cat">Investigación de Mercados</span>
+                        <p class="fan-name">CM Marketing</p>
+                        <a href="https://cmmkt.com/" target="_blank" rel="noopener noreferrer" class="fan-link">
+                            cmmkt.com <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Insights Lab -->
+                <div class="fan-card" data-i="2">
+                    <div class="fan-img-wrap">
+                        <img src="/img/lab.png" alt="Insights Lab" class="fan-img" loading="lazy">
+                    </div>
+                    <div class="fan-info">
+                        <span class="fan-cat">Campo y Reclutamiento</span>
+                        <p class="fan-name">Insights Lab</p>
+                        <a href="https://insightslab.com.mx/" target="_blank" rel="noopener noreferrer" class="fan-link">
+                            insightslab.com.mx <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Brónea -->
+                <div class="fan-card" data-i="3">
+                    <div class="fan-img-wrap">
+                        <img src="/img/bronea.png" alt="Brónea" class="fan-img" loading="lazy">
+                    </div>
+                    <div class="fan-info">
+                        <span class="fan-cat">Galería de Bronce</span>
+                        <p class="fan-name">Brónea</p>
+                        <a href="https://bronea.com.mx/" target="_blank" rel="noopener noreferrer" class="fan-link">
+                            bronea.com.mx <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mobile: cards de imagen completa -->
+            <div class="fan-mobile">
+                {[
+                    { num: '01', nombre: 'Q&A Research', cat: 'Investigación de Mercados', url: 'qar.com.mx',           href: 'https://qar.com.mx/',            color: '#AF4D98', img: '/img/qar.png'    },
+                    { num: '02', nombre: 'CM Marketing',  cat: 'Investigación de Mercados', url: 'cmmkt.com',            href: 'https://cmmkt.com/',             color: '#119DA4', img: '/img/cmmkt.png'  },
+                    { num: '03', nombre: 'Insights Lab',  cat: 'Campo y Reclutamiento',     url: 'insightslab.com.mx',  href: 'https://insightslab.com.mx/',    color: '#FF7B00', img: '/img/lab.png'     },
+                    { num: '04', nombre: 'Brónea',         cat: 'Galería de Bronce',          url: 'bronea.com.mx',       href: 'https://bronea.com.mx/',         color: '#1a1a1a', img: '/img/bronea.png'  },
+                ].map((p, i) => (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer"
+                       class="mob-card"
+                       style={`--mc:${p.color}; transform: rotate(${i % 2 === 0 ? '-1.5' : '1.5'}deg);`}>
+                        <img src={p.img} alt={p.nombre} class="mob-card-img" loading="lazy">
+                        <div class="mob-card-overlay"></div>
+                        <div class="mob-card-body">
+                            <span class="mob-card-num font-title">{p.num}</span>
+                            <div>
+                                <span class="mob-card-cat">{p.cat}</span>
+                                <p class="mob-card-name">{p.nombre}</p>
+                                <span class="mob-card-url">{p.url} →</span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="px-[8%] pt-20 pb-10 bg-cream text-center">
+            <h2 class="font-title text-[2rem] md:text-[3rem] font-normal mb-6">
+                ¿Tu proyecto podría ser<br><span class="highlight-orange-title">el siguiente</span>?
+            </h2>
+        </section>
+
+    </main>
+    <Footer />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+    <script>
+    // ── Abanico desktop ──────────────────────────────────────
+    const isMobile = () => window.innerWidth < 768;
+
+    const cards = Array.from(document.querySelectorAll('.fan-card'));
+    const fanMobile = document.querySelector('.fan-mobile');
+
+    // Posición base de cada card en el abanico
+    const base = [
+        { x: -340, y: 40,  rot: -22, z: 1 },
+        { x: -115, y: 10,  rot:  -7, z: 2 },
+        { x:  115, y: 10,  rot:   7, z: 3 },
+        { x:  340, y: 40,  rot:  22, z: 4 },
+    ];
+
+    function initFan() {
+        if (isMobile()) {
+            cards.forEach(c => (c.style.display = 'none'));
+            if (fanMobile) fanMobile.classList.remove('hidden');
+            return;
+        }
+        if (fanMobile) fanMobile.classList.add('hidden');
+        cards.forEach((card, i) => {
+            card.style.display = '';
+            gsap.set(card, {
+                x: base[i].x,
+                y: base[i].y,
+                rotation: base[i].rot,
+                zIndex: base[i].z,
+                scale: 1,
+            });
+        });
+    }
+
+    initFan();
+    window.addEventListener('resize', initFan);
+
+    // ── Hover: la card seleccionada sube, las demás se apartan ──
+    cards.forEach((card, i) => {
+        card.addEventListener('mouseenter', () => {
+            if (isMobile()) return;
+            // Card activa: sube y se endereza
+            gsap.to(card, {
+                y: base[i].y - 70,
+                rotation: 0,
+                scale: 1.05,
+                zIndex: 10,
+                duration: 0.45,
+                ease: 'power3.out',
+            });
+            // Resto: se alejan ligeramente
+            cards.forEach((other, j) => {
+                if (j === i) return;
+                const push = j < i ? -25 : 25;
+                gsap.to(other, {
+                    x: base[j].x + push,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                });
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (isMobile()) return;
+            gsap.to(card, {
+                y: base[i].y,
+                rotation: base[i].rot,
+                scale: 1,
+                zIndex: base[i].z,
+                duration: 0.6,
+                ease: 'elastic.out(1, 0.75)',
+            });
+            cards.forEach((other, j) => {
+                if (j === i) return;
+                gsap.to(other, {
+                    x: base[j].x,
+                    duration: 0.6,
+                    ease: 'elastic.out(1, 0.75)',
+                });
+            });
+        });
+    });
+    </script>
+
+    <style>
+    /* ── Sección contenedora ── */
+    .fan-section {
+        padding: 60px 0 120px;
+    }
+
+    /* ── Wrap del abanico ── */
+    .fan-wrap {
+        position: relative;
+        height: 540px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* ── Card base ── */
+    .fan-card {
+        position: absolute;
+        width: 300px;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        background: #fff;
+        box-shadow:
+            0 2px 8px rgba(0,0,0,0.08),
+            0 12px 32px rgba(0,0,0,0.12),
+            0 32px 56px rgba(0,0,0,0.10);
+        transform-origin: bottom center;
+        will-change: transform;
+    }
+
+    /* ── Imagen ── */
+    .fan-img-wrap {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+    }
+    .fan-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    .fan-card:hover .fan-img { transform: scale(1.04); }
+
+    /* Placeholder cuando no hay imagen */
+    .fan-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .fan-initials {
+        font-size: 3.5rem;
+        color: rgba(255,255,255,0.9);
+        line-height: 1;
+    }
+    .fan-initials-sub {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Info ── */
+    .fan-info {
+        padding: 1.2rem 1.4rem 1.5rem;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .fan-cat {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #aaa;
+    }
+    .fan-name {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 1.35rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0;
+        color: #111;
+    }
+    .fan-link {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #AF4D98;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-top: 0.2rem;
+        transition: gap 0.3s ease;
+    }
+    .fan-link:hover { gap: 0.6rem; }
+
+    /* ── Mobile ── */
+    .fan-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 1.6rem;
+        padding: 0 6% 80px;
+    }
+    @media (max-width: 767px) {
+        .fan-wrap   { display: none; }
+        .fan-mobile { display: flex; }
+        .fan-section { padding: 20px 0 0; }
+    }
+
+    /* Card móvil: imagen a sangre con texto encima */
+    .mob-card {
+        position: relative;
+        display: block;
+        border-radius: 22px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        text-decoration: none;
+        box-shadow:
+            0 4px 10px rgba(0,0,0,0.08),
+            0 16px 40px rgba(0,0,0,0.14);
+        transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                    box-shadow 0.35s ease;
+    }
+    .mob-card:active {
+        transform: scale(0.97) rotate(0deg) !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+    }
+
+    .mob-card-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+    }
+
+    /* Gradiente oscuro hacia abajo */
+    .mob-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            transparent 25%,
+            rgba(0,0,0,0.80) 100%
+        );
+    }
+
+    .mob-card-body {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 1.6rem 1.6rem 1.8rem;
+        gap: 1rem;
+    }
+
+    .mob-card-num {
+        font-size: 5rem;
+        line-height: 1;
+        color: rgba(255,255,255,0.12);
+        align-self: flex-start;
+        flex-shrink: 0;
+    }
+
+    .mob-card-cat {
+        display: block;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 0.3rem;
+    }
+    .mob-card-name {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 0.3rem;
+        line-height: 1.1;
+    }
+    .mob-card-url {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.7);
+        letter-spacing: 0.02em;
+    }
+    </style>
+</Layout>

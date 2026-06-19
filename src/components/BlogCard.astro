@@ -1,0 +1,100 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+    date: Date;
+    slug: string;
+    category?: string;
+    image?: string;
+    readingTime?: number;
+}
+const { title, description, date, slug, category, image, readingTime } = Astro.props;
+const dateStr = date.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<a href={`/blog/${slug}`} class="blog-card">
+    {image && (
+        <div class="blog-card-img-wrap">
+            <img src={image} alt={title} class="blog-card-img" loading="lazy">
+        </div>
+    )}
+    <div class="blog-card-body">
+        {category && <span class="blog-card-cat">{category}</span>}
+        <h2 class="font-title blog-card-title">{title}</h2>
+        <p class="blog-card-desc">{description}</p>
+        <div class="blog-card-meta">
+            <span>{dateStr}</span>
+            {readingTime && <><span aria-hidden="true">·</span><span>{readingTime} min de lectura</span></>}
+        </div>
+    </div>
+</a>
+
+<style>
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+}
+.blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 24px 48px rgba(0,0,0,0.12);
+}
+.blog-card-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+.blog-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.blog-card:hover .blog-card-img { transform: scale(1.04); }
+.blog-card-body {
+    padding: 1.6rem 1.8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+.blog-card-cat {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #AF4D98;
+}
+.blog-card-title {
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 1.15;
+    color: #111;
+    margin: 0;
+}
+.blog-card-desc {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.92rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+.blog-card-meta {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.72rem;
+    color: #aaa;
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+</style>

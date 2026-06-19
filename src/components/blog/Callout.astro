@@ -1,0 +1,25 @@
+---
+// src/components/blog/Callout.astro
+interface Props {
+    type?: 'tip' | 'warning' | 'stat' | 'quote';
+}
+
+const { type = 'tip' } = Astro.props;
+
+const config: Record<string, { bg: string; border: string; icon: string; text: string }> = {
+    tip:     { bg: 'rgba(17,157,164,0.06)',  border: '#119DA4', icon: '💡', text: '#0d7a80' },
+    warning: { bg: 'rgba(255,123,0,0.06)',   border: '#FF7B00', icon: '⚠️', text: '#cc6200' },
+    stat:    { bg: 'rgba(175,77,152,0.06)',  border: '#AF4D98', icon: '📊', text: '#8c3d79' },
+    quote:   { bg: '#faf5f2',                 border: '#ddd',   icon: '"',  text: '#666' },
+};
+
+const { bg, border, icon, text } = config[type];
+---
+
+<div
+    class="callout not-prose my-10 p-6 rounded-2xl text-base leading-relaxed"
+    style={`background:${bg}; border-left:4px solid ${border};`}
+>
+    <span class="text-xl mr-3 align-middle" aria-hidden="true" style="font-size:1.4rem;">{icon}</span>
+    <span class="font-body" style={`color:${text};`}><slot /></span>
+</div>

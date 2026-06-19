@@ -1,0 +1,907 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+    title="Proceso de Trabajo | Webix"
+    description="Así trabajamos en Webix. Un proceso claro, transparente y rápido para tener tu página web lista en 7 días."
+>
+    <Header />
+    <main class="pt-0">
+
+        <!-- HERO -->
+        <section class="min-h-[60vh] flex flex-col justify-center items-center text-center px-[8%] py-24 bg-cream">
+            <p class="font-body text-sm font-bold tracking-widest uppercase text-purple mb-6">Proceso</p>
+            <h1 class="font-title hero-3d text-[3rem] md:text-[5rem] leading-[1] tracking-[-2px] mb-8 max-w-[700px]">
+                Tu web,<br>
+                <span class="highlight-yellow">día por día.</span>
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-[500px]">
+                Siete días. Sin sorpresas. Sin estrés. Así trabajamos.
+            </p>
+        </section>
+
+        <!-- PROCESO STICKY -->
+        <section class="proceso-section bg-white" id="proceso-steps">
+            <div class="proceso-grid">
+
+                <!-- Columna izquierda: pasos -->
+                <div class="proceso-pasos">
+
+                    <div class="paso-item" data-paso="0">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 1</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Hablamos</h3>
+                                <span class="paso-tiempo">30–60 min</span>
+                            </div>
+                            <p class="paso-desc">Nos cuentas tu proyecto por WhatsApp o videollamada. Entendemos tu negocio, tus clientes y lo que necesitas lograr. Sin formularios largos, sin vueltas.</p>
+                            <ul class="paso-lista">
+                                <li>Conversación directa por WhatsApp</li>
+                                <li>Definimos objetivos y alcance</li>
+                                <li>Resuelves todas tus dudas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="1">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 2</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Proponemos</h3>
+                                <span class="paso-tiempo">24 hrs después</span>
+                            </div>
+                            <p class="paso-desc">Recibes una propuesta clara con el mapa de tu sitio, presupuesto cerrado y tiempos de entrega. Nada de "depende". Todo por escrito.</p>
+                            <ul class="paso-lista">
+                                <li>Mapa del sitio (sitemap)</li>
+                                <li>Presupuesto detallado y cerrado</li>
+                                <li>Contrato simple y anticipo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="2">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 3</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Diseñamos</h3>
+                                <span class="paso-tiempo">Primer diseño</span>
+                            </div>
+                            <p class="paso-desc">Creamos la identidad visual de tu sitio con tu paleta de colores, tipografía y estilo. Te mandamos el diseño para que lo veas y nos des tu feedback.</p>
+                            <ul class="paso-lista">
+                                <li>Diseño personalizado en Figma</li>
+                                <li>Adaptado a tu identidad de marca</li>
+                                <li>2 rondas de revisión incluidas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="3">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 4</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Construimos</h3>
+                                <span class="paso-tiempo">Código limpio</span>
+                            </div>
+                            <p class="paso-desc">Pasamos el diseño a código. Cuidamos velocidad, responsive, SEO técnico y que todo funcione perfecto en móvil, tablet y desktop.</p>
+                            <ul class="paso-lista">
+                                <li>Código optimizado (Astro)</li>
+                                <li>100% responsive y rápido</li>
+                                <li>SEO técnico desde el día 1</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="4">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 5</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Ajustamos</h3>
+                                <span class="paso-tiempo">Tus cambios</span>
+                            </div>
+                            <p class="paso-desc">Revisas el sitio, nos dices qué ajustar y lo corregimos. Cambios de texto, imágenes, colores — lo que necesites. Sin costo extra.</p>
+                            <ul class="paso-lista">
+                                <li>Revisión directa contigo</li>
+                                <li>Ajustes ilimitados de contenido</li>
+                                <li>Conexión de formularios y WhatsApp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="5">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 6</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Probamos</h3>
+                                <span class="paso-tiempo">Checklist final</span>
+                            </div>
+                            <p class="paso-desc">Revisamos todo: velocidad, enlaces, formularios, SEO, SSL, responsive. Nada se publica sin pasar nuestro checklist de calidad.</p>
+                            <ul class="paso-lista">
+                                <li>Pruebas en todos los dispositivos</li>
+                                <li>Certificado SSL y dominio</li>
+                                <li>Google Analytics y Search Console</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paso-item" data-paso="6">
+                        <div class="paso-marker">
+                            <span class="paso-num font-title">Día 7</span>
+                        </div>
+                        <div class="paso-content">
+                            <div class="paso-header">
+                                <h3 class="font-title paso-titulo">Publicamos</h3>
+                                <span class="paso-tiempo">🚀 En vivo</span>
+                            </div>
+                            <p class="paso-desc">Tu sitio está publicado y funcionando. Te entregamos accesos, una mini-guía y quedamos atentos para lo que necesites después.</p>
+                            <ul class="paso-lista">
+                                <li>Sitio publicado en tu dominio</li>
+                                <li>Manual de uso y accesos</li>
+                                <li>Soporte post-lanzamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Columna derecha: browser mockup sticky -->
+                <div class="proceso-mockup-wrap">
+                    <div class="proceso-mockup" id="proceso-mockup">
+
+                        <!-- Barra del browser -->
+                        <div class="mock-bar">
+                            <div class="mock-dots">
+                                <span class="mock-dot" style="background:#ff5f57"></span>
+                                <span class="mock-dot" style="background:#ffbd2e"></span>
+                                <span class="mock-dot" style="background:#28c840"></span>
+                            </div>
+                            <div class="mock-url" id="mock-url">webix.com.mx</div>
+                        </div>
+
+                        <!-- Pantallas (una por día) -->
+                        <div class="mock-screens">
+
+                            <!-- Día 1: Hablamos — chat de WhatsApp -->
+                            <div class="mock-screen active" id="screen-0">
+                                <div class="ms-chat">
+                                    <div class="ms-bubble ms-bubble--in">
+                                        <div class="ms-bubble-dot"></div>
+                                        Hola, quiero una página web para mi negocio
+                                    </div>
+                                    <div class="ms-bubble ms-bubble--out ms-delay-1">¡Claro! Cuéntame de tu negocio y qué necesitas 🚀</div>
+                                    <div class="ms-bubble ms-bubble--in ms-delay-2">
+                                        <div class="ms-bubble-dot"></div>
+                                        Tengo una cafetería en CDMX. Quiero que me encuentren en Google.
+                                    </div>
+                                    <div class="ms-bubble ms-bubble--out ms-delay-3">Perfecto. ¿Tienes logo, fotos, algo de branding?</div>
+                                    <div class="ms-typing ms-delay-4">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Día 2: Proponemos — propuesta / PDF -->
+                            <div class="mock-screen" id="screen-1">
+                                <div class="ms-propuesta">
+                                    <div class="ms-prop-header ms-delay-0">
+                                        <div class="ms-prop-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#AF4D98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="#AF4D98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </div>
+                                        <div class="ms-prop-title">Propuesta Webix</div>
+                                    </div>
+                                    <div class="ms-prop-body ms-delay-1">
+                                        <div class="ms-prop-row">
+                                            <span class="ms-prop-label">Proyecto</span>
+                                            <span class="ms-prop-val">Sitio web 5 secciones</span>
+                                        </div>
+                                        <div class="ms-prop-row">
+                                            <span class="ms-prop-label">Entrega</span>
+                                            <span class="ms-prop-val">7 días</span>
+                                        </div>
+                                        <div class="ms-prop-row">
+                                            <span class="ms-prop-label">Incluye</span>
+                                            <span class="ms-prop-val">Diseño · Código · SEO · SSL</span>
+                                        </div>
+                                        <div class="ms-prop-row ms-prop-total">
+                                            <span class="ms-prop-label">Inversión</span>
+                                            <span class="ms-prop-val" style="color:#AF4D98;font-size:1.2rem;">$X,XXX MXN</span>
+                                        </div>
+                                    </div>
+                                    <div class="ms-prop-cta ms-delay-2">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        Presupuesto cerrado. Sin sorpresas.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Día 3: Diseñamos — Figma frame -->
+                            <div class="mock-screen" id="screen-2">
+                                <div class="ms-figma">
+                                    <div class="ms-fig-toolbar ms-delay-0">
+                                        <div class="ms-fig-logo">
+                                            <span style="background:#AF4D98"></span>
+                                            <span style="background:#119DA4"></span>
+                                            <span style="background:#FF7B00"></span>
+                                        </div>
+                                        <span class="ms-fig-fname">Homepage · Draft</span>
+                                    </div>
+                                    <div class="ms-fig-canvas ms-delay-1">
+                                        <div class="ms-fig-nav">
+                                            <div class="ms-fig-logo-sm"></div>
+                                            <div class="ms-fig-links"><span></span><span></span><span></span></div>
+                                        </div>
+                                        <div class="ms-fig-hero">
+                                            <div class="ms-fig-h1"></div>
+                                            <div class="ms-fig-h2"></div>
+                                            <div class="ms-fig-cta">Contáctanos</div>
+                                        </div>
+                                        <div class="ms-fig-cards">
+                                            <div class="ms-fig-card" style="--accent:#AF4D98"></div>
+                                            <div class="ms-fig-card" style="--accent:#119DA4"></div>
+                                            <div class="ms-fig-card" style="--accent:#FF7B00"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-fig-badge ms-delay-2">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="#FFE900" stroke="#FFE900" stroke-width="1"/></svg>
+                                        Diseño enviado para revisión
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Día 4: Construimos — código en editor -->
+                            <div class="mock-screen" id="screen-3">
+                                <div class="ms-code">
+                                    <div class="ms-code-line ms-delay-0"><span class="ms-kw">&lt;section</span> <span class="ms-attr">class</span>=<span class="ms-str">"hero"</span><span class="ms-kw">&gt;</span></div>
+                                    <div class="ms-code-line ms-delay-1 ms-indent"><span class="ms-kw">&lt;h1&gt;</span><span class="ms-txt">Tu cafetería en línea</span><span class="ms-kw">&lt;/h1&gt;</span></div>
+                                    <div class="ms-code-line ms-delay-2 ms-indent"><span class="ms-kw">&lt;p&gt;</span><span class="ms-txt">Café de especialidad en CDMX</span><span class="ms-kw">&lt;/p&gt;</span></div>
+                                    <div class="ms-code-line ms-delay-3 ms-indent"><span class="ms-kw">&lt;a</span> <span class="ms-attr">href</span>=<span class="ms-str">"#contacto"</span><span class="ms-kw">&gt;</span><span class="ms-txt">Hablemos</span><span class="ms-kw">&lt;/a&gt;</span></div>
+                                    <div class="ms-code-line ms-delay-4"><span class="ms-kw">&lt;/section&gt;</span></div>
+                                    <div class="ms-code-line ms-delay-5 ms-indent"><span class="ms-comment">&lt;!-- 100% responsive · 98/100 Lighthouse --&gt;</span></div>
+                                    <div class="ms-code-cursor ms-delay-6">█</div>
+                                </div>
+                            </div>
+
+                            <!-- Día 5: Ajustamos — preview con cambios -->
+                            <div class="mock-screen" id="screen-4">
+                                <div class="ms-ajustes">
+                                    <div class="ms-aj-header ms-delay-0">
+                                        <div class="ms-aj-avatar">Tú</div>
+                                        <div class="ms-aj-msg">
+                                            ¿Podemos cambiar la foto del hero y poner el logo más grande?
+                                        </div>
+                                    </div>
+                                    <div class="ms-aj-header ms-delay-1" style="align-self:flex-end;flex-direction:row-reverse;">
+                                        <div class="ms-aj-avatar" style="background:#AF4D98;color:#fff;">W</div>
+                                        <div class="ms-aj-msg" style="background:rgba(175,77,152,0.15);">
+                                            ¡Listo! Ya lo ajusté. Míralo:
+                                        </div>
+                                    </div>
+                                    <div class="ms-aj-preview ms-delay-2">
+                                        <div class="ms-aj-prev-head">
+                                            <div class="ms-aj-prev-logo"></div>
+                                            <span class="ms-aj-prev-label">v2 · Actualizado</span>
+                                        </div>
+                                        <div class="ms-aj-prev-img"></div>
+                                    </div>
+                                    <div class="ms-aj-check ms-delay-3">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        Cambios aplicados
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Día 6: Probamos — checklist de calidad -->
+                            <div class="mock-screen" id="screen-5">
+                                <div class="ms-checklist">
+                                    <div class="ms-cl-title ms-delay-0">Checklist de lanzamiento</div>
+                                    <div class="ms-cl-items">
+                                        <div class="ms-cl-item ms-delay-1">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>Responsive mobile, tablet, desktop</span>
+                                        </div>
+                                        <div class="ms-cl-item ms-delay-1">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>SSL activo · HTTPS 🔒</span>
+                                        </div>
+                                        <div class="ms-cl-item ms-delay-2">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>Velocidad 95+ Lighthouse</span>
+                                        </div>
+                                        <div class="ms-cl-item ms-delay-2">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>Formularios y WhatsApp conectados</span>
+                                        </div>
+                                        <div class="ms-cl-item ms-delay-3">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>SEO: meta tags, schema, sitemap</span>
+                                        </div>
+                                        <div class="ms-cl-item ms-delay-3">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <span>Google Analytics + Search Console</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Día 7: Publicamos — confeti / lanzamiento -->
+                            <div class="mock-screen" id="screen-6">
+                                <div class="ms-launch">
+                                    <div class="ms-launch-emoji ms-delay-0">🚀</div>
+                                    <div class="ms-launch-title ms-delay-1">¡Tu sitio está vivo!</div>
+                                    <div class="ms-launch-url ms-delay-2">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="#AF4D98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="#AF4D98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        tudominio.com
+                                    </div>
+                                    <div class="ms-launch-msg ms-delay-3">
+                                        Te mandamos accesos, mini-guía<br>y quedamos atentos 🔥
+                                    </div>
+                                    <div class="ms-launch-confetti ms-delay-4">
+                                        <span style="--x:10%;--c:#AF4D98;--d:1.2s">✦</span>
+                                        <span style="--x:30%;--c:#119DA4;--d:0.8s">✦</span>
+                                        <span style="--x:50%;--c:#FFE900;--d:1.5s">✦</span>
+                                        <span style="--x:70%;--c:#FF7B00;--d:1.0s">✦</span>
+                                        <span style="--x:90%;--c:#AF4D98;--d:1.3s">✦</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="px-[8%] pt-20 pb-10 bg-cream text-center">
+            <h2 class="font-title text-[2rem] md:text-[3rem] font-normal mb-6">
+                ¿Empezamos <span class="highlight-orange-title">hoy</span>?
+            </h2>
+            <p class="text-gray-600 text-lg max-w-[500px] mx-auto">En 7 días tienes tu sitio web listo y publicado.</p>
+        </section>
+
+    </main>
+    <Footer />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
+    <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const pasos   = document.querySelectorAll('.paso-item');
+    const screens = document.querySelectorAll('.mock-screen');
+    const mockUrl = document.getElementById('mock-url');
+
+    const urls = [
+        'diagnostico · webix.com.mx',
+        'propuesta · webix.com.mx',
+        'diseño · webix.com.mx',
+        'dev · webix.com.mx',
+        'ajustes · webix.com.mx',
+        'checklist · webix.com.mx',
+        'webix.com.mx ✓',
+    ];
+
+    function activatePaso(index) {
+        pasos.forEach((p, i)   => p.classList.toggle('is-active', i === index));
+        screens.forEach((s, i) => s.classList.toggle('active', i === index));
+        if (mockUrl) mockUrl.textContent = urls[index];
+    }
+
+    pasos.forEach((paso, i) => {
+        ScrollTrigger.create({
+            trigger: paso,
+            start: 'top 55%',
+            end: 'bottom 55%',
+            onEnter:      () => activatePaso(i),
+            onEnterBack:  () => activatePaso(i),
+        });
+    });
+
+    // Activar el primero al cargar
+    activatePaso(0);
+    </script>
+
+    <style>
+    /* ── Layout principal ── */
+    .proceso-section { padding: 80px 8% 120px; }
+
+    .proceso-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+    }
+
+    /* ── Pasos (izquierda) ── */
+    .proceso-pasos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .paso-item {
+        display: flex;
+        gap: 1.2rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        opacity: 0.38;
+        transition: opacity 0.4s ease;
+        cursor: default;
+    }
+    .paso-item:last-child { border-bottom: none; }
+    .paso-item.is-active  { opacity: 1; }
+
+    .paso-marker {
+        flex-shrink: 0;
+        min-width: 58px;
+        height: 32px;
+        border-radius: 999px;
+        border: 2px solid #e5e5e5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.3s, background 0.3s;
+        margin-top: 4px;
+        padding: 0 10px;
+    }
+    .paso-item.is-active .paso-marker {
+        border-color: #AF4D98;
+        background: #AF4D98;
+    }
+    .paso-num {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #aaa;
+        white-space: nowrap;
+        transition: color 0.3s;
+    }
+    .paso-item.is-active .paso-num { color: #fff; }
+
+    .paso-content { flex: 1; }
+
+    .paso-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+    }
+    .paso-titulo {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin: 0;
+    }
+    .paso-tiempo {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        background: #119DA4;
+        color: #fff;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+    }
+    .paso-desc {
+        font-family: 'Nunito Sans', sans-serif;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 0.6rem;
+    }
+    .paso-lista {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .paso-lista li {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.85rem;
+        color: #999;
+        padding-left: 1.1rem;
+        position: relative;
+    }
+    .paso-lista li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: #AF4D98;
+        font-size: 0.75rem;
+    }
+
+    /* ── Mockup sticky (derecha) ── */
+    .proceso-mockup-wrap {
+        position: sticky;
+        top: 100px;
+    }
+
+    .proceso-mockup {
+        background: #1a1a1a;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow:
+            0 4px 16px rgba(0,0,0,0.12),
+            0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    /* Barra superior del browser */
+    .mock-bar {
+        background: #2d2d2d;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mock-dots { display: flex; gap: 6px; }
+    .mock-dot  { width: 11px; height: 11px; border-radius: 50%; }
+    .mock-url  {
+        flex: 1;
+        text-align: center;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.07);
+        border-radius: 6px;
+        padding: 4px 10px;
+        transition: color 0.4s;
+    }
+
+    /* Área de pantallas */
+    .mock-screens {
+        position: relative;
+        height: 380px;
+        overflow: hidden;
+    }
+
+    .mock-screen {
+        position: absolute;
+        inset: 0;
+        padding: 24px;
+        opacity: 0;
+        transition: opacity 0.45s ease;
+        pointer-events: none;
+    }
+    .mock-screen.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ── DELAYS ── */
+    .ms-delay-0  { transition-delay: 0.05s  !important; }
+    .ms-delay-1  { transition-delay: 0.20s  !important; }
+    .ms-delay-2  { transition-delay: 0.38s  !important; }
+    .ms-delay-3  { transition-delay: 0.55s  !important; }
+    .ms-delay-4  { transition-delay: 0.72s  !important; }
+    .ms-delay-5  { transition-delay: 0.88s  !important; }
+    .ms-delay-6  { transition-delay: 1.05s  !important; }
+
+    /* ────────────────────────────
+       PANTALLA 0 — CHAT (Día 1)
+    ──────────────────────────── */
+    .ms-chat { display: flex; flex-direction: column; gap: 8px; }
+    .ms-bubble {
+        max-width: 78%;
+        padding: 9px 14px;
+        border-radius: 14px;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.78rem;
+        line-height: 1.4;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        position: relative;
+    }
+    .ms-bubble--in  { background: #2d2d2d; color: #ddd; align-self: flex-start; padding-left: 30px; }
+    .ms-bubble--out { background: #AF4D98; color: #fff; align-self: flex-end; }
+    .ms-bubble-dot {
+        position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+        width: 8px; height: 8px; border-radius: 50%; background: #AF4D98;
+    }
+    .ms-typing {
+        display: flex; gap: 5px; align-items: center;
+        padding: 10px 14px; background: #2d2d2d; border-radius: 14px;
+        align-self: flex-start; width: 56px;
+        opacity: 0; transform: translateY(8px);
+        transition: opacity 0.4s ease 1.6s, transform 0.4s ease 1.6s;
+    }
+    .ms-typing span {
+        width: 6px; height: 6px; border-radius: 50%; background: #AF4D98;
+        animation: bounce 1s infinite;
+    }
+    .ms-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .ms-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+        0%,80%,100% { transform: translateY(0); }
+        40%          { transform: translateY(-6px); }
+    }
+
+    /* ────────────────────────────
+       PANTALLA 1 — PROPUESTA (Día 2)
+    ──────────────────────────── */
+    .ms-propuesta { display: flex; flex-direction: column; gap: 14px; }
+    .ms-prop-header {
+        display: flex; align-items: center; gap: 10px;
+        opacity: 0; transform: translateY(-8px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-prop-icon {
+        width: 36px; height: 36px; border-radius: 8px;
+        background: rgba(175,77,152,0.12); display: flex; align-items: center; justify-content: center;
+    }
+    .ms-prop-title {
+        font-family: 'Gerbil', serif; font-size: 1rem; color: #fff;
+    }
+    .ms-prop-body {
+        background: #2d2d2d; border-radius: 10px; padding: 16px;
+        display: flex; flex-direction: column; gap: 10px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-prop-row {
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .ms-prop-label {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.4);
+        text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ms-prop-val {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.78rem; font-weight: 600; color: #ddd;
+    }
+    .ms-prop-total {
+        border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px;
+    }
+    .ms-prop-cta {
+        display: flex; align-items: center; gap: 6px;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
+        color: #28c840; background: rgba(40,200,64,0.1);
+        padding: 8px 12px; border-radius: 8px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+
+    /* ────────────────────────────
+       PANTALLA 2 — DISEÑO (Día 3)
+    ──────────────────────────── */
+    .ms-figma { display: flex; flex-direction: column; gap: 8px; }
+    .ms-fig-toolbar {
+        background: #2d2d2d; border-radius: 6px; padding: 6px 10px;
+        display: flex; align-items: center; gap: 10px;
+        opacity: 0; transform: translateY(-6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-fig-logo { display: flex; gap: 4px; }
+    .ms-fig-logo span {
+        width: 8px; height: 8px; border-radius: 50%;
+    }
+    .ms-fig-fname {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.62rem; color: rgba(255,255,255,0.4);
+    }
+    .ms-fig-canvas {
+        background: #FAFAFA; border-radius: 8px; padding: 14px;
+        display: flex; flex-direction: column; gap: 10px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-fig-nav {
+        display: flex; align-items: center; justify-content: space-between;
+    }
+    .ms-fig-logo-sm { width: 40px; height: 7px; background: #AF4D98; border-radius: 3px; }
+    .ms-fig-links { display: flex; gap: 6px; }
+    .ms-fig-links span { width: 20px; height: 5px; background: #ddd; border-radius: 2px; }
+    .ms-fig-hero {
+        background: linear-gradient(135deg, #AF4D98, #119DA4);
+        border-radius: 6px; padding: 18px 14px; display: flex; flex-direction: column; gap: 6px;
+    }
+    .ms-fig-h1 { width: 60%; height: 10px; background: rgba(255,255,255,0.9); border-radius: 4px; }
+    .ms-fig-h2 { width: 40%; height: 7px; background: rgba(255,255,255,0.6); border-radius: 3px; }
+    .ms-fig-cta {
+        background: #FFE900; color: #111; font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.62rem; font-weight: 700; padding: 4px 12px; border-radius: 99px;
+        align-self: flex-start; margin-top: 4px;
+    }
+    .ms-fig-cards { display: flex; gap: 6px; }
+    .ms-fig-card {
+        flex: 1; height: 40px; border-radius: 6px;
+        background: var(--accent); opacity: 0.3;
+    }
+    .ms-fig-badge {
+        display: flex; align-items: center; gap: 6px;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.68rem; font-weight: 700;
+        color: #FFE900; background: rgba(255,233,0,0.08);
+        padding: 6px 10px; border-radius: 6px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+
+    /* ────────────────────────────
+       PANTALLA 3 — CÓDIGO (Día 4)
+    ──────────────────────────── */
+    .ms-code {
+        font-family: 'Courier New', monospace; font-size: 0.75rem; line-height: 1.8;
+        display: flex; flex-direction: column;
+    }
+    .ms-code-line {
+        opacity: 0; transform: translateX(-8px);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+    .ms-indent { padding-left: 1.4rem; }
+    .ms-kw    { color: #c792ea; }
+    .ms-attr  { color: #82aaff; }
+    .ms-str   { color: #c3e88d; }
+    .ms-txt   { color: #eee; }
+    .ms-comment { color: #546e7a; font-style: italic; }
+    .ms-code-cursor {
+        color: #AF4D98; opacity: 0;
+        animation: blink 1s infinite;
+        transition: opacity 0.3s;
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+    /* ────────────────────────────
+       PANTALLA 4 — AJUSTES (Día 5)
+    ──────────────────────────── */
+    .ms-ajustes { display: flex; flex-direction: column; gap: 10px; }
+    .ms-aj-header {
+        display: flex; align-items: flex-start; gap: 8px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-aj-avatar {
+        width: 28px; height: 28px; border-radius: 50%;
+        background: #2d2d2d; color: #aaa;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    .ms-aj-msg {
+        background: #2d2d2d; color: #ddd;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.72rem; line-height: 1.5;
+        padding: 8px 12px; border-radius: 10px; max-width: 75%;
+    }
+    .ms-aj-preview {
+        background: #FAFAFA; border-radius: 8px; overflow: hidden;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-aj-prev-head {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 8px 10px; background: #fff; border-bottom: 1px solid #eee;
+    }
+    .ms-aj-prev-logo { width: 30px; height: 6px; background: #AF4D98; border-radius: 3px; }
+    .ms-aj-prev-label {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.55rem; font-weight: 700;
+        color: #AF4D98; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ms-aj-prev-img {
+        height: 60px;
+        background: linear-gradient(135deg, rgba(175,77,152,0.2), rgba(17,157,164,0.2));
+    }
+    .ms-aj-check {
+        display: flex; align-items: center; gap: 6px;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
+        color: #28c840;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+
+    /* ────────────────────────────
+       PANTALLA 5 — CHECKLIST (Día 6)
+    ──────────────────────────── */
+    .ms-checklist { display: flex; flex-direction: column; gap: 14px; }
+    .ms-cl-title {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.72rem; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+        opacity: 0; transition: opacity 0.4s;
+    }
+    .ms-cl-items {
+        display: flex; flex-direction: column; gap: 8px;
+    }
+    .ms-cl-item {
+        display: flex; align-items: center; gap: 10px;
+        background: #2d2d2d; border-radius: 8px; padding: 10px 14px;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.72rem; color: #ccc;
+        opacity: 0; transform: translateX(-8px);
+        transition: opacity 0.35s, transform 0.35s;
+    }
+
+    /* ────────────────────────────
+       PANTALLA 6 — LANZAMIENTO (Día 7)
+    ──────────────────────────── */
+    .ms-launch {
+        display: flex; flex-direction: column; align-items: center;
+        justify-content: center; height: 100%; text-align: center; gap: 12px;
+        position: relative; overflow: hidden;
+    }
+    .ms-launch-emoji {
+        font-size: 3rem; opacity: 0; transform: scale(0.4);
+        transition: opacity 0.5s cubic-bezier(0.34,1.56,0.64,1), transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .ms-launch-title {
+        font-family: 'Gerbil', serif; font-size: 1.6rem; color: #fff;
+        opacity: 0; transform: translateY(8px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-launch-url {
+        display: flex; align-items: center; gap: 8px;
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.85rem; font-weight: 700;
+        color: #AF4D98; background: rgba(175,77,152,0.12);
+        padding: 6px 14px; border-radius: 8px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-launch-msg {
+        font-family: 'Nunito Sans', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.5);
+        line-height: 1.6; max-width: 260px;
+        opacity: 0; transform: translateY(6px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+    .ms-launch-confetti {
+        position: absolute; inset: 0; pointer-events: none;
+    }
+    .ms-launch-confetti span {
+        position: absolute; top: -10px; left: var(--x);
+        color: var(--c); font-size: 1.2rem;
+        animation: confetti-fall var(--d) ease-out forwards;
+        opacity: 0;
+    }
+    @keyframes confetti-fall {
+        0%   { opacity:1; transform: translateY(0) rotate(0deg); }
+        100% { opacity:0; transform: translateY(340px) rotate(360deg); }
+    }
+
+    /* ── ACTIVATION ── */
+    #screen-0.active .ms-bubble,
+    #screen-0.active .ms-typing    { opacity: 1; transform: none; }
+    #screen-1.active .ms-prop-header,
+    #screen-1.active .ms-prop-body,
+    #screen-1.active .ms-prop-cta  { opacity: 1; transform: none; }
+    #screen-2.active .ms-fig-toolbar,
+    #screen-2.active .ms-fig-canvas,
+    #screen-2.active .ms-fig-badge { opacity: 1; transform: none; }
+    #screen-3.active .ms-code-line,
+    #screen-3.active .ms-code-cursor { opacity: 1; transform: none; }
+    #screen-4.active .ms-aj-header,
+    #screen-4.active .ms-aj-preview,
+    #screen-4.active .ms-aj-check   { opacity: 1; transform: none; }
+    #screen-5.active .ms-cl-title   { opacity: 1; }
+    #screen-5.active .ms-cl-item    { opacity: 1; transform: none; }
+    #screen-6.active .ms-launch-emoji { opacity: 1; transform: scale(1); }
+    #screen-6.active .ms-launch-title,
+    #screen-6.active .ms-launch-url,
+    #screen-6.active .ms-launch-msg { opacity: 1; transform: none; }
+    #screen-6.active .ms-launch-confetti span { animation-play-state: running; }
+
+    /* ── Mobile ── */
+    @media (max-width: 767px) {
+        .proceso-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .proceso-mockup-wrap { position: relative; top: auto; }
+        .mock-screens { height: 320px; }
+        .paso-item { opacity: 1; }
+        .paso-marker { min-width: 50px; height: 28px; }
+        .paso-num { font-size: 0.58rem; }
+    }
+    </style>
+</Layout>

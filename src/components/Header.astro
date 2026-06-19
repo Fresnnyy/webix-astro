@@ -1,0 +1,183 @@
+---
+const navLinks = [
+    { href: '/',                     label: 'Inicio',               sublabel: 'Home',              color: '#FAFAFA', text: '#111111' },
+    { href: '/negocios-locales',     label: 'Negocios Locales',     sublabel: 'Para tu ciudad',    color: '#FF7B00', text: '#111111' },
+    { href: '/empresas',             label: 'Empresas',             sublabel: 'Soluciones a medida',color: '#119DA4', text: '#ffffff' },
+    { href: '/preguntas-frecuentes', label: 'Preguntas Frecuentes', sublabel: 'Centro de ayuda',   color: '#1a1a1a', text: '#ffffff' },
+    { href: '/blog',                 label: 'Blog',                 sublabel: 'Artículos y guías', color: '#AF4D98', text: '#ffffff' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="site-header" class="flex justify-between items-center px-[8%] py-5 bg-cream sticky top-0 z-[70] border-b border-gray-100">
+    <a href="/">
+        <img src="/img/logo.png" alt="Webix Logo" class="w-32 md:w-36" id="site-logo" width="144" height="48" loading="eager">
+    </a>
+    <button id="menu-toggle" class="flex items-center gap-3 group" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hidden md:block font-body font-semibold text-sm tracking-widest uppercase text-black group-hover:text-purple transition-colors duration-300">Menú</span>
+        <div class="flex flex-col justify-center items-center w-10 h-10 gap-[5px]">
+            <span class="ham-line block w-7 h-[2.5px] bg-black rounded-full origin-center transition-all duration-300"></span>
+            <span class="ham-line block w-7 h-[2.5px] bg-black rounded-full transition-all duration-300"></span>
+            <span class="ham-line block w-7 h-[2.5px] bg-black rounded-full origin-center transition-all duration-300"></span>
+        </div>
+    </button>
+</header>
+
+<!-- ── OVERLAY FULLSCREEN ── -->
+<div id="nav-overlay" class="fixed inset-0 z-[80] flex flex-col" aria-hidden="true" style="pointer-events:none; visibility:hidden;">
+
+    <!-- Header del overlay -->
+    <div class="relative z-10 flex justify-between items-center px-[8%] py-5 bg-cream flex-shrink-0 border-b border-black/10">
+        <a href="/" id="overlay-logo">
+            <img src="/img/logo.png" alt="Webix Logo" class="w-32 md:w-36" width="144" height="48">
+        </a>
+        <button id="menu-close" class="flex items-center gap-3 group" aria-label="Cerrar menú">
+            <span class="hidden md:block font-body font-semibold text-sm tracking-widest uppercase text-black group-hover:text-purple transition-colors duration-300">Cerrar</span>
+            <div class="flex flex-col justify-center items-center w-10 h-10">
+                <span class="block w-7 h-[2.5px] bg-black rounded-full" style="transform:translateY(1px) rotate(45deg)"></span>
+                <span class="block w-7 h-[2.5px] bg-black rounded-full" style="transform:translateY(-1px) rotate(-45deg)"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- BANDAS APILADAS (efecto S&D) -->
+    <nav class="nav-bandas-wrap" aria-label="Navegación principal">
+        {navLinks.map((link, i) => (
+            <a
+                href={link.href}
+                class="nav-banda"
+                style={`background:${link.color}; color:${link.text}; --i:${i};`}
+                aria-current={currentPath === link.href ? 'page' : undefined}
+            >
+                <span class="nav-banda-sublabel">{link.sublabel}</span>
+                <span class="nav-banda-titulo font-title">{link.label}</span>
+                {currentPath === link.href && <span class="nav-banda-dot" aria-hidden="true">●</span>}
+            </a>
+        ))}
+    </nav>
+
+    <!-- Footer del overlay -->
+    <div class="relative z-10 bg-cream flex-shrink-0 px-[8%] pb-6 pt-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-t border-gray-200">
+        <div class="flex gap-6">
+            <a href="https://www.instagram.com/webix__" target="_blank" rel="noopener noreferrer"
+               class="font-body text-sm font-semibold text-gray-500 hover:text-black transition-colors tracking-wide uppercase">Instagram</a>
+            <a href="https://www.facebook.com/webixonline" target="_blank" rel="noopener noreferrer"
+               class="font-body text-sm font-semibold text-gray-500 hover:text-black transition-colors tracking-wide uppercase">Facebook</a>
+            <a href="https://www.tiktok.com/@webix__" target="_blank" rel="noopener noreferrer"
+               class="font-body text-sm font-semibold text-gray-500 hover:text-black transition-colors tracking-wide uppercase">TikTok</a>
+        </div>
+        <a href="https://wa.me/525650776884" target="_blank" rel="noopener noreferrer"
+           class="font-body font-bold text-sm bg-purple text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity">
+            Empecemos hoy ▶
+        </a>
+    </div>
+
+</div>
+
+<style>
+/* ── CONTENEDOR PRINCIPAL ── */
+.nav-bandas-wrap {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Evita que el contenedor desborde en móvil */
+    overflow: hidden; 
+}
+
+/* ── TARJETAS CON APILAMIENTO REFINADO ── */
+.nav-banda {
+    flex: 1;
+    position: relative;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: -40px; /* Mantiene el efecto apilado constante */
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Corta el desborde pero no el texto principal */
+}
+
+/* ── TÍTULO CON ESCALADO INTELIGENTE ── */
+.nav-banda-titulo {
+    position: absolute;
+    /* 'clamp' permite que la letra crezca con la pantalla pero tenga límites de seguridad */
+    font-size: clamp(2.5rem, 8vw, 6rem); 
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap; /* Mantiene la frase en una línea */
+    pointer-events: none;
+}
+
+/* ── SUBTÍTULO: LA CLAVE DE LA REFERENCIA ── */
+.nav-banda-sublabel {
+    position: absolute;
+    top: 10px; /* Siempre pegado al borde superior redondeado */
+    font-size: 0.55rem; /* Muy pequeño y sutil, como en la referencia */
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    z-index: 5;
+}
+
+/* ── ESTADO HOVER (Desktop) ── */
+.nav-banda:hover {
+    flex: 2; /* Incremento suave, no drástico */
+    margin-bottom: 0;
+}
+
+/* ── AJUSTES ESPECÍFICOS PARA MÓVIL ── */
+@media (max-width: 600px) {
+    .nav-banda {
+        margin-bottom: -30px; /* Un poco menos de solapamiento en móvil */
+        border-radius: 12px 12px 0 0;
+    }
+    .nav-banda-titulo {
+        /* Aún más pequeño en móviles para que no se corte */
+        font-size: clamp(1.8rem, 12vw, 3rem); 
+    }
+    .nav-banda-sublabel {
+        font-size: 0.45rem; /* Ultra sutil en móvil */
+    }
+}
+</style>
+
+<script>
+    const toggle   = document.getElementById('menu-toggle')!;
+    const closeBtn = document.getElementById('menu-close')!;
+    const overlay  = document.getElementById('nav-overlay')!;
+    const bandas   = overlay.querySelectorAll<HTMLElement>('.nav-banda');
+
+    let isOpen = false;
+
+    function openMenu() {
+        isOpen = true;
+        overlay.style.visibility = 'visible';
+        overlay.style.pointerEvents = 'all';
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        bandas.forEach(b => {
+            b.classList.remove('is-visible');
+            void (b as HTMLElement).offsetWidth;
+            b.classList.add('is-visible');
+        });
+    }
+
+    function closeMenu() {
+        isOpen = false;
+        toggle.setAttribute('aria-expanded', 'false');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        bandas.forEach(b => b.classList.remove('is-visible'));
+        setTimeout(() => {
+            overlay.style.visibility = 'hidden';
+            overlay.style.pointerEvents = 'none';
+        }, 320);
+    }
+
+    toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+    closeBtn.addEventListener('click', closeMenu);
+    bandas.forEach(b => b.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeMenu(); });
+</script>

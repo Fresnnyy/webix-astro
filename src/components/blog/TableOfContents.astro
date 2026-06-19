@@ -1,0 +1,86 @@
+---
+// src/components/blog/TableOfContents.astro
+interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+}
+
+interface Props {
+    headings: Heading[];
+}
+
+const { headings = [] } = Astro.props;
+
+// Generar ID único para este ToC
+const tocId = `toc-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+{headings.length > 0 && (
+    <nav class="toc hidden xl:block" aria-label="Tabla de contenidos" id={tocId}>
+        <p class="font-body text-[10px] font-black tracking-[0.25em] uppercase text-purple mb-5">
+            En este artículo
+        </p>
+        <ul class="toc-list">
+            {headings.filter(h => h.depth <= 3).map(h => (
+                <li class={h.depth === 3 ? 'toc-li-sub' : ''}>
+                    <a href={`#${h.slug}`} class="toc-link" data-toc-target={h.slug}>
+                        {h.text}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+)}
+
+<script>
+    const tocNav = document.getElementById('{tocId}');
+    if (tocNav) {
+        tocNav.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const slug = (link as HTMLElement).dataset.tocTarget;
+                if (!slug) return;
+                const target = document.getElementById(slug!);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Actualizar URL sin recargar
+                    history.pushState(null, '', `#${slug}`);
+                }
+            });
+        });
+    }
+</script>
+
+<style>
+.toc {
+    width: 200px;
+}
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.toc-li-sub {
+    padding-left: 14px;
+}
+.toc-link {
+    display: block;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #888;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding: 6px 0 6px 12px;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+.toc-link:hover {
+    color: #AF4D98;
+    border-left-color: #AF4D98;
+}
+</style>
