@@ -8,7 +8,7 @@ import TableOfContents from '../../components/blog/TableOfContents.astro';
 export async function getStaticPaths() {
     const posts = await getCollection('blog');
     return posts
-        .filter(post => post.data.date <= new Date())
+        .filter(post => post.data.date <= new Date() && !post.data.draft)
         .map(post => ({
             params: { slug: post.slug },
             props: { post },
@@ -40,7 +40,7 @@ const headings = [...post.body.matchAll(headingRegex)].map(m => ({
 }));
 
 const otherPosts = (await getCollection('blog'))
-    .filter(p => p.data.date <= new Date() && p.slug !== post.slug)
+    .filter(p => p.data.date <= new Date() && !p.data.draft && p.slug !== post.slug)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const otherPostsJSON = JSON.stringify(otherPosts.map(p => ({

@@ -6,7 +6,7 @@ import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
-    .filter(post => post.data.date <= new Date())
+    .filter(post => post.data.date <= new Date() && !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))].sort();
