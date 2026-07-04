@@ -15,11 +15,34 @@ La mayoría de los negocios se enfocan solo en la primera y se olvidan de la seg
 
 Google mide la velocidad de tu sitio con tres indicadores que llama Core Web Vitals:
 
-| Métrica | Qué mide | Objetivo |
-|---------|----------|----------|
-| **LCP** | Tiempo que tarda en cargar lo más importante de la página | Menos de 2.5 segundos |
-| **INP** | Qué tan rápido responde la página cuando haces clic en algo | Menos de 200 milisegundos |
-| **CLS** | Qué tanto se mueven los elementos mientras carga (¿has intentado hacer clic y el botón se movió? Eso es CLS) | Menos de 0.1 |
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b-2 border-gray-300">
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Métrica</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Qué mide</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Objetivo</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="py-3 px-4 font-semibold">LCP</td>
+        <td class="py-3 px-4">Tiempo que tarda en cargar lo más importante de la página</td>
+        <td class="py-3 px-4">Menos de 2.5 segundos</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold">INP</td>
+        <td class="py-3 px-4">Qué tan rápido responde la página cuando haces clic en algo</td>
+        <td class="py-3 px-4">Menos de 200 milisegundos</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-semibold">CLS</td>
+        <td class="py-3 px-4">Qué tanto se mueven los elementos mientras carga (¿has intentado hacer clic y el botón se movió? Eso es CLS)</td>
+        <td class="py-3 px-4">Menos de 0.1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ¿Tu sitio pasa estas tres? Entra a [PageSpeed Insights](https://pagespeed.web.dev/) y descúbrelo en 10 segundos.
 
@@ -34,10 +57,10 @@ Imagina que tu sitio web es una biblioteca. La estructura es cómo están organi
 Lo mínimo que necesita Google:
 - **Títulos jerárquicos:** Un solo H1 por página (el título principal), luego H2 para secciones, H3 para subsecciones. Como un índice de libro.
 - **URLs limpias:** `tusitio.com/precios` en vez de `tusitio.com/?p=4729`
-- **Enlaces internos:** Tus páginas deben linkearse entre sí con texto descriptivo. No "haz clic aquí", sino "conoce nuestros planes de diseño web".
+- **Enlaces internos:** Tus páginas deben linkearse entre sí con texto descriptivo. No "haz clic aquí", sino "conoce nuestros precios de pasteles personalizados".
 - **Sitemap:** Un archivo que le dice a Google qué páginas tienes. Se genera automáticamente con la mayoría de las plataformas.
 
-{/* ⚡ HACK WEBIX: "Cuando migramos sitios de WordPress a Astro, el puntaje de PageSpeed suele saltar de 40 a 95+. La diferencia no es magia: es menos código basura corriendo." */}
+{/* ⚡ HACK: "Una tienda de ropa en línea pasó de un sitio en WordPress con 27 plugins a una versión optimizada desde cero. Su puntaje de PageSpeed móvil saltó de 38 a 94. Las ventas por tráfico orgánico subieron 28% sin gastar un peso más en anuncios. Menos código = más velocidad = más ventas." */}
 
 ## Mobile-first: Google ya no evalúa tu sitio en escritorio
 

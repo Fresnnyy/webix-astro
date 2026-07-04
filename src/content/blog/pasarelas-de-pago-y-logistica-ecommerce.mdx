@@ -16,13 +16,50 @@ Fallar en esto es fallar en todo. Aquí va, sin vueltas.
 
 Una pasarela de pago es el sistema que procesa las tarjetas de crédito y débito en tu tienda. Estas son las opciones reales para México:
 
-| Pasarela | Comisión | Liquidación | Ideal para |
-|----------|----------|-------------|------------|
-| **Stripe** | 3.6% + $3 MXN | 7 días hábiles | Tiendas profesionales, suscripciones |
-| **Mercado Pago** | 3.49% + IVA | 1-2 días | Negocios que empiezan, pagos en OXXO |
-| **PayPal** | 3.95% + $4 MXN | Inmediato | Clientes internacionales |
-| **Clip** | 3.6% + IVA | 1-2 días | Negocios físicos con tienda en línea |
-| **Conekta** | 2.9% + $3 MXN | 7 días | Empresas establecidas |
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b-2 border-gray-300">
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Pasarela</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Comisión</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Liquidación</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Ideal para</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="py-3 px-4 font-semibold">Stripe</td>
+        <td class="py-3 px-4">3.6% + $3 MXN</td>
+        <td class="py-3 px-4">7 días hábiles</td>
+        <td class="py-3 px-4">Tiendas profesionales, suscripciones</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold">Mercado Pago</td>
+        <td class="py-3 px-4">3.49% + IVA</td>
+        <td class="py-3 px-4">1-2 días</td>
+        <td class="py-3 px-4">Negocios que empiezan, pagos en OXXO</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-semibold">PayPal</td>
+        <td class="py-3 px-4">3.95% + $4 MXN</td>
+        <td class="py-3 px-4">Inmediato</td>
+        <td class="py-3 px-4">Clientes internacionales</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold">Clip</td>
+        <td class="py-3 px-4">3.6% + IVA</td>
+        <td class="py-3 px-4">1-2 días</td>
+        <td class="py-3 px-4">Negocios físicos con tienda en línea</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-semibold">Conekta</td>
+        <td class="py-3 px-4">2.9% + $3 MXN</td>
+        <td class="py-3 px-4">7 días</td>
+        <td class="py-3 px-4">Empresas establecidas</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <Callout type="tip">
   **Recomendación:** usa al menos dos pasarelas. Una principal (Stripe o Mercado Pago) y PayPal como respaldo. Muchos clientes abandonan el carrito si no encuentran su método de pago preferido.
@@ -32,7 +69,7 @@ Una pasarela de pago es el sistema que procesa las tarjetas de crédito y débit
 
 Las comisiones no son un "gasto adicional". Son el costo de hacer negocio en línea. Incorpóralas a tu precio desde el inicio. Si vendes un producto en $500 y la comisión es 3.6%, tu margen real es $482. Calcula así o pierdes dinero sin saberlo.
 
-{/* ⚡ HACK WEBIX: "Siempre recomendamos subir los precios 5% en la tienda en línea para cubrir comisiones sin sacrificar margen. El cliente no nota la diferencia entre $500 y $525. Tú sí notas la diferencia entre perder 3.6% y ganar 1.4%." */}
+{/* ⚡ HACK: "Una tienda de productos naturales en Querétaro subió sus precios 5% en la tienda en línea vs la tienda física. Los clientes ni lo notaron, y el margen extra cubrió todas las comisiones de Mercado Pago sin tocar sus ganancias. El precio en internet puede ser distinto: el canal tiene costos distintos." */}
 
 ## Logística y envíos en México
 
@@ -40,14 +77,54 @@ Aquí es donde la mayoría de las tiendas mexicanas sufren. El territorio es eno
 
 ### Las opciones de envío
 
-| Paquetería | Cobertura | Tiempo entrega | Costo aprox |
-|-----------|-----------|----------------|-------------|
-| **Estafeta** | Nacional | 1-5 días | $150 – $350 |
-| **DHL** | Nacional e internacional | 1-3 días | $200 – $600 |
-| **FedEx** | Nacional e internacional | 1-3 días | $200 – $600 |
-| **Redpack** | Nacional | 2-7 días | $100 – $250 |
-| **99minutos** | Ciudades principales | Mismo día / 24h | $80 – $200 |
-| **Mensajería local** | Local | Mismo día | $50 – $150 |
+<div class="overflow-x-auto my-8"><table class="w-full border-collapse text-sm">
+  <thead>
+    <tr class="border-b-2 border-gray-300">
+      <th class="text-left py-3 px-4">Paquetería</th>
+      <th class="text-left py-3 px-4">Cobertura</th>
+      <th class="text-left py-3 px-4">Tiempo entrega</th>
+      <th class="text-left py-3 px-4">Costo aprox</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    <tr class="bg-gray-50">
+      <td class="py-3 px-4 font-semibold">Estafeta</td>
+      <td class="py-3 px-4">Nacional</td>
+      <td class="py-3 px-4">1-5 días</td>
+      <td class="py-3 px-4">$150 – $350</td>
+    </tr>
+    <tr>
+      <td class="py-3 px-4 font-semibold">DHL</td>
+      <td class="py-3 px-4">Nacional e internacional</td>
+      <td class="py-3 px-4">1-3 días</td>
+      <td class="py-3 px-4">$200 – $600</td>
+    </tr>
+    <tr class="bg-gray-50">
+      <td class="py-3 px-4 font-semibold">FedEx</td>
+      <td class="py-3 px-4">Nacional e internacional</td>
+      <td class="py-3 px-4">1-3 días</td>
+      <td class="py-3 px-4">$200 – $600</td>
+    </tr>
+    <tr>
+      <td class="py-3 px-4 font-semibold">Redpack</td>
+      <td class="py-3 px-4">Nacional</td>
+      <td class="py-3 px-4">2-7 días</td>
+      <td class="py-3 px-4">$100 – $250</td>
+    </tr>
+    <tr class="bg-gray-50">
+      <td class="py-3 px-4 font-semibold">99minutos</td>
+      <td class="py-3 px-4">Ciudades principales</td>
+      <td class="py-3 px-4">Mismo día / 24h</td>
+      <td class="py-3 px-4">$80 – $200</td>
+    </tr>
+    <tr>
+      <td class="py-3 px-4 font-semibold">Mensajería local</td>
+      <td class="py-3 px-4">Local</td>
+      <td class="py-3 px-4">Mismo día</td>
+      <td class="py-3 px-4">$50 – $150</td>
+    </tr>
+  </tbody>
+</table></div>
 
 ### La estrategia que funciona
 
@@ -60,5 +137,7 @@ Aquí es donde la mayoría de las tiendas mexicanas sufren. El territorio es eno
 1. **Los códigos postales no mienten.** Verifica cada envío contra la base de datos de la paquetería. Hay zonas que aparecen como "cobertura nacional" y cuando llega el pedido resulta que no entregan ahí.
 2. **El empaque importa.** Una caja genérica arruinada comunica desorden. Un empaque con tu logo, cinta personalizada y una nota de agradecimiento comunica profesionalismo. Cuesta $10 más y vale $100 en percepción.
 3. **Comunica el tracking.** El 70% de las quejas de clientes son "¿dónde está mi pedido?". Manda el número de guía automáticamente por email y WhatsApp al generar la orden.
+
+**El caso de las boutiques mexicanas.** Marcas como Lobelia —ropa de diseño mexicano con venta en línea— resolvieron su logística con un esquema híbrido: mensajería local misma semana en CDMX, y paquetería nacional con guía de rastreo automatizada por email. El cliente recibe su número de tracking sin tener que pedirlo y puede seguir su paquete en tiempo real. La postventa automatizada elimina el 90% de los mensajes de "¿dónde está mi pedido?" y libera al equipo para enfocarse en vender más.
 
 La parte técnica de cobrar y entregar no es glamorosa. Pero una tienda que cobra sin fricción y entrega a tiempo sobrevive. Las demás cierran.

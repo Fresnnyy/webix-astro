@@ -6,6 +6,7 @@ category: "Negocios"
 image: "/img/blog/articulo_3.png"
 ---
 import PricingCard from '../../components/blog/PricingCard.astro';
+import Callout from '../../components/blog/Callout.astro';
 
 Pediste tres cotizaciones para la página web de tu negocio. Una te pide $4,000 MXN, otra $18,000 y la tercera $65,000. Las tres dicen hacer "lo mismo": un sitio profesional con 5 secciones, responsive y optimizado.
 
@@ -21,51 +22,145 @@ El error más común al comparar cotizaciones es asumir que "página web de 5 se
   </PricingCard>
 
   <PricingCard title="Cotización de $65,000" price="Desarrollo profesional" recommended={true}>
-    Diseño personalizado en Figma trabajado contigo, optimización de Core Web Vitals, SEO técnico con datos estructurados, panel de administración, entrenamiento para tu equipo y soporte 30 días post-lanzamiento.
+    Diseño personalizado trabajado contigo, optimización de Core Web Vitals, SEO técnico con datos estructurados, panel de administración, entrenamiento para tu equipo y soporte 30 días post-lanzamiento.
   </PricingCard>
 </div>
 
 ¿Ambas son "una página web de 5 secciones"? Técnicamente sí. ¿Son el mismo producto? Para nada.
 
-## Lo que realmente estás pagando (y lo que no)
+## Lo que realmente estás pagando
 
 Cuando pagas por una página web profesional, no estás comprando un archivo. Estás pagando horas de especialistas. La pregunta no es cuántas secciones tiene tu sitio, sino **quién y cuánto tiempo le dedicó**:
 
-| Lo que crees que pagas | Lo que realmente pagas |
-|------------------------|------------------------|
-| Un diseño bonito | Horas de un diseñador UX/UI investigando a tus clientes |
-| Un sitio que abre en Google | Horas de un especialista SEO configurando metadatos y datos estructurados |
-| Un formulario de contacto | Horas de un desarrollador validando datos y configurando notificaciones |
-| Una página que carga rápido | Horas de optimización de imágenes, código y servidor |
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b-2 border-gray-300">
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Lo que ves</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Lo que hay detrás</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="py-3 px-4 font-medium">Un diseño bonito</td>
+        <td class="py-3 px-4"><strong>8–20 horas</strong> de un diseñador UX/UI investigando a tus clientes, creando wireframes, probando jerarquías visuales y ajustando cada detalle</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-medium">Un sitio que aparece en Google</td>
+        <td class="py-3 px-4"><strong>5–12 horas</strong> de un especialista SEO configurando metadatos, datos estructurados, velocidad de carga, y estrategia de palabras clave</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-medium">Un formulario de contacto</td>
+        <td class="py-3 px-4"><strong>3–8 horas</strong> de un desarrollador programando validaciones, configurando notificaciones por email, protección anti-spam y pruebas en todos los dispositivos</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-medium">Una página que carga rápido</td>
+        <td class="py-3 px-4"><strong>4–10 horas</strong> de optimización de imágenes, minificación de código, configuración de caché y pruebas de rendimiento en móvil y escritorio</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Un freelancer que cobra $4,000 por un sitio completo está ganando menos de $100 la hora si trabaja una semana. Un equipo de tres personas durante un mes repartiendo $65,000 entre diseño, desarrollo y project management está en tarifas profesionales estándar. El número no es arbitrario: es aritmética.
+**La aritmética es simple:** un freelancer que cobra $4,000 por un sitio completo está ganando menos de $100 la hora si trabaja una semana. Un equipo de tres personas durante un mes — diseñador, desarrollador y project manager — repartiendo $65,000 está en tarifas profesionales estándar. El número no es arbitrario: es matemática.
 
-En el mundo digital, lo barato casi siempre se paga dos veces. Nos ha tocado rediseñar sitios de $4,000 MXN creados sobre plantillas tan pesadas que tardaban más de 8 segundos en cargar en un celular. El cliente no solo perdió esos $4,000, sino también los clientes que se desesperaron y cerraron la página.
+<Callout type="warning">
+  En el mundo digital, lo barato casi siempre se paga dos veces. Hemos visto sitios de $4,000 MXN creados sobre plantillas tan pesadas que tardaban más de 8 segundos en cargar en un celular. El dueño no solo perdió esos $4,000, sino también los clientes que se fueron sin esperar.
+</Callout>
+
+## Los tres niveles de inversión: qué obtienes en cada uno
+
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b-2 border-gray-300">
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-1/5">Nivel</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-1/5">Rango de precio</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-1/5">¿Quién lo hace?</th>
+        <th class="text-left py-3 px-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-2/5">¿Qué incluye realmente?</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="py-3 px-4 font-semibold">Básico</td>
+        <td class="py-3 px-4">$3,000 – $8,000</td>
+        <td class="py-3 px-4">Freelancer individual o plataforma automatizada</td>
+        <td class="py-3 px-4">Plantilla pre-comprada. Sin investigación. Sin estrategia SEO real. Soporte mínimo o nulo. Ideal solo si tu negocio no depende de tu presencia digital.</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold">Profesional</td>
+        <td class="py-3 px-4">$12,000 – $30,000</td>
+        <td class="py-3 px-4">Estudio pequeño o freelancer senior</td>
+        <td class="py-3 px-4">Diseño personalizado. SEO técnico. Velocidad optimizada. Soporte post-entrega. El punto dulce para negocios que necesitan resultados.</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-semibold">Empresarial</td>
+        <td class="py-3 px-4">$35,000 – $80,000+</td>
+        <td class="py-3 px-4">Agencia con equipo multidisciplinario</td>
+        <td class="py-3 px-4">Diseño UX/UI completo. Desarrollo a medida. Estrategia de contenidos. Integraciones complejas. Panel de administración. Entrenamiento.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Los servicios fantasma que inflan cotizaciones
 
-Hay agencias que aprovechan que el cliente no sabe leer una cotización para meter partidas que no existen o que no valen lo que cobran. Los clásicos:
+Hay agencias que aprovechan que el cliente no sabe leer una cotización para meter partidas que no existen o que no valen lo que cobran:
 
-- **"Posicionamiento en Google garantizado"** — Nadie puede garantizar la posición #1. Google lo prohíbe explícitamente en sus términos. Si te lo prometen, mienten.
-- **"SEO avanzado"** — A veces es solo instalar un plugin gratuito y llenar dos campos. Pregunta exactamente qué incluye.
-- **"Hosting premium"** — Te cobran $8,000 MXN al año por un servidor compartido que cuesta $1,200. Pide el desglose.
-- **"Mantenimiento mensual obligatorio"** — Si tu sitio es informativo y no lleva tienda, probablemente no necesitas un mantenimiento de $3,000 al mes. Pregunta qué cubre.
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b-2 border-red-200">
+        <th class="text-left py-3 px-4 font-semibold text-red-700 text-xs uppercase tracking-wide">🚩 Lo que te cobran</th>
+        <th class="text-left py-3 px-4 font-semibold text-red-700 text-xs uppercase tracking-wide">🔍 La realidad</th>
+        <th class="text-left py-3 px-4 font-semibold text-red-700 text-xs uppercase tracking-wide">✅ Cómo defenderte</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="py-3 px-4 font-semibold text-red-600">"Posicionamiento #1 en Google garantizado"</td>
+        <td class="py-3 px-4">Nadie puede garantizar la posición #1. Google lo prohíbe en sus términos. Es una mentira de ventas.</td>
+        <td class="py-3 px-4">Pregunta: "¿Me lo pones por escrito con cláusula de reembolso?" Si se niegan, ahí tienes tu respuesta.</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold text-red-600">"SEO avanzado" (sin detalle)</td>
+        <td class="py-3 px-4">A veces es solo instalar un plugin gratuito y llenar dos campos de texto.</td>
+        <td class="py-3 px-4">Exige una lista concreta: ¿cuántas palabras clave? ¿datos estructurados? ¿optimización de imágenes? ¿informes mensuales?</td>
+      </tr>
+      <tr>
+        <td class="py-3 px-4 font-semibold text-red-600">"Hosting premium"</td>
+        <td class="py-3 px-4">Te cobran $8,000 MXN al año por un servidor compartido que cuesta $1,200.</td>
+        <td class="py-3 px-4">Pide el proveedor exacto, el plan y el costo de renovación. Compara en internet en 2 minutos.</td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="py-3 px-4 font-semibold text-red-600">"Mantenimiento mensual obligatorio"</td>
+        <td class="py-3 px-4">Para sitios informativos, probablemente no necesitas un mantenimiento de $3,000 al mes.</td>
+        <td class="py-3 px-4">Pregunta exactamente qué incluye. Si es "actualizar plugins y hacer respaldos", eso no cuesta $3,000.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+## La checklist para leer cualquier cotización
 
-## Cómo leer una cotización sin que te engañen
+Antes de soltar un anticipo, haz estas 5 preguntas. Si no te las saben responder con claridad, sal corriendo:
 
-Antes de soltar un anticipo, haz estas preguntas. Si no te las saben responder, sal corriendo:
+**1. ¿Quién va a diseñar el sitio?**
+¿Un diseñador con portafolio verificable o una plantilla de $29 USD con tu logo pegado? Pide ver trabajos anteriores de negocios similares al tuyo.
 
-1. **¿Quién va a diseñar el sitio?** ¿Un diseñador con portafolio o una plantilla de $29 USD?
-2. **¿Qué incluye el SEO exactamente?** Pide lista concreta, no la palabra "SEO".
-3. **¿Me entregan el código y los accesos de administrador al terminar?** Si la respuesta es no o "eso tiene costo extra", ahí no es.
-4. **¿Cuánto tiempo de soporte post-entrega incluye el precio?** 30 días es el mínimo profesional.
-5. **¿El hosting está incluido o se paga aparte?** Si está incluido, que te digan dónde está alojado y cuánto cuesta renovarlo.
+**2. ¿Qué incluye el SEO exactamente?**
+No aceptes la palabra "SEO" sola. Pide lista concreta: palabras clave, metadatos, datos estructurados, optimización de velocidad, Google My Business, informes.
 
-Lo barato sale caro, pero lo caro mal planeado o basado en humo sale carísimo. Exige siempre claridad técnica.
+**3. ¿Me entregan el código y los accesos de administrador al terminar?**
+Si la respuesta es "no" o "eso tiene costo extra", ahí no es. Tu sitio debe ser 100% tuyo.
+
+**4. ¿Cuánto tiempo de soporte post-entrega incluye el precio?**
+El mínimo profesional son 30 días. Si no ofrecen nada, cualquier error post-lanzamiento te lo cobrarán aparte.
+
+**5. ¿El hosting está incluido o se paga aparte? ¿Dónde está alojado?**
+Si está incluido, que te digan exactamente dónde y cuánto cuesta renovarlo el segundo año. Muchos "incluyen hosting el primer año" y al segundo te llega una factura inesperada.
 
 ## La regla de oro
 
 Un presupuesto profesional no te da miedo: te da claridad. Si una cotización tiene más palabras de relleno que partidas concretas, desconfía. Si el vendedor te presiona con "esta oferta vence mañana", desconfía el doble.
 
-Una página web bien hecha es la cara de tu negocio todos los días del año. Merece la inversión correcta, no la más barata ni la más cara. Merece la que entiendes.
+Una página web bien hecha — ya sea para una clínica dental en Guadalajara, una florería en CDMX o un despacho contable en Monterrey — es la cara de tu negocio todos los días del año. Merece la inversión correcta, no la más barata ni la más cara. Merece la que entiendes.
