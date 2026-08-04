@@ -5,8 +5,11 @@ import Footer from '../../components/Footer.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
+// Se incluyen TODOS los artículos con draft: false.
+// El filtro por fecha se hace en el cliente para que los artículos
+// aparezcan automáticamente en su fecha de publicación, sin rebuild.
 const posts = (await getCollection('blog'))
-    .filter(post => post.data.date <= new Date() && !post.data.draft)
+    .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))].sort();
@@ -50,7 +53,12 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
         <section class="px-[8%] pt-12 pb-24 bg-white">
             <div class="blog-grid">
                 {posts.map((post, i) => (
-                    <div class="blog-card-wrap" data-category={post.data.category || ''} style={`--anim-order:${i};`}>
+                    <div
+                        class="blog-card-wrap"
+                        data-category={post.data.category || ''}
+                        data-date={post.data.date.toISOString().split('T')[0]}
+                        style={`--anim-order:${i};`}
+                    >
                         <BlogCard
                             title={post.data.title}
                             description={post.data.description}
@@ -138,6 +146,7 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 .blog-card-wrap {
     display: contents;
 }
+.blog-card-wrap.future-post { display: none; }
 .blog-card-wrap.filtered-out { display: none; }
 </style>
 
@@ -161,6 +170,14 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
                     card.classList.add('filtered-out');
                 }
             });
+        });
+
+        // Ocultar artículos con fecha futura (aparecen solos al llegar el día)
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('.blog-card-wrap').forEach(card => {
+            if (card.dataset.date && card.dataset.date > today) {
+                card.classList.add('future-post');
+            }
         });
     });
 </script>
