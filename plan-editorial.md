@@ -23,10 +23,10 @@
 | 19 | Mié 29 jul | Tecnología | Hosting y dominio explicados como si fueran la renta y el letrero de tu local | `hosting-dominio-ssl-guia.mdx` | ✅ Publicado |
 | 20 | Vie 31 jul | UX | Formularios web que sí convierten: diseño, campos y psicología | `formularios-web-que-convierten.mdx` | ✅ Publicado |
 | 21 | Lun 3 ago | SEO | Cómo hacer que Google entienda de qué trata tu página (sin ser experto) | `seo-on-page-principiantes.mdx` | ✅ Publicado |
-| 22 | Mié 5 ago | Branding | Cómo elegir el nombre perfecto para tu negocio (y su dominio .mx) | `nombre-negocio-dominio-mx.mdx` | 📝 Por escribir |
-| 23 | Vie 7 ago | Marketing | Meta Ads para negocios locales: ¿vale la pena en 2026? | `meta-ads-negocios-locales.mdx` | 📝 Por escribir |
-| 24 | Lun 10 ago | E-commerce | Catálogo digital vs tienda online: ¿cuál necesita tu negocio? | `catalogo-digital-vs-tienda-online.mdx` | 📝 Por escribir |
-| 25 | Mié 12 ago | Contenido | Cómo escribir para tu sitio web sin sonar a robot corporativo | `copywriting-web-humano.mdx` | 📝 Por escribir |
+| 22 | Mié 5 ago | Branding | Cómo elegir el nombre perfecto para tu negocio (y su dominio .mx) | `nombre-negocio-dominio-mx.mdx` | ✅ Publicado |
+| 23 | Vie 7 ago | Marketing | Meta Ads para negocios locales: ¿vale la pena en 2026? | `meta-ads-negocios-locales.mdx` | ✅ Publicado |
+| 24 | Lun 10 ago | E-commerce | Catálogo digital vs tienda online: ¿cuál necesita tu negocio? | `catalogo-digital-vs-tienda-online.mdx` | ✅ Publicado |
+| 25 | Mié 12 ago | Contenido | Cómo escribir para tu sitio web sin sonar a robot corporativo | `copywriting-web-humano.mdx` | ✅ Publicado |
 | 26 | Vie 14 ago | Tecnología | ¿En dónde construyo mi sitio web? La guía sin tecnicismos | `wordpress-shopify-astro-comparativa.mdx` | 📝 Por escribir |
 | 27 | Lun 17 ago | UX | Accesibilidad web: tu sitio también es para personas con discapacidad | `psicologia-color-diseno-web.mdx` | 📝 Por escribir |
 | 28 | Mié 19 ago | Conversión | Páginas de "Gracias" que venden: el secreto que nadie usa | `paginas-de-gracias-que-venden.mdx` | 📝 Por escribir |
