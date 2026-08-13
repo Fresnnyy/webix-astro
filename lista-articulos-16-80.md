@@ -15,13 +15,13 @@
 | 23 | Vie 7 ago | Marketing | Meta Ads para negocios locales: ¿vale la pena en 2026? |
 | 24 | Lun 10 ago | E-commerce | Catálogo digital vs tienda online: ¿cuál necesita tu negocio? |
 | 25 | Mié 12 ago | Contenido | Cómo escribir para tu sitio web sin sonar a robot corporativo |
-| 26 | Vie 14 ago | Tecnología | ¿En dónde construyo mi sitio web? La guía sin tecnicismos |
+| 26 | Jue 13 ago | Tecnología | ¿En dónde construyo mi sitio web? La guía sin tecnicismos |
 | 27 | Lun 17 ago | UX | Accesibilidad web: tu sitio también es para personas con discapacidad |
 | 28 | Mié 19 ago | Conversión | Páginas de "Gracias" que venden: el secreto que nadie usa |
-| 29 | Vie 21 ago | Marketing | ¿Está funcionando mi sitio web? Cómo saberlo en 10 minutos |
+| 29 | Jue 20 ago | Marketing | ¿Está funcionando mi sitio web? Cómo saberlo en 10 minutos |
 | 30 | Lun 24 ago | Contenido | Fotografía para tu web con tu celular: tips que sí funcionan |
 | 31 | Mié 26 ago | Tecnología | ¿Cada cuándo debo actualizar mi sitio web? (la respuesta no es "nunca") |
-| 32 | Vie 28 ago | Branding | Logotipo, isotipo, imagotipo: qué necesita tu negocio realmente |
+| 32 | Jue 27 ago | Branding | Logotipo, isotipo, imagotipo: qué necesita tu negocio realmente |
 | 33 | Lun 31 ago | E-commerce | Cómo manejar envíos en tu tienda online en México |
 | 34 | Mié 2 sep | UX | Menús de navegación que no ahuyentan: menos es más |
 | 35 | Vie 4 sep | Marketing | Remarketing para principiantes: vuelve a conquistar al que se fue |
