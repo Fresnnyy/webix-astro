@@ -30,6 +30,25 @@
 - Frases cortas. Ritmo rápido. Sin paja.
 - Personalidad: el amigo que sí le sabe y te dice la verdad sin rodeos.
 
+### Perfil del lector / audiencia objetivo
+
+Hay tres perfiles que conviven en la misma audiencia. El contenido debe funcionar para los tres a la vez:
+
+**Perfil A — El que no sabe (mayoría):**
+No sabe qué es un dominio, un hosting ni un SSL. Tiene negocio físico o vende por WhatsApp. Sabe que necesita "una página web" pero no sabe ni por dónde empezar. Necesita explicaciones rápidas, con analogías del mundo real, sin jerga. Si en 10 segundos no entiende de qué va el post, lo cierra.
+
+**Perfil B — El que sabe algo (el del medio):**
+Ha escuchado términos como SEO, dominio, WordPress. Quizás ya tiene un sitio o lo tuvo. No sabe cómo funciona por dentro, pero no necesita que le expliquen qué es Google. Valora los tips accionables y los comparativos honestos.
+
+**Perfil C — El que sí sabe (minoría, pero la más valiosa):**
+Tiene conocimientos de marketing digital o tecnología. Lee para comparar, validar o profundizar. Exige precisión, números reales y transparencia. Si detecta una generalización o un dato inventado, pierde la confianza.
+
+**Cómo escribir para los tres a la vez:**
+- La entrada del artículo/post le habla al Perfil A: simple, directo, con una analogía o pregunta que engancha.
+- El desarrollo le sirve al Perfil B: tips concretos, pasos, ejemplos reales.
+- Los detalles, números y matices satisfacen al Perfil C: sin esconder la complejidad cuando existe, sin inflar lo que es simple.
+- Nunca condescendiente con A, nunca impreciso con C.
+
 ---
 
 ## 2. Pilares de Contenido

@@ -172,8 +172,8 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
             });
         });
 
-        // Ocultar artículos con fecha futura (aparecen solos al llegar el día)
-        const today = new Date().toISOString().split('T')[0];
+        // Ocultar artículos con fecha futura (aparecen solos al llegar el día en CDMX)
+        const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
         document.querySelectorAll('.blog-card-wrap').forEach(card => {
             if (card.dataset.date && card.dataset.date > today) {
                 card.classList.add('future-post');

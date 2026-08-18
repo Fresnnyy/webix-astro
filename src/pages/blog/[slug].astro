@@ -46,6 +46,7 @@ const otherPosts = (await getCollection('blog'))
 const otherPostsJSON = JSON.stringify(otherPosts.map(p => ({
     title: p.data.title,
     date: p.data.date.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }),
+    isoDate: p.data.date.toISOString().split('T')[0],
     slug: p.slug,
     category: p.data.category || '',
     image: p.data.image || '',
@@ -195,7 +196,8 @@ const articleSchema = JSON.stringify({
 
     <script define:vars={{ otherPostsJSON }}>
     const REL_COLORS = ['#AF4D98','#119DA4','#FF7B00','#111111'];
-    const relPosts = JSON.parse(otherPostsJSON);
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
+    const relPosts = JSON.parse(otherPostsJSON).filter(p => p.isoDate <= today);
     const PER_PAGE = 2;
     let current = 0;
 

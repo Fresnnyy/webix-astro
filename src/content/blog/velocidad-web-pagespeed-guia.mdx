@@ -1,0 +1,115 @@
+---
+title: "Velocidad web: por qué tu sitio carga lento y cómo saberlo en 2 minutos"
+description: "Un sitio lento pierde clientes antes de que lean una sola palabra. Así se mide la velocidad de tu sitio, qué la afecta y qué puedes hacer sin ser programador."
+date: 2026-08-26
+category: "Tecnología"
+image: "/img/blog/articulo_31.png"
+draft: false
+---
+import Callout from '../../components/blog/Callout.astro';
+
+Tienes 3 segundos.
+
+Ese es el tiempo promedio que un visitante espera a que cargue tu sitio antes de cerrarlo y buscar a otro. Google lo sabe, lo mide y lo usa para decidir si te posiciona arriba o abajo de tus competidores.
+
+Si tu sitio tarda más de 3 segundos en cargar, estás perdiendo clientes antes de que lean tu nombre.
+
+---
+
+## Cómo saber en 2 minutos si tu sitio es rápido o lento
+
+Entra a [pagespeed.web.dev](https://pagespeed.web.dev), escribe la URL de tu sitio y espera 30 segundos. Te da un número del 0 al 100 para móvil y para escritorio.
+
+Lo que significa ese número:
+
+| Puntaje | Estado |
+|---------|--------|
+| 90–100 | Excelente |
+| 50–89 | Necesita mejoras |
+| 0–49 | Lento. Estás perdiendo clientes. |
+
+Lo más importante: revisa el puntaje **móvil**, no el de escritorio. En México, más del 70% del tráfico web llega desde celulares. Si tu sitio carga bien en computadora pero lento en celular, estás perdiendo a la mayoría de tus visitantes.
+
+<Callout type="tip">
+  Prueba el sitio de un competidor directo en la misma herramienta. Si el tuyo carga más lento, ellos se están quedando con clientes que podrían ser tuyos.
+</Callout>
+
+---
+
+## Los tres culpables más comunes de un sitio lento
+
+### 1. Imágenes sin optimizar
+
+Este es el error número uno, y el más fácil de corregir.
+
+Cuando subes una foto de tu celular directo a tu sitio, ese archivo puede pesar 5 o 6 MB. Tu sitio tiene que descargar esa foto completa antes de mostrársela al visitante. Si tienes 10 fotos así, el sitio tarda una eternidad.
+
+Lo que debes hacer antes de subir cualquier imagen:
+- Cambiarle el tamaño a un máximo de 1200 px de ancho
+- Comprimirla con [TinyPNG](https://tinypng.com) hasta que pese menos de 300 KB
+- Guardarla en formato WebP en lugar de JPG o PNG (carga más rápido, misma calidad visual)
+
+Si ya tienes un sitio con muchas imágenes sin optimizar, hay plugins y herramientas que lo hacen automático. En WordPress existe Smush o ShortPixel. Si tienes un sitio hecho por alguien más, pídeles que optimicen las imágenes — es una tarea de 30 minutos.
+
+### 2. Hosting barato o compartido en servidor lento
+
+El hosting es el servidor donde vive tu sitio. Si rentas hosting económico en un servidor que comparte recursos con miles de otros sitios, en horas pico tu sitio puede volverse lento aunque esté bien construido.
+
+Algunos signos de que tu hosting es el problema:
+- El sitio carga rápido a las 7 AM y lento a mediodía
+- El puntaje de PageSpeed varía mucho entre pruebas
+- Tu proveedor de hosting cuesta menos de $50 pesos al mes
+
+No hay que gastar una fortuna. Un buen hosting para un negocio pequeño en México cuesta entre $150 y $400 pesos al mes. La diferencia en velocidad entre un hosting básico y uno decente puede ser de 2 a 3 segundos de carga — que es exactamente lo que determina si el visitante se queda o se va.
+
+<Callout type="warning">
+  Desconfía de hostings "ilimitados" muy baratos. "Ilimitado" en hosting casi siempre significa que comparten un servidor sobrecargado entre cientos de clientes. Lo que ahorras en hosting lo pierdes en clientes que no esperan a que cargue tu sitio.
+</Callout>
+
+### 3. Demasiados plugins, scripts y extras
+
+Cada elemento que agregas a tu sitio — un chat en vivo, un popup de descuento, un contador de visitas, un mapa de Google, un widget de redes sociales — carga sus propios archivos cuando alguien entra a tu página.
+
+En WordPress es especialmente común: un sitio que arrancó simple va acumulando plugins con el tiempo hasta que carga en 8 o 10 segundos.
+
+La pregunta que debes hacerte con cada elemento extra: ¿este elemento me trae clientes o ventas medibles? Si la respuesta es no, o "no sé", quitarlo mejora la velocidad sin perder nada importante.
+
+---
+
+## Lo que Google mide exactamente (los Core Web Vitals)
+
+Desde 2021, Google usa tres métricas específicas para evaluar la velocidad y experiencia de tu sitio. No necesitas memorizarlas, pero sí entender qué miden:
+
+**LCP (Largest Contentful Paint):** El tiempo que tarda en aparecer el elemento más grande de tu página. Debería ser menos de 2.5 segundos. Si tardas más, Google considera que tu sitio es lento.
+
+**FID / INP:** Qué tan rápido responde tu sitio cuando alguien hace clic en algo. Si presionas un botón y tarda en reaccionar, eso baja tu puntaje.
+
+**CLS (Cumulative Layout Shift):** Si los elementos de tu página se mueven mientras carga — el texto que baja cuando aparece una imagen, el botón que salta de lugar — eso es un "shift" y penaliza tu puntaje.
+
+PageSpeed Insights te muestra exactamente cómo estás en cada uno de estos tres puntos y qué es lo que está fallando.
+
+---
+
+## Qué puedes hacer tú mismo sin ser programador
+
+**Inmediato (hoy):**
+- Prueba tu sitio en pagespeed.web.dev y anota tu puntaje actual
+- Identifica si las imágenes son el problema principal (PageSpeed te lo dice)
+- Descarga las imágenes de tu sitio, comprímelas en TinyPNG y vuélvelas a subir
+
+**A corto plazo (esta semana):**
+- Revisa cuántos plugins o extras tiene tu sitio. Elimina los que no uses activamente.
+- Activa caché en tu sitio si tienes WordPress (el plugin W3 Total Cache es gratuito)
+
+**Con ayuda de quien hizo tu sitio:**
+- Migrar a un hosting más rápido si el tuyo es el problema
+- Convertir imágenes a formato WebP
+- Activar un CDN (red de distribución de contenido) para que el sitio cargue rápido desde cualquier ciudad de México
+
+<Callout type="quote">
+  La velocidad de tu sitio no es un detalle técnico. Es el primer filtro que decide si tu visitante se queda o se va — antes de leer tu nombre, ver tu logo o conocer tus precios.
+</Callout>
+
+---
+
+Un puntaje de PageSpeed no es un trofeo. Es un indicador de cuántos clientes estás perdiendo en silencio antes de que lleguen a conocerte. Mídelo hoy. Si está por debajo de 70, es la prioridad antes de cualquier otra mejora en tu sitio.

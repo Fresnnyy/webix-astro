@@ -11,12 +11,12 @@
 | 7 | Mié 1 jul | SEO | ¿Por qué tu sitio tarda en cargar? (y cómo saberlo sin ser programador) | `seo-tecnico-velocidad-estructura-core-web-vitals.mdx` | ✅ Publicado |
 | 8 | Vie 3 jul | SEO | Google My Business: la herramienta gratuita que te pone en Google Maps | `google-my-business-herramienta-gratuita.mdx` | ✅ Publicado |
 | 9 | Lun 6 jul | Diseño | Por qué el diseño de tu web sí afecta tus ventas | `por-que-el-diseno-de-tu-web-afecta-tus-ventas.mdx` | ✅ Publicado |
-| 10 | Mié 8 jul | Diseño | Mobile-first: si tu sitio no funciona en celular, no existe | `mobile-first-tu-sitio-en-celular.mdx` | ✅ Publicado |
+| 10 | Mié 8 jul | Diseño | Si tu sitio no funciona en celular, no existe | `mobile-first-tu-sitio-en-celular.mdx` | ✅ Publicado |
 | 11 | Vie 10 jul | Diseño | Colores, tipografía y psicología visual para tu marca | `colores-tipografia-psicologia-visual.mdx` | ✅ Publicado |
 | 12 | Lun 13 jul | E-commerce | Cómo abrir tu tienda en línea en México sin morir en el intento | `como-abrir-tu-tienda-en-linea-en-mexico.mdx` | ✅ Publicado |
-| 13 | Mié 15 jul | E-commerce | Pasarelas de pago y logística para e-commerce: guía sin rodeos | `pasarelas-de-pago-y-logistica-ecommerce.mdx` | ✅ Publicado (requiere rebuild) |
-| 14 | Vie 17 jul | Conversión | Landing pages que convierten: estructura, ejemplos y errores comunes | `landing-pages-que-convierten.mdx` | ✅ Publicado (requiere rebuild) |
-| 15 | Lun 20 jul | Conversión | Google Ads para negocios locales: guía sin tecnicismos | `google-ads-para-negocios-locales.mdx` | ✅ Publicado (requiere rebuild) |
+| 13 | Mié 15 jul | E-commerce | Cómo cobrar y hacer envíos en tu tienda online: lo que hay que saber antes del primer pedido | `pasarelas-de-pago-y-logistica-ecommerce.mdx` | ✅ Publicado |
+| 14 | Vie 17 jul | Conversión | Landing pages que convierten: estructura, ejemplos y errores comunes | `landing-pages-que-convierten.mdx` | ✅ Publicado |
+| 15 | Lun 20 jul | Conversión | Google Ads para negocios locales: cuándo vale la pena y cómo no quemar tu presupuesto | `google-ads-para-negocios-locales.mdx` | ✅ Publicado |
 | 16 | Mié 22 jul | Conversión | WhatsApp Business como canal de ventas directo | `whatsapp-business-canal-de-ventas.mdx` | ✅ Publicado |
 | 17 | Vie 24 jul | UX | Cómo estructurar tu página de inicio para que convierta | `estructura-home-que-convierte.mdx` | ✅ Publicado |
 | 18 | Lun 27 jul | Marketing | Email marketing para negocios locales: no es spam, es ventas | `email-marketing-negocios-locales.mdx` | ✅ Publicado |
@@ -24,16 +24,16 @@
 | 20 | Vie 31 jul | UX | Formularios web que sí convierten: diseño, campos y psicología | `formularios-web-que-convierten.mdx` | ✅ Publicado |
 | 21 | Lun 3 ago | SEO | Cómo hacer que Google entienda de qué trata tu página (sin ser experto) | `seo-on-page-principiantes.mdx` | ✅ Publicado |
 | 22 | Mié 5 ago | Branding | Cómo elegir el nombre perfecto para tu negocio (y su dominio .mx) | `nombre-negocio-dominio-mx.mdx` | ✅ Publicado |
-| 23 | Vie 7 ago | Marketing | Meta Ads para negocios locales: ¿vale la pena en 2026? | `meta-ads-negocios-locales.mdx` | ✅ Publicado |
+| 23 | Vie 7 ago | Marketing | Publicidad en Facebook e Instagram para negocios locales: ¿vale la pena? | `meta-ads-negocios-locales.mdx` | ✅ Publicado |
 | 24 | Lun 10 ago | E-commerce | Catálogo digital vs tienda online: ¿cuál necesita tu negocio? | `catalogo-digital-vs-tienda-online.mdx` | ✅ Publicado |
 | 25 | Mié 12 ago | Contenido | Cómo escribir para tu sitio web sin sonar a robot corporativo | `copywriting-web-humano.mdx` | ✅ Publicado |
-| 26 | Vie 14 ago | Tecnología | ¿En dónde construyo mi sitio web? La guía sin tecnicismos | `wordpress-shopify-astro-comparativa.mdx` | 📝 Por escribir |
-| 27 | Lun 17 ago | UX | Accesibilidad web: tu sitio también es para personas con discapacidad | `psicologia-color-diseno-web.mdx` | 📝 Por escribir |
-| 28 | Mié 19 ago | Conversión | Páginas de "Gracias" que venden: el secreto que nadie usa | `paginas-de-gracias-que-venden.mdx` | 📝 Por escribir |
-| 29 | Vie 21 ago | Marketing | ¿Está funcionando mi sitio web? Cómo saberlo en 10 minutos | `google-analytics-4-basico.mdx` | 📝 Por escribir |
-| 30 | Lun 24 ago | Contenido | Fotografía para tu web con tu celular: tips que sí funcionan | `fotografia-web-con-celular.mdx` | 📝 Por escribir |
-| 31 | Mié 26 ago | Tecnología | ¿Cada cuándo debo actualizar mi sitio web? (la respuesta no es "nunca") | `velocidad-web-pagespeed-guia.mdx` | 📝 Por escribir |
-| 32 | Vie 28 ago | Branding | Logotipo, isotipo, imagotipo: qué necesita tu negocio realmente | `logotipo-isotipo-imagotipo.mdx` | 📝 Por escribir |
+| 26 | Jue 13 ago | Tecnología | ¿En dónde construyo mi sitio web? Lo que nadie te dice de cada opción | `wordpress-shopify-astro-comparativa.mdx` | ✅ Publicado |
+| 27 | Lun 17 ago | Diseño | Psicología del color en diseño web: más allá de "me gusta este color" | `psicologia-color-diseno-web.mdx` | ✅ Publicado |
+| 28 | Mié 19 ago | Conversión | Páginas de "Gracias" que venden: el momento que todos desperdician | `paginas-de-gracias-que-venden.mdx` | ✅ Publicado |
+| 29 | Jue 20 ago | Marketing | ¿Está funcionando mi sitio web? Cómo saberlo en 10 minutos | `como-saber-si-tu-web-esta-funcionando.mdx` | ✅ Publicado |
+| 30 | Lun 24 ago | Contenido | Fotos para tu web con tu celular: lo que sí hace la diferencia | `fotografia-web-con-celular.mdx` | ✅ Publicado |
+| 31 | Mié 26 ago | Tecnología | Velocidad web: por qué tu sitio carga lento y cómo saberlo en 2 minutos | `velocidad-web-pagespeed-guia.mdx` | ✅ Publicado |
+| 32 | Jue 27 ago | Branding | Logotipo, isotipo o imagotipo: cuál necesita tu negocio (y cuál es dinero tirado) | `logotipo-isotipo-imagotipo.mdx` | ✅ Publicado |
 | 33 | Lun 31 ago | E-commerce | Cómo manejar envíos en tu tienda online en México | `envios-tienda-online-mexico.mdx` | 📝 Por escribir |
 | 34 | Mié 2 sep | UX | Menús de navegación que no ahuyentan: menos es más | `menus-navegacion-web.mdx` | 📝 Por escribir |
 | 35 | Vie 4 sep | Marketing | Remarketing para principiantes: vuelve a conquistar al que se fue | `remarketing-principiantes.mdx` | 📝 Por escribir |
@@ -65,7 +65,7 @@
 | 61 | Mié 4 nov | Tecnología | ¿Me cambio de agencia o proveedor web? Cómo hacerlo sin que tu sitio desaparezca de Google | `migrar-sitio-web-sin-perder-trafico.mdx` | 📝 Por escribir |
 | 62 | Vie 6 nov | Branding | Packagings y unboxing digital: la experiencia post-compra | `experiencia-post-compra-digital.mdx` | 📝 Por escribir |
 | 63 | Lun 9 nov | Contenido | FAQ dinámico: convierte preguntas frecuentes en ventas | `faq-dinamico-convierte-ventas.mdx` | 📝 Por escribir |
-| 64 | Mié 11 nov | Negocios | ¿Qué preguntas hacerle a quien te hace tu página web? (13 para no meter la pata) | `dark-mode-diseno-web.mdx` | 📝 Por escribir |
+| 64 | Mié 11 nov | Negocios | ¿Qué preguntas hacerle a quien te hace tu página web? (13 para no meter la pata) | `preguntas-antes-de-hacer-tu-web.mdx` | 📝 Por escribir |
 | 65 | Vie 13 nov | Marketing | WhatsApp Marketing sin ser molesto: guías, catálogos y broadcasts (complemento del #16) | `whatsapp-marketing-negocios.mdx` | 📝 Por escribir |
 | 66 | Lun 16 nov | E-commerce | Cómo aceptar pagos con tarjeta sin tener terminal bancaria | `pagos-tarjeta-sin-terminal.mdx` | 📝 Por escribir |
 | 67 | Mié 18 nov | Temporada | Cierre de año: audita tu presencia digital en 1 hora | `auditoria-digital-cierre-ano.mdx` | 📝 Por escribir |
