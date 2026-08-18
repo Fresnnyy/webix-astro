@@ -129,15 +129,29 @@ const currentPath = Astro.url.pathname;
 /* ── AJUSTES ESPECÍFICOS PARA MÓVIL ── */
 @media (max-width: 600px) {
     .nav-banda {
-        margin-bottom: -30px; /* Un poco menos de solapamiento en móvil */
+        margin-bottom: -30px;
         border-radius: 12px 12px 0 0;
     }
     .nav-banda-titulo {
-        /* Aún más pequeño en móviles para que no se corte */
-        font-size: clamp(1.8rem, 12vw, 3rem); 
+        font-size: clamp(1.6rem, 9vw, 2.8rem);
+        white-space: normal;
+        width: 92%;
+        text-align: center;
+        line-height: 1;
     }
     .nav-banda-sublabel {
-        font-size: 0.45rem; /* Ultra sutil en móvil */
+        font-size: 0.45rem;
+    }
+}
+
+/* ── AJUSTES PARA TABLET ── */
+@media (min-width: 601px) and (max-width: 900px) {
+    .nav-banda-titulo {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        white-space: normal;
+        width: 92%;
+        text-align: center;
+        line-height: 1;
     }
 }
 </style>
