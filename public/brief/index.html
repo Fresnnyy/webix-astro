@@ -497,7 +497,7 @@
 
 <form class="form-wrap" name="brief-webix" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="brief-form">
   <input type="hidden" name="form-name" value="brief-webix" />
-  <p style="display:none"><label>No llenar: <input name="bot-field" /></label></p>
+  <p style="display:none"><label for="f-empresa">No llenar: <input name="bot-field" /></label></p>
   <input type="hidden" name="empresa" id="nf-empresa" />
   <input type="hidden" name="contacto" id="nf-contacto" />
   <input type="hidden" name="resumen" id="nf-resumen" />
@@ -516,18 +516,18 @@
         <input type="text" id="f-empresa" placeholder="Ej. QAR Consulting" />
       </div>
       <div class="field-group">
-        <label>Tu nombre y puesto <span class="req">*</span></label>
+        <label for="f-contacto">Tu nombre y puesto <span class="req">*</span></label>
         <input type="text" id="f-contacto" placeholder="Ej. Ana Ramírez, Directora" />
       </div>
     </div>
 
     <div class="field-group">
-      <label>¿A qué se dedica tu empresa? <span class="req">*</span></label>
+      <label for="f-giro">¿A qué se dedica tu empresa? <span class="req">*</span></label>
       <textarea id="f-giro" placeholder="Describe brevemente qué hace tu empresa, a quién le vende y cómo genera valor." rows="3"></textarea>
     </div>
 
     <div class="field-group">
-      <label>¿Para qué quieres el sitio web? <span class="req">*</span>
+      <label for="f-cta">¿Para qué quieres el sitio web? <span class="req">*</span>
         <span class="hint">Elige todas las que apliquen</span>
       </label>
       <div class="chip-group" id="chips-objetivo">
@@ -547,7 +547,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Tienes sitio web actualmente?</label>
+      <label for="f-url-actual">¿Tienes sitio web actualmente?</label>
       <div class="chip-group" id="chips-sitio-actual">
         <div class="chip" onclick="singleChip(this,'chips-sitio-actual')" data-target="sitio-url-block" data-show="no">No, es el primero</div>
         <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">Sí, pero quiero rediseño total</div>
@@ -575,7 +575,7 @@
     <div class="section-desc">Si ya tienes branding, dímelo. Si no, lo construimos juntos.</div>
 
     <div class="field-group">
-      <label>¿Tienes logo?</label>
+      <label for="f-referencias">¿Tienes logo?</label>
       <div class="chip-group" id="chips-logo">
         <div class="chip" onclick="singleChip(this,'chips-logo')">Sí, tengo logo</div>
         <div class="chip" onclick="singleChip(this,'chips-logo')">Tengo algo pero quiero mejorarlo</div>
@@ -604,13 +604,13 @@
       <div id="color-block" style="display:none; margin-top:12px;">
       <div id="color-rows">
         <div class="color-row">
-          <input type="color" value="#119DA4" oninput="syncColor(this)" />
-          <input type="text" value="#119DA4" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
+          <input type="color" name="color-principal" aria-label="Color principal" value="#119DA4" oninput="syncColor(this)" />
+          <input type="text" name="color-principal-hex" aria-label="Código del color principal" value="#119DA4" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
           <span>Color principal</span>
         </div>
         <div class="color-row">
-          <input type="color" value="#ffffff" oninput="syncColor(this)" />
-          <input type="text" value="#ffffff" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
+          <input type="color" name="color-secundario" aria-label="Color secundario" value="#ffffff" oninput="syncColor(this)" />
+          <input type="text" name="color-secundario-hex" aria-label="Código del color secundario" value="#ffffff" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
           <span>Color secundario</span>
         </div>
       </div>
@@ -647,7 +647,7 @@
     </div>
 
     <div class="field-group">
-      <label>Sitios web que NO te gustan o que quieres evitar</label>
+      <label for="f-anti-referencias">Sitios web que NO te gustan o que quieres evitar</label>
       <textarea id="f-anti-referencias" rows="2" placeholder="Ej. No quiero que se vea recargado, nada de colores neón..."></textarea>
     </div>
 
@@ -666,12 +666,12 @@
     <div class="section-desc">Cuanto mejor entiendo quién va a llegar a tu sitio, mejor lo diseño para esa persona.</div>
 
     <div class="field-group">
-      <label>¿Quién es tu cliente ideal? <span class="req">*</span></label>
+      <label for="f-cliente-ideal">¿Quién es tu cliente ideal? <span class="req">*</span></label>
       <textarea id="f-cliente-ideal" rows="3" placeholder="Ej. Empresas medianas del sector retail que buscan consultoría de RH. O personas entre 30-45 años que buscan servicios de diseño..."></textarea>
     </div>
 
     <div class="field-group">
-      <label>¿Desde dónde llegará la gente a tu sitio?</label>
+      <label for="f-preguntas-cliente">¿Desde dónde llegará la gente a tu sitio?</label>
       <div class="chip-group" id="chips-trafico">
         <div class="chip" onclick="toggleChip(this)">Google (búsqueda)</div>
         <div class="chip" onclick="toggleChip(this)">Instagram</div>
@@ -689,12 +689,12 @@
     </div>
 
     <div class="field-group">
-      <label>¿Quiénes son tus principales competidores?</label>
+      <label for="f-competidores">¿Quiénes son tus principales competidores?</label>
       <textarea id="f-competidores" rows="2" placeholder="Nombres o URLs de empresas similares a la tuya"></textarea>
     </div>
 
     <div class="field-group">
-      <label>¿Qué te hace diferente de ellos?</label>
+      <label for="f-diferenciador">¿Qué te hace diferente de ellos?</label>
       <textarea id="f-diferenciador" rows="2" placeholder="Tu ventaja competitiva, lo que te hace único"></textarea>
     </div>
 
@@ -713,7 +713,7 @@
     <div class="section-desc">Aquí definimos qué páginas necesitas y qué tiene que pasar en cada una.</div>
 
     <div class="field-group">
-      <label>¿Qué páginas necesita tu sitio? <span class="hint">(elige las que apliquen)</span></label>
+      <label for="f-servicios">¿Qué páginas necesita tu sitio? <span class="hint">(elige las que apliquen)</span></label>
       <div class="chip-group" id="chips-paginas">
         <div class="chip" onclick="toggleChip(this)">Inicio (Home)</div>
         <div class="chip" onclick="toggleChip(this)">Nosotros / Quiénes somos</div>
@@ -811,12 +811,12 @@
     </div>
 
     <div class="field-group">
-      <label>¿Hay información que NO debe aparecer en el sitio?</label>
+      <label for="f-restricciones">¿Hay información que NO debe aparecer en el sitio?</label>
       <textarea id="f-restricciones" rows="2" placeholder="Ej. Precios, nombres de clientes, información confidencial..."></textarea>
     </div>
 
     <div class="field-group">
-      <label>Notas adicionales o lo que quieras que sepa antes de empezar</label>
+      <label for="f-notas">Notas adicionales o lo que quieras que sepa antes de empezar</label>
       <textarea id="f-notas" rows="3" placeholder="Cualquier detalle extra que sea importante para el proyecto..."></textarea>
     </div>
 
@@ -838,12 +838,12 @@
     <div class="section-desc">Cómo agendas hoy define si necesitas agenda en línea o basta con WhatsApp.</div>
 
     <div class="field-group">
-      <label>¿Cómo agendas tus citas hoy? <span class="req">*</span></label>
+      <label for="f-agenda-hoy">¿Cómo agendas tus citas hoy? <span class="req">*</span></label>
       <textarea id="f-agenda-hoy" rows="2" placeholder="Ej. Me escriben por WhatsApp y apunto en un cuaderno / uso el calendario del celular..."></textarea>
     </div>
 
     <div class="field-group">
-      <label>¿Usas Google Calendar?</label>
+      <label for="f-recordatorios">¿Usas Google Calendar?</label>
       <div class="chip-group" id="chips-calendar">
         <div class="chip" onclick="singleChip(this,'chips-calendar')">Sí, todos los días</div>
         <div class="chip" onclick="singleChip(this,'chips-calendar')">A veces</div>
@@ -866,12 +866,12 @@
     </div>
 
     <div class="field-group">
-      <label>¿Cuántas citas atiendes por semana? ¿Cuántas caben si te llenas?</label>
+      <label for="f-citas-semana">¿Cuántas citas atiendes por semana? ¿Cuántas caben si te llenas?</label>
       <input type="text" id="f-citas-semana" placeholder="Ej. 20 por semana, caben 30" />
     </div>
 
     <div class="field-group">
-      <label>Zona o colonias donde atiendes <span class="hint">(para que te encuentren en Google en tu zona)</span></label>
+      <label for="f-zona">Zona o colonias donde atiendes <span class="hint">(para que te encuentren en Google en tu zona)</span></label>
       <input type="text" id="f-zona" placeholder="Ej. Del Valle, Narvarte, Portales..." />
     </div>
 
@@ -996,8 +996,8 @@
     const div = document.createElement('div');
     div.className = 'color-row';
     div.innerHTML = `
-      <input type="color" value="#cccccc" oninput="syncColor(this)" />
-      <input type="text" value="#cccccc" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
+      <input type="color" name="color-${colorCount}" aria-label="Color ${colorCount}" value="#cccccc" oninput="syncColor(this)" />
+      <input type="text" name="color-${colorCount}-hex" aria-label="Código del color ${colorCount}" value="#cccccc" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
       <span>${names[colorCount - 3] || 'Color ' + colorCount}</span>
     `;
     document.getElementById('color-rows').appendChild(div);
