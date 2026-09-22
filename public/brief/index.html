@@ -697,13 +697,6 @@
       </div>
     </div>
 
-    <div class="field-group">
-      <label>¿Qué pantallas o estados no deben quedar sin definir?
-        <span class="hint">Piensa en: ¿qué ve el usuario si el formulario falla? ¿Hay página de gracias?</span>
-      </label>
-      <textarea id="f-edge-cases" rows="3" placeholder="Ej. Quiero que cuando alguien llene el formulario vea un mensaje de confirmación. Si hay error, que aparezca un aviso..."></textarea>
-    </div>
-
     <div class="nav-row">
       <button type="button" class="btn btn-outline" onclick="prev(3)">← Anterior</button>
       <button type="button" class="btn btn-primary" onclick="next(3)">Siguiente →</button>
@@ -1023,7 +1016,6 @@
           ['Formulario de contacto', getChips(document.getElementById('chips-formulario'))],
           ['Funcionalidades', getChips(document.getElementById('chips-funciones'))],
           ['Prioridad mobile', getChips(document.getElementById('chips-mobile'))],
-          ['Estados y casos borde', val('f-edge-cases')],
         ]
       },
       {
