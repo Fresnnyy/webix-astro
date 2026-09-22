@@ -1274,7 +1274,11 @@
     window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto), '_blank');
   }
 
-  function sendToNetlify() {
+  // Access key de Web3Forms: hace llegar el brief por correo CON el PDF adjunto.
+  // (Netlify Forms no permite adjuntos en su plan gratuito.)
+  const WEB3FORMS_KEY = 'f43f1fe7-0602-4920-b586-4aa17346c6cb';
+
+  async function sendToNetlify() {
     const form = document.getElementById('brief-form');
     const status = document.getElementById('envio-status');
     const btn = document.getElementById('btn-enviar');
@@ -1282,26 +1286,56 @@
 
     const emp = val('f-empresa');
     const con = val('f-contacto');
-    document.getElementById('nf-empresa').value = (emp === '\u2014') ? '' : emp;
-    document.getElementById('nf-contacto').value = (con === '\u2014') ? '' : con;
-    document.getElementById('nf-resumen').value = getResumenTexto();
+    const empresa = (emp === '\u2014') ? '' : emp;
+    const contacto = (con === '\u2014') ? '' : con;
+    const resumen = getResumenTexto();
+
+    document.getElementById('nf-empresa').value = empresa;
+    document.getElementById('nf-contacto').value = contacto;
+    document.getElementById('nf-resumen').value = resumen;
 
     if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-      .then(r => {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        if (status) status.textContent = 'Copia enviada. ¡Gracias!';
-        if (btn) { btn.textContent = 'Copia enviada'; }
-      })
-      .catch(() => {
-        if (status) status.textContent = 'No se pudo enviar la copia. Usa el botón de WhatsApp o descarga el PDF.';
-        if (btn) { btn.disabled = false; btn.textContent = 'Enviar copia a Webix'; }
+    // 1) Correo con el PDF adjunto (Web3Forms)
+    let pdfOk = false;
+    if (WEB3FORMS_KEY && window.jspdf) {
+      try {
+        const logo = await loadLogoDataUrl();
+        const blob = buildBriefPDF(logo).output('blob');
+        const fd = new FormData();
+        fd.append('access_key', WEB3FORMS_KEY);
+        fd.append('subject', 'Nuevo brief de proyecto' + (empresa ? ': ' + empresa : ''));
+        fd.append('from_name', 'Formulario de brief Webix');
+        fd.append('empresa', empresa);
+        fd.append('contacto', contacto);
+        fd.append('resumen', resumen);
+        fd.append('attachment', blob, 'brief-webix.pdf');
+        const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+        const j = await r.json();
+        pdfOk = !!(j && j.success);
+      } catch (e) { pdfOk = false; }
+    }
+
+    // 2) Respaldo en el panel de Netlify (siempre, en texto)
+    let respaldoOk = false;
+    try {
+      const r2 = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
       });
+      respaldoOk = r2.ok;
+    } catch (e) { respaldoOk = false; }
+
+    if (status) {
+      if (pdfOk) status.textContent = 'Enviado: lleg\u00f3 con el PDF adjunto. \u00a1Gracias!';
+      else if (respaldoOk) status.textContent = 'Enviado al panel de Webix (sin PDF adjunto). \u00a1Gracias!';
+      else status.textContent = 'No se pudo enviar. Usa el bot\u00f3n de WhatsApp o descarga el PDF.';
+    }
+    if (btn) {
+      btn.disabled = pdfOk || respaldoOk;
+      btn.textContent = (pdfOk || respaldoOk) ? 'Enviado' : 'Reintentar';
+    }
   }
 
   // El PDF ahora se genera con jsPDF (ver downloadBrandedPDF)
