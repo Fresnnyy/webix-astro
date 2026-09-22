@@ -769,8 +769,8 @@
   ══════════════════════════════════ -->
   <div class="section-block" id="s5">
     <div class="section-label">Sección 06</div>
-    <div class="section-title">Citas y trabajo mensual</div>
-    <div class="section-desc">Cómo agendas hoy y qué esperas de mí cada mes define el resto del proyecto.</div>
+    <div class="section-title">Citas y agenda</div>
+    <div class="section-desc">Cómo agendas hoy define si necesitas agenda en línea o basta con WhatsApp.</div>
 
     <div class="field-group">
       <label>¿Cómo agendas tus citas hoy? <span class="req">*</span></label>
@@ -817,20 +817,6 @@
         <div class="chip" onclick="singleChip(this,'chips-dominio')">No, hay que comprarlo</div>
         <div class="chip" onclick="singleChip(this,'chips-dominio')">No sé qué es eso</div>
       </div>
-    </div>
-
-    <div class="field-group">
-      <label>Cuando cambien tus precios u horarios, ¿me avisas o los actualizas tú?</label>
-      <div class="chip-group" id="chips-actualiza">
-        <div class="chip" onclick="singleChip(this,'chips-actualiza')">Yo te aviso y tú lo cambias</div>
-        <div class="chip" onclick="singleChip(this,'chips-actualiza')">Quiero aprender a cambiarlo yo</div>
-        <div class="chip" onclick="singleChip(this,'chips-actualiza')">No lo había pensado</div>
-      </div>
-    </div>
-
-    <div class="field-group">
-      <label>¿Qué esperas de mí cada mes?</label>
-      <textarea id="f-operacion-mensual" rows="3" placeholder="Ej. Que la página siga funcionando, cambios pequeños, redes sociales, reportes..."></textarea>
     </div>
 
     <div class="nav-row">
@@ -1030,7 +1016,7 @@
         ]
       },
       {
-        title: '06 · Citas y trabajo mensual',
+        title: '06 · Citas y agenda',
         rows: [
           ['Cómo agenda hoy', val('f-agenda-hoy')],
           ['Usa Google Calendar', getChips(document.getElementById('chips-calendar'))],
@@ -1039,8 +1025,6 @@
           ['Citas por semana', val('f-citas-semana')],
           ['Zona', val('f-zona')],
           ['Dominio', getChips(document.getElementById('chips-dominio'))],
-          ['Quién actualiza', getChips(document.getElementById('chips-actualiza'))],
-          ['Espera cada mes', val('f-operacion-mensual')],
         ]
       }
     ];
