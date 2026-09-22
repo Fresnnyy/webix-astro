@@ -20,6 +20,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# AppleDouble — basura que macOS crea en volúmenes exFAT
+._*
+
 # jetbrains setting folder
 .idea/
 
