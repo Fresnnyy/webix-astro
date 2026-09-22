@@ -495,7 +495,7 @@
 
     <div class="nav-row">
       <span></span>
-      <button class="btn btn-primary" onclick="next(0)">Siguiente →</button>
+      <button type="button" class="btn btn-primary" onclick="next(0)">Siguiente →</button>
     </div>
   </div>
 
@@ -542,7 +542,7 @@
           <span>Color secundario</span>
         </div>
       </div>
-      <button class="btn btn-outline" style="margin-top:10px;font-size:12px;padding:7px 16px" onclick="addColor()">+ Agregar color</button>
+      <button type="button" class="btn btn-outline" style="margin-top:10px;font-size:12px;padding:7px 16px" onclick="addColor()">+ Agregar color</button>
     </div>
 
     <div class="field-group">
@@ -573,8 +573,8 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-outline" onclick="prev(1)">← Anterior</button>
-      <button class="btn btn-primary" onclick="next(1)">Siguiente →</button>
+      <button type="button" class="btn btn-outline" onclick="prev(1)">← Anterior</button>
+      <button type="button" class="btn btn-primary" onclick="next(1)">Siguiente →</button>
     </div>
   </div>
 
@@ -620,8 +620,8 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-outline" onclick="prev(2)">← Anterior</button>
-      <button class="btn btn-primary" onclick="next(2)">Siguiente →</button>
+      <button type="button" class="btn btn-outline" onclick="prev(2)">← Anterior</button>
+      <button type="button" class="btn btn-primary" onclick="next(2)">Siguiente →</button>
     </div>
   </div>
 
@@ -690,8 +690,8 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-outline" onclick="prev(3)">← Anterior</button>
-      <button class="btn btn-primary" onclick="next(3)">Siguiente →</button>
+      <button type="button" class="btn btn-outline" onclick="prev(3)">← Anterior</button>
+      <button type="button" class="btn btn-primary" onclick="next(3)">Siguiente →</button>
     </div>
   </div>
 
@@ -748,8 +748,8 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-outline" onclick="prev(4)">← Anterior</button>
-      <button class="btn btn-primary" onclick="buildSummary()">Ver resumen →</button>
+      <button type="button" class="btn btn-outline" onclick="prev(4)">← Anterior</button>
+      <button type="button" class="btn btn-primary" onclick="buildSummary()">Ver resumen →</button>
     </div>
   </div>
 
@@ -826,8 +826,8 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-outline" onclick="prev(5)">← Anterior</button>
-      <button class="btn btn-primary" onclick="buildSummary()">Ver resumen →</button>
+      <button type="button" class="btn btn-outline" onclick="prev(5)">← Anterior</button>
+      <button type="button" class="btn btn-primary" onclick="buildSummary()">Ver resumen →</button>
     </div>
   </div>
 
@@ -844,14 +844,14 @@
     <div id="summary-content"></div>
 
     <div class="nav-row" style="justify-content:center; flex-direction:column; align-items:center; gap:12px;">
-      <button class="btn btn-primary" onclick="sendWhatsApp()" style="font-size:15px; padding:14px 28px;">Enviar mi brief por WhatsApp</button>
-      <button class="btn btn-outline" onclick="sendToNetlify()" id="btn-enviar">Enviar copia a Webix</button>
-      <button class="btn btn-pdf" onclick="downloadPDF()">
+      <button type="button" class="btn btn-primary" onclick="sendWhatsApp()" style="font-size:15px; padding:14px 28px;">Enviar mi brief por WhatsApp</button>
+      <button type="button" class="btn btn-outline" onclick="sendToNetlify()" id="btn-enviar">Enviar copia a Webix</button>
+      <button type="button" class="btn btn-pdf" onclick="downloadPDF()">
         <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path d="M12 4v12m0 0l-3-3m3 3l3-3M4 20h16"/></svg>
         Descargar brief como PDF
       </button>
       <div id="envio-status" style="font-size:13px; color:#5A6070; min-height:18px;"></div>
-      <button class="btn btn-outline" onclick="prev(6)" style="font-size:13px">← Editar respuestas</button>
+      <button type="button" class="btn btn-outline" onclick="prev(6)" style="font-size:13px">← Editar respuestas</button>
     </div>
   </div>
 
