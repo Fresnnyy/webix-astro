@@ -894,9 +894,9 @@
     <div class="nav-row" style="justify-content:center; flex-direction:column; align-items:center; gap:12px;">
       <button type="button" class="btn btn-primary" onclick="sendWhatsApp()" style="font-size:15px; padding:14px 28px;">Enviar mi brief por WhatsApp</button>
       <button type="button" class="btn btn-outline" onclick="sendToNetlify()" id="btn-enviar">Enviar copia a Webix</button>
-      <button type="button" class="btn btn-pdf" onclick="downloadPDF()">
+      <button type="button" class="btn btn-pdf" onclick="downloadBrandedPDF()">
         <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path d="M12 4v12m0 0l-3-3m3 3l3-3M4 20h16"/></svg>
-        Descargar brief como PDF
+        Descargar brief en PDF
       </button>
       <div id="envio-status" style="font-size:13px; color:#5A6070; min-height:18px;"></div>
       <button type="button" class="btn btn-outline" onclick="prev(6)" style="font-size:13px">← Editar respuestas</button>
@@ -911,6 +911,7 @@
   <p>Rosalba Flores · rosalba@webix.com.mx · webix.com.mx</p>
 </div>
 
+<script src="jspdf.umd.min.js"></script>
 <script>
   let current = 0;
   const total = 7;
@@ -1114,15 +1115,114 @@
     return (el.innerText || el.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
   }
 
-  function sendWhatsApp() {
+  // ══════════════════════════════════
+  //  PDF CON LA MARCA
+  // ══════════════════════════════════
+  function collectSummarySections() {
+    return [...document.querySelectorAll('#summary-content .summary-section')].map(sec => {
+      const t = sec.querySelector('.summary-section-title');
+      return {
+        title: t ? t.textContent.trim() : '',
+        rows: [...sec.querySelectorAll('.summary-row')].map(r => {
+          const k = r.querySelector('.summary-key');
+          const v = r.querySelector('.summary-val');
+          return [k ? k.textContent.trim() : '', v ? v.textContent.trim() : ''];
+        })
+      };
+    });
+  }
+
+  function buildBriefPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    const W = 210, H = 297, M = 16, COL = 44;
+    const TEAL = [17, 157, 164], ORANGE = [255, 123, 0];
+    const MUTED = [90, 96, 112], DARK = [26, 26, 26];
+
+    // Encabezado de marca
+    doc.setFillColor(TEAL[0], TEAL[1], TEAL[2]);
+    doc.rect(0, 0, W, 24, 'F');
+    doc.setFillColor(ORANGE[0], ORANGE[1], ORANGE[2]);
+    doc.rect(0, 24, W, 1.5, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(15);
+    doc.text('WEBIX', M, 11);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.text('BRIEF DE PROYECTO', M, 17.5);
+    doc.text('webix.com.mx', W - M, 11, { align: 'right' });
+
+    let y = 36;
+
+    collectSummarySections().forEach(sec => {
+      if (y > H - 34) { doc.addPage(); y = 24; }
+      doc.setFillColor(244, 246, 249);
+      doc.rect(M, y - 5, W - M * 2, 7.5, 'F');
+      doc.setTextColor(TEAL[0], TEAL[1], TEAL[2]);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.5);
+      doc.text(String(sec.title).toUpperCase(), M + 2.5, y);
+      y += 9;
+
+      sec.rows.forEach(([k, v]) => {
+        const val = String(v || '\u2014');
+        const lines = doc.splitTextToSize(val, W - M * 2 - COL);
+        const h = Math.max(6, lines.length * 4.4 + 2);
+        if (y + h > H - 20) { doc.addPage(); y = 24; }
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(MUTED[0], MUTED[1], MUTED[2]);
+        doc.text(String(k), M, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(DARK[0], DARK[1], DARK[2]);
+        doc.text(lines, M + COL, y);
+        y += h;
+      });
+      y += 4;
+    });
+
+    // Pie de página
+    doc.setDrawColor(ORANGE[0], ORANGE[1], ORANGE[2]);
+    doc.setLineWidth(0.6);
+    doc.line(M, H - 14, W - M, H - 14);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(MUTED[0], MUTED[1], MUTED[2]);
+    doc.text('Generado con Webix \u00b7 webix.com.mx', M, H - 10);
+
+    return doc;
+  }
+
+  function downloadBrandedPDF() {
+    if (!window.jspdf) { alert('No se pudo cargar el generador de PDF.'); return; }
+    buildBriefPDF().save('brief-webix.pdf');
+  }
+
+  async function sendWhatsApp() {
     const texto = getResumenTexto();
     if (!texto) { alert('Primero genera el resumen.'); return; }
     if (!WHATSAPP_NUMBER) {
       alert('Falta configurar el número de WhatsApp de Webix en este formulario.');
       return;
     }
-    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
-    window.open(url, '_blank');
+
+    // 1) Intentar mandar el PDF como archivo adjunto (celulares)
+    try {
+      if (window.jspdf && navigator.canShare) {
+        const blob = buildBriefPDF().output('blob');
+        const file = new File([blob], 'brief-webix.pdf', { type: 'application/pdf' });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], title: 'Brief de proyecto Webix' });
+          return;
+        }
+      }
+    } catch (e) {
+      if (e && e.name === 'AbortError') return; // la clienta canceló el envío
+    }
+
+    // 2) Si el dispositivo no puede adjuntar archivos, se manda el texto
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto), '_blank');
   }
 
   function sendToNetlify() {
@@ -1155,10 +1255,7 @@
       });
   }
 
-  function downloadPDF() {
-    // El CSS de impresión se encarga: solo imprime el resumen (#s6)
-    window.print();
-  }
+  // El PDF ahora se genera con jsPDF (ver downloadBrandedPDF)
 </script>
 </body>
 </html>
