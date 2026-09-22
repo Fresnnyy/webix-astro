@@ -183,15 +183,16 @@
     .field-group {
       margin-bottom: 24px;
     }
-    label {
+    label,
+    .field-label {
       display: block;
       font-size: 13px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 7px;
     }
-    label .req { color: var(--orange); margin-left: 2px; }
-    label .hint {
+    label .req, .field-label .req { color: var(--orange); margin-left: 2px; }
+    label .hint, .field-label .hint {
       font-weight: 400;
       color: var(--muted);
       font-size: 12px;
@@ -499,7 +500,7 @@
 
 <form class="form-wrap" name="brief-webix" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="brief-form">
   <input type="hidden" name="form-name" value="brief-webix" />
-  <p style="display:none"><label for="f-empresa">No llenar: <input name="bot-field" /></label></p>
+  <p style="display:none"><label>No llenar: <input name="bot-field" /></label></p>
   <input type="hidden" name="empresa" id="nf-empresa" />
   <input type="hidden" name="contacto" id="nf-contacto" />
   <input type="hidden" name="resumen" id="nf-resumen" />
@@ -514,7 +515,7 @@
 
     <div class="two-col">
       <div class="field-group">
-        <label>Nombre de tu empresa o negocio <span class="req">*</span></label>
+        <label for="f-empresa">Nombre de tu empresa o negocio <span class="req">*</span></label>
         <input type="text" id="f-empresa" placeholder="Ej. QAR Consulting" />
       </div>
       <div class="field-group">
@@ -529,9 +530,9 @@
     </div>
 
     <div class="field-group">
-      <label for="f-cta">¿Para qué quieres el sitio web? <span class="req">*</span>
+      <div class="field-label">¿Para qué quieres el sitio web? <span class="req">*</span>
         <span class="hint">Elige todas las que apliquen</span>
-      </label>
+      </div>
       <div class="chip-group" id="chips-objetivo">
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Mostrar mis servicios</span></label>
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Generar leads / contactos</span></label>
@@ -544,12 +545,12 @@
     </div>
 
     <div class="field-group">
-      <label>¿Qué acción principal quieres que el visitante tome?</label>
+      <label for="f-cta">¿Qué acción principal quieres que el visitante tome?</label>
       <input type="text" id="f-cta" placeholder="Ej. Que me llamen, que llenen un formulario de cotización, que compren..." />
     </div>
 
     <div class="field-group">
-      <label for="f-url-actual">¿Tienes sitio web actualmente?</label>
+      <div class="field-label">¿Tienes sitio web actualmente?</div>
       <div class="chip-group" id="chips-sitio-actual">
         <label class="chip"><input type="radio" name="chips-sitio-actual" onchange="singleChip(this,'chips-sitio-actual')" data-target="sitio-url-block" data-show="no" /><span>No, es el primero</span></label>
         <label class="chip"><input type="radio" name="chips-sitio-actual" onchange="singleChip(this,'chips-sitio-actual')" /><span>Sí, pero quiero rediseño total</span></label>
@@ -558,7 +559,7 @@
     </div>
 
     <div class="field-group" id="sitio-url-block">
-      <label>URL del sitio actual <span class="hint">(si tienes)</span></label>
+      <label for="f-url-actual">URL del sitio actual <span class="hint">(si tienes)</span></label>
       <input type="url" id="f-url-actual" placeholder="https://tuempresa.com" />
     </div>
 
@@ -577,7 +578,7 @@
     <div class="section-desc">Si ya tienes branding, dímelo. Si no, lo construimos juntos.</div>
 
     <div class="field-group">
-      <label for="f-referencias">¿Tienes logo?</label>
+      <div class="field-label">¿Tienes logo?</div>
       <div class="chip-group" id="chips-logo">
         <label class="chip"><input type="radio" name="chips-logo" onchange="singleChip(this,'chips-logo')" /><span>Sí, tengo logo</span></label>
         <label class="chip"><input type="radio" name="chips-logo" onchange="singleChip(this,'chips-logo')" /><span>Tengo algo pero quiero mejorarlo</span></label>
@@ -586,7 +587,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿En qué formatos tienes tu logo? <span class="hint">(elige los que tienes)</span></label>
+      <div class="field-label">¿En qué formatos tienes tu logo? <span class="hint">(elige los que tienes)</span></div>
       <div class="chip-group" id="chips-formatos">
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>PNG</span></label>
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>SVG</span></label>
@@ -598,7 +599,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Tienes colores corporativos definidos?</label>
+      <div class="field-label">¿Tienes colores corporativos definidos?</div>
       <div class="chip-group" id="chips-colores">
         <label class="chip"><input type="radio" name="chips-colores" onchange="singleChip(this,'chips-colores')" data-target="color-block" data-show="si" /><span>Sí</span></label>
         <label class="chip"><input type="radio" name="chips-colores" onchange="singleChip(this,'chips-colores')" data-target="color-block" data-show="no" /><span>No</span></label>
@@ -621,7 +622,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Usas tipografías específicas?</label>
+      <div class="field-label">¿Usas tipografías específicas?</div>
       <div class="chip-group" id="chips-tipografia">
         <label class="chip"><input type="radio" name="chips-tipografia" onchange="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="si" /><span>Sí</span></label>
         <label class="chip"><input type="radio" name="chips-tipografia" onchange="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="no" /><span>No</span></label>
@@ -632,7 +633,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Cómo quieres que se sienta tu sitio?</label>
+      <div class="field-label">¿Cómo quieres que se sienta tu sitio?</div>
       <div class="chip-group" id="chips-tono">
         <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Profesional y serio</span></label>
         <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Moderno y tecnológico</span></label>
@@ -644,7 +645,7 @@
     </div>
 
     <div class="field-group">
-      <label>Sitios web que te gustan <span class="hint">(puedes poner URLs o solo describirlos)</span></label>
+      <label for="f-referencias">Sitios web que te gustan <span class="hint">(puedes poner URLs o solo describirlos)</span></label>
       <textarea id="f-referencias" rows="3" placeholder="Ej. Me gusta apple.com por lo limpio que es. O marcas como X e Y porque transmiten confianza."></textarea>
     </div>
 
@@ -673,7 +674,7 @@
     </div>
 
     <div class="field-group">
-      <label for="f-preguntas-cliente">¿Desde dónde llegará la gente a tu sitio?</label>
+      <div class="field-label">¿Desde dónde llegará la gente a tu sitio?</div>
       <div class="chip-group" id="chips-trafico">
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Google (búsqueda)</span></label>
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Instagram</span></label>
@@ -686,7 +687,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Qué preguntas se hace tu cliente antes de contactarte?</label>
+      <label for="f-preguntas-cliente">¿Qué preguntas se hace tu cliente antes de contactarte?</label>
       <textarea id="f-preguntas-cliente" rows="3" placeholder="Ej. ¿Cuánto cuesta? ¿Cuánto tardan? ¿Tienen experiencia en mi industria? ¿Son confiables?"></textarea>
     </div>
 
@@ -715,7 +716,7 @@
     <div class="section-desc">Aquí definimos qué páginas necesitas y qué tiene que pasar en cada una.</div>
 
     <div class="field-group">
-      <label for="f-servicios">¿Qué páginas necesita tu sitio? <span class="hint">(elige las que apliquen)</span></label>
+      <div class="field-label">¿Qué páginas necesita tu sitio? <span class="hint">(elige las que apliquen)</span></div>
       <div class="chip-group" id="chips-paginas">
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Inicio (Home)</span></label>
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Nosotros / Quiénes somos</span></label>
@@ -732,7 +733,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Necesitas formulario de contacto?</label>
+      <div class="field-label">¿Necesitas formulario de contacto?</div>
       <div class="chip-group" id="chips-formulario">
         <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>Sí, básico (nombre, email, mensaje)</span></label>
         <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>Sí, con campos específicos</span></label>
@@ -742,7 +743,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Funcionalidades especiales?</label>
+      <div class="field-label">¿Funcionalidades especiales?</div>
       <div class="chip-group" id="chips-funciones">
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Chat o WhatsApp flotante</span></label>
         <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Galería de imágenes / portafolio</span></label>
@@ -756,7 +757,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿El sitio debe verse bien en celular? <span class="hint">(responsive)</span></label>
+      <div class="field-label">¿El sitio debe verse bien en celular? <span class="hint">(responsive)</span></div>
       <div class="chip-group" id="chips-mobile">
         <label class="chip"><input type="radio" name="chips-mobile" onchange="singleChip(this,'chips-mobile')" /><span>Sí, mis clientes entran desde el cel</span></label>
         <label class="chip"><input type="radio" name="chips-mobile" onchange="singleChip(this,'chips-mobile')" /><span>Principalmente desde computadora</span></label>
@@ -779,7 +780,7 @@
     <div class="section-desc">El contenido es la base. Necesito saber con qué cuentas antes de empezar.</div>
 
     <div class="field-group">
-      <label>¿Tienes los textos del sitio listos?</label>
+      <div class="field-label">¿Tienes los textos del sitio listos?</div>
       <div class="chip-group" id="chips-textos">
         <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>Sí, tengo todo redactado</span></label>
         <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>Tengo algo pero hay que mejorarlo</span></label>
@@ -789,7 +790,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Tienes fotografías o imágenes propias?</label>
+      <div class="field-label">¿Tienes fotografías o imágenes propias?</div>
       <div class="chip-group" id="chips-fotos">
         <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>Sí, fotos profesionales</span></label>
         <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>Solo fotos de celular</span></label>
@@ -799,7 +800,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Tienes videos?</label>
+      <div class="field-label">¿Tienes videos?</div>
       <div class="chip-group" id="chips-videos">
         <label class="chip"><input type="radio" name="chips-videos" onchange="singleChip(this,'chips-videos')" /><span>Sí, en YouTube o Vimeo</span></label>
         <label class="chip"><input type="radio" name="chips-videos" onchange="singleChip(this,'chips-videos')" /><span>Sí, archivos propios</span></label>
@@ -808,7 +809,7 @@
     </div>
 
     <div class="field-group">
-      <label>Servicios o productos que deben aparecer en el sitio <span class="req">*</span></label>
+      <label for="f-servicios">Servicios o productos que deben aparecer en el sitio <span class="req">*</span></label>
       <textarea id="f-servicios" rows="4" placeholder="Lista tus servicios o productos principales con una breve descripción de cada uno."></textarea>
     </div>
 
@@ -845,7 +846,7 @@
     </div>
 
     <div class="field-group">
-      <label for="f-recordatorios">¿Usas Google Calendar?</label>
+      <div class="field-label">¿Usas Google Calendar?</div>
       <div class="chip-group" id="chips-calendar">
         <label class="chip"><input type="radio" name="chips-calendar" onchange="singleChip(this,'chips-calendar')" /><span>Sí, todos los días</span></label>
         <label class="chip"><input type="radio" name="chips-calendar" onchange="singleChip(this,'chips-calendar')" /><span>A veces</span></label>
@@ -854,7 +855,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Prefieres que tus pacientes agenden solas desde la página?</label>
+      <div class="field-label">¿Prefieres que tus pacientes agenden solas desde la página?</div>
       <div class="chip-group" id="chips-agenda-online">
         <label class="chip"><input type="radio" name="chips-agenda-online" onchange="singleChip(this,'chips-agenda-online')" /><span>Sí, que agenden solas</span></label>
         <label class="chip"><input type="radio" name="chips-agenda-online" onchange="singleChip(this,'chips-agenda-online')" /><span>Prefiero controlar yo la agenda</span></label>
@@ -863,7 +864,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Mandas recordatorios hoy? ¿Cómo?</label>
+      <label for="f-recordatorios">¿Mandas recordatorios hoy? ¿Cómo?</label>
       <input type="text" id="f-recordatorios" placeholder="Ej. Les escribo por WhatsApp un día antes / no mando recordatorios" />
     </div>
 
@@ -878,7 +879,7 @@
     </div>
 
     <div class="field-group">
-      <label>¿Tienes dominio propio (tunegocio.com)?</label>
+      <div class="field-label">¿Tienes dominio propio (tunegocio.com)?</div>
       <div class="chip-group" id="chips-dominio">
         <label class="chip"><input type="radio" name="chips-dominio" onchange="singleChip(this,'chips-dominio')" /><span>Sí, ya lo tengo</span></label>
         <label class="chip"><input type="radio" name="chips-dominio" onchange="singleChip(this,'chips-dominio')" /><span>No, hay que comprarlo</span></label>
@@ -995,8 +996,8 @@
     const div = document.createElement('div');
     div.className = 'color-row';
     div.innerHTML = `
-      <input type="color" name="color-${colorCount}" aria-label="Color ${colorCount}" value="#cccccc" oninput="syncColor(this)" />
-      <input type="text" name="color-${colorCount}-hex" aria-label="Código del color ${colorCount}" value="#cccccc" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
+      <input type="color" value="#cccccc" oninput="syncColor(this)" />
+      <input type="text" value="#cccccc" placeholder="#000000" oninput="syncHex(this)" maxlength="7" />
       <span>${names[colorCount - 3] || 'Color ' + colorCount}</span>
     `;
     document.getElementById('color-rows').appendChild(div);
