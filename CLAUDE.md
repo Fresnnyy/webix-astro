@@ -92,10 +92,12 @@ navegador pide `/favicon.ico` por defecto y muestra **el cohete de Astro** (los 
     `public/brief/index.html`. Los dos deben quedar idénticos.
   - Los botones DEBEN tener `type="button"` — dentro de un `<form>`, sin `type` se vuelven
     botones de envío y rompen el multi-paso. (Bug real, 2026-09-22.)
-  - El correo **con el PDF adjunto** lo manda **Web3Forms** (`WEB3FORMS_KEY` en el JS; gratis,
-    250/mes, adjuntos hasta 1 MB). Netlify Forms **no permite adjuntos** en plan free y queda
-    como respaldo en texto. Web3Forms **bloquea llamadas desde servidor** — solo funciona desde
-    el navegador, así que no se puede probar con curl.
+  - El brief viaja **por WhatsApp** (el botón grande: es el camino que la clienta usa de verdad)
+    y el respaldo es **Netlify Forms** en texto (queda en el panel + aviso por correo).
+  - **Se descartó mandar el PDF adjunto por correo** (decisión del 2026-09-22, tomada por Rossy):
+    Netlify no permite adjuntos en su plan free y meter otro servicio (Web3Forms / EmailJS)
+    agregaba un punto de falla sin valor real — la clienta usa WhatsApp y por ahí ya viaja el PDF.
+    **No lo reintroduzcas sin una razón fuerte.**
   - El PDF se genera con **jsPDF** (`public/brief/jspdf.umd.min.js`, vendorizado en el sitio).
     El logo se **reescala a 500 px** antes de embeberlo: sin eso el PDF pesa 16 MB.
 
