@@ -1159,7 +1159,7 @@
   function buildBriefPDF(logo) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-    const W = 210, H = 297, M = 16, COL = 44;
+    const W = 210, H = 297, M = 16, COL = 52;
     const TEAL = [17, 157, 164], ORANGE = [255, 123, 0];
     const MUTED = [90, 96, 112], DARK = [26, 26, 26];
 
@@ -1186,27 +1186,27 @@
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(17);
     doc.setTextColor(13, 122, 128);
-    doc.text('Resumen del brief', M, 41);
+    doc.text('Resumen del brief', M, 42);
 
-    let y = 51;
+    let y = 53;
 
     collectSummarySections().forEach(sec => {
-      if (y > H - 34) { doc.addPage(); y = 24; }
+      if (y > H - 36) { doc.addPage(); y = 26; }
       doc.setFillColor(244, 246, 249);
-      doc.rect(M, y - 5, W - M * 2, 7.5, 'F');
+      doc.rect(M, y - 6, W - M * 2, 8.6, 'F');
       doc.setTextColor(TEAL[0], TEAL[1], TEAL[2]);
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(7.5);
+      doc.setFontSize(9.5);
       doc.text(String(sec.title).toUpperCase(), M + 2.5, y);
-      y += 9;
+      y += 11;
 
       sec.rows.forEach(([k, v]) => {
         const val = String(v || '\u2014');
         const lines = doc.splitTextToSize(val, W - M * 2 - COL);
-        const h = Math.max(6, lines.length * 4.4 + 2);
-        if (y + h > H - 20) { doc.addPage(); y = 24; }
+        const h = Math.max(7.5, lines.length * 5 + 2.5);
+        if (y + h > H - 20) { doc.addPage(); y = 26; }
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(8.5);
+        doc.setFontSize(10);
         doc.setTextColor(MUTED[0], MUTED[1], MUTED[2]);
         doc.text(String(k), M, y);
         doc.setFont('helvetica', 'normal');
@@ -1214,7 +1214,7 @@
         doc.text(lines, M + COL, y);
         y += h;
       });
-      y += 4;
+      y += 5;
     });
 
     // Pie de página
@@ -1222,7 +1222,7 @@
     doc.setLineWidth(0.6);
     doc.line(M, H - 14, W - M, H - 14);
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7.5);
+    doc.setFontSize(8.5);
     doc.setTextColor(MUTED[0], MUTED[1], MUTED[2]);
     doc.text('Generado con Webix \u00b7 webix.com.mx', M, H - 10);
 
