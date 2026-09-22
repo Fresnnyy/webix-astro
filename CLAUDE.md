@@ -110,6 +110,9 @@ Todo en `/Volumes/Webix/Webix/doctos/`:
 - `registro-horas.md` — horas por clienta. **Cada bloque de trabajo se anota ahí**, es el
   dato que decide si el plan de $333 MXN/mes es rentable.
 - `brief-clienta-v1.0.md` — guion de la conversación con clientas (por WhatsApp).
+- `como-trabajar-con-ghosty.md` — guía práctica para Rossy: qué evita dar vueltas, qué
+  puede hacer el agente y qué no, cómo se activan las skills. **Leerlo antes de proponer
+  trabajo nuevo o integraciones.**
 
 ## Pendientes vivos (2026-09-22)
 
