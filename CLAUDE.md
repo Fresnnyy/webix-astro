@@ -66,6 +66,23 @@ Rossy toma decisiones comerciales con estos números (precios, free tiers, capac
 
 ---
 
+## Regla 6 — Toda página nueva lleva su icono
+
+**Cada página que se cree dentro del proyecto Webix debe declarar su favicon.** Sin esto, el
+navegador pide `/favicon.ico` por defecto y muestra **el cohete de Astro** (los archivos
+`favicon.ico` / `favicon.svg` que vinieron con el template) — que no es nuestra marca.
+
+```html
+<link rel="icon" type="image/png" href="/img/icono_w.png" />
+```
+
+- En el sitio Astro ya lo pone `Layout.astro`.
+- En páginas sueltas dentro de `public/` (como `public/brief/`) se declara a mano, con la
+  ruta relativa correcta (`../img/icono_w.png` desde `/brief/`).
+- Icono oficial: `/img/icono_w.png` (la W de Webix).
+
+---
+
 ## Mapa del proyecto
 
 - `src/` — sitio Astro (blog en MDX, páginas).
@@ -94,3 +111,5 @@ Todo en `/Volumes/Webix/Webix/doctos/`:
 - El número de WhatsApp del brief es **personal y temporal** (el de la empresa está
   bloqueado por saldo). Reemplazar cuando se reactive.
 - `npm ci` pendiente: el `node_modules` local sigue incompleto (el build local no corre).
+- Los `favicon.ico` y `favicon.svg` **del template de Astro** siguen en `public/`. Algún día
+  reemplazarlos por la marca Webix para que nada del sitio muestre el cohete.

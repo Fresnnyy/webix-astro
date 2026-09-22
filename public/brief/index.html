@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brief de Proyecto — Webix</title>
   <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="../img/icono_w.png" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     @font-face {
@@ -388,17 +389,18 @@
     .footer-bar p { font-size: 12px; color: rgba(255,255,255,0.45); }
 
     /* ── PRINT STYLES ── */
+    @page { size: A4; margin: 12mm; }
     @media print {
-      .header-bar, .progress-wrap, .nav-row, .footer-bar { display: block !important; }
-      .progress-wrap { display: none !important; }
-      .nav-row { display: none !important; }
-      .section-block { display: block !important; }
+      /* Solo se imprime el resumen: nada de secciones vacías */
+      .section-block { display: none !important; }
+      #s6 { display: block !important; }
+      .header-bar, .footer-bar { display: block !important; }
+      .progress-wrap, .nav-row, .hero, #envio-status { display: none !important; }
       body { background: white; }
-      .form-wrap { padding: 20px; }
-      .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .summary-header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .summary-section-title { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .btn-pdf { display: none !important; }
+      .form-wrap { padding: 0; }
+      .summary-header, .summary-section-title, .header-bar, .footer-bar {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+      }
       input, textarea, select { border: 1px solid #ccc !important; }
     }
   </style>
@@ -482,13 +484,13 @@
     <div class="field-group">
       <label>¿Tienes sitio web actualmente?</label>
       <div class="chip-group" id="chips-sitio-actual">
-        <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">No, es el primero</div>
+        <div class="chip" onclick="singleChip(this,'chips-sitio-actual')" data-target="sitio-url-block" data-show="no">No, es el primero</div>
         <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">Sí, pero quiero rediseño total</div>
         <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">Sí, solo quiero mejoras</div>
       </div>
     </div>
 
-    <div class="field-group">
+    <div class="field-group" id="sitio-url-block">
       <label>URL del sitio actual <span class="hint">(si tienes)</span></label>
       <input type="url" id="f-url-actual" placeholder="https://tuempresa.com" />
     </div>
@@ -524,12 +526,17 @@
         <div class="chip" onclick="toggleChip(this)">AI / EPS</div>
         <div class="chip" onclick="toggleChip(this)">PDF</div>
         <div class="chip" onclick="toggleChip(this)">Solo en Word o PPT</div>
-        <div class="chip" onclick="toggleChip(this)">No tengo</div>
+        <div class="chip exclusive" onclick="exclusiveChip(this)">No tengo</div>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Tienes colores corporativos definidos?</label>
+      <div class="chip-group" id="chips-colores">
+        <div class="chip" onclick="singleChip(this,'chips-colores')" data-target="color-block" data-show="si">Sí</div>
+        <div class="chip" onclick="singleChip(this,'chips-colores')" data-target="color-block" data-show="no">No</div>
+      </div>
+      <div id="color-block" style="display:none; margin-top:12px;">
       <div id="color-rows">
         <div class="color-row">
           <input type="color" value="#119DA4" oninput="syncColor(this)" />
@@ -543,22 +550,29 @@
         </div>
       </div>
       <button type="button" class="btn btn-outline" style="margin-top:10px;font-size:12px;padding:7px 16px" onclick="addColor()">+ Agregar color</button>
+      </div>
     </div>
 
     <div class="field-group">
-      <label>¿Usas tipografías específicas? <span class="hint">(nombre de fuente si la conoces)</span></label>
-      <input type="text" id="f-fuentes" placeholder="Ej. Montserrat para títulos, Open Sans para textos" />
+      <label>¿Usas tipografías específicas?</label>
+      <div class="chip-group" id="chips-tipografia">
+        <div class="chip" onclick="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="si">Sí</div>
+        <div class="chip" onclick="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="no">No</div>
+      </div>
+      <div id="fuente-block" style="display:none; margin-top:12px;">
+        <input type="text" id="f-fuentes" placeholder="Ej. Montserrat para títulos, Open Sans para textos" />
+      </div>
     </div>
 
     <div class="field-group">
       <label>¿Cómo quieres que se sienta tu sitio?</label>
       <div class="chip-group" id="chips-tono">
-        <div class="chip" onclick="toggleChip(this)">Profesional y serio</div>
-        <div class="chip" onclick="toggleChip(this)">Moderno y tecnológico</div>
-        <div class="chip" onclick="toggleChip(this)">Cálido y cercano</div>
-        <div class="chip" onclick="toggleChip(this)">Creativo y disruptivo</div>
-        <div class="chip" onclick="toggleChip(this)">Minimalista y limpio</div>
-        <div class="chip" onclick="toggleChip(this)">Lujoso y premium</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Profesional y serio</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Moderno y tecnológico</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Cálido y cercano</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Creativo y disruptivo</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Minimalista y limpio</div>
+        <div class="chip" onclick="singleChip(this,'chips-tono')">Lujoso y premium</div>
       </div>
     </div>
 
@@ -600,7 +614,7 @@
         <div class="chip" onclick="toggleChip(this)">LinkedIn</div>
         <div class="chip" onclick="toggleChip(this)">Recomendación directa</div>
         <div class="chip" onclick="toggleChip(this)">Email / newsletter</div>
-        <div class="chip" onclick="toggleChip(this)">No sé todavía</div>
+        <div class="chip exclusive" onclick="exclusiveChip(this)">No sé todavía</div>
       </div>
     </div>
 
@@ -646,6 +660,7 @@
         <div class="chip" onclick="toggleChip(this)">Área de clientes / Login</div>
         <div class="chip" onclick="toggleChip(this)">FAQ / Preguntas frecuentes</div>
         <div class="chip" onclick="toggleChip(this)">Landing page específica</div>
+        <div class="chip exclusive" onclick="exclusiveChip(this)">No sé todavía, ayúdame a decidir</div>
       </div>
     </div>
 
@@ -669,7 +684,7 @@
         <div class="chip" onclick="toggleChip(this)">Integración con redes sociales</div>
         <div class="chip" onclick="toggleChip(this)">Sistema de pagos</div>
         <div class="chip" onclick="toggleChip(this)">Descarga de archivos / catálogos</div>
-        <div class="chip" onclick="toggleChip(this)">Nada especial por ahora</div>
+        <div class="chip exclusive" onclick="exclusiveChip(this)">Nada especial por ahora</div>
       </div>
     </div>
 
@@ -882,6 +897,19 @@
 
   function toggleChip(el) {
     el.classList.toggle('selected');
+    // Si se marca una opción normal, se desmarca la exclusiva del grupo
+    if (el.classList.contains('selected')) {
+      const group = el.parentElement;
+      if (group) group.querySelectorAll('.chip.exclusive').forEach(c => c.classList.remove('selected'));
+    }
+  }
+
+  // Opción exclusiva ("No tengo", "No sé", "Nada especial"): marca solo esa
+  function exclusiveChip(el) {
+    const group = el.parentElement;
+    const wasSelected = el.classList.contains('selected');
+    if (group) group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    if (!wasSelected) el.classList.add('selected');
   }
 
   function singleChip(el, groupId) {
@@ -892,6 +920,17 @@
       el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
     }
     el.classList.add('selected');
+    applyConditions(el);
+  }
+
+  // Muestra u oculta un bloque según la opción elegida (data-target / data-show)
+  function applyConditions(el) {
+    const target = el.getAttribute('data-target');
+    if (!target) return;
+    const block = document.getElementById(target);
+    if (!block) return;
+    const showOn = el.getAttribute('data-show') || 'si';
+    block.style.display = (showOn === 'no') ? 'none' : '';
   }
 
   function syncColor(picker) {
@@ -959,7 +998,8 @@
         rows: [
           ['Logo', getChips(document.getElementById('chips-logo'))],
           ['Formatos de logo', getChips(document.getElementById('chips-formatos'))],
-          ['Colores', getColors()],
+          ['Colores definidos', getChips(document.getElementById('chips-colores'))],
+          ['Paleta', getColors()],
           ['Tipografías', val('f-fuentes')],
           ['Tono visual', getChips(document.getElementById('chips-tono'))],
           ['Sitios de referencia', val('f-referencias')],
@@ -1086,22 +1126,8 @@
   }
 
   function downloadPDF() {
-    // Marca todas las secciones como visibles para impresión
-    document.querySelectorAll('.section-block').forEach(s => s.style.display = 'block');
-    // Oculta los pasos del formulario, solo muestra el resumen
-    for (let i = 0; i < 6; i++) {
-      document.getElementById('s' + i).style.display = 'none';
-    }
-    document.getElementById('s6').style.display = 'block';
+    // El CSS de impresión se encarga: solo imprime el resumen (#s6)
     window.print();
-    // Restaura
-    setTimeout(() => {
-      for (let i = 0; i < 6; i++) {
-        document.getElementById('s' + i).style.display = '';
-      }
-      document.querySelectorAll('.section-block').forEach(s => s.style.display = '');
-      document.getElementById('s' + current).classList.add('active');
-    }, 500);
   }
 </script>
 </body>
