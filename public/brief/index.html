@@ -1248,22 +1248,29 @@
       return;
     }
 
-    // 1) Solo en celular: mandar el PDF como archivo adjunto
-    try {
-      if (esMovil() && window.jspdf && navigator.canShare) {
-        const logo = await loadLogoDataUrl();
+    const logo = window.jspdf ? await loadLogoDataUrl() : null;
+
+    // 1) En celular: el PDF viaja como archivo adjunto
+    if (esMovil() && window.jspdf && navigator.canShare) {
+      try {
         const blob = buildBriefPDF(logo).output('blob');
         const file = new File([blob], 'brief-webix.pdf', { type: 'application/pdf' });
         if (navigator.canShare({ files: [file] })) {
           await navigator.share({ files: [file], title: 'Brief de proyecto Webix' });
           return;
         }
+      } catch (e) {
+        if (e && e.name === 'AbortError') return; // la clienta canceló el envío
       }
-    } catch (e) {
-      if (e && e.name === 'AbortError') return; // la clienta canceló el envío
     }
 
-    // 2) En computadora (o si no se puede adjuntar), se abre WhatsApp Web con el texto
+    // 2) En computadora: WhatsApp Web no permite adjuntar archivos automáticamente
+    //    (los enlaces wa.me solo llevan texto). Se descarga el PDF y se abre el chat.
+    if (window.jspdf) {
+      try { buildBriefPDF(logo).save('brief-webix.pdf'); } catch (e) {}
+    }
+    const st = document.getElementById('envio-status');
+    if (st) st.textContent = 'Se descargó brief-webix.pdf. Adjúntalo en el chat con el clip.';
     window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto), '_blank');
   }
 
