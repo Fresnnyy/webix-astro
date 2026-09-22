@@ -248,7 +248,8 @@
       transition: all .18s;
       margin: 0;
     }
-    .chip-group input[type="checkbox"] { display: none; }
+    .chip-group input[type="checkbox"],
+    .chip-group input[type="radio"] { display: none; }
     .chip-group label:hover { border-color: var(--primary); color: var(--primary); }
     .chip-group input:checked + span,
     .chip-group label:has(input:checked) {
@@ -269,7 +270,8 @@
       user-select: none;
     }
     .chip:hover { border-color: var(--primary); color: var(--primary); }
-    .chip.selected { border-color: var(--primary); background: rgba(17,157,164,0.10); color: var(--primary); }
+    .chip.selected,
+    .chip:has(input:checked) { border-color: var(--primary); background: rgba(17,157,164,0.10); color: var(--primary); }
 
     /* upload zone */
     .upload-zone {
@@ -531,13 +533,13 @@
         <span class="hint">Elige todas las que apliquen</span>
       </label>
       <div class="chip-group" id="chips-objetivo">
-        <div class="chip" onclick="toggleChip(this)">Mostrar mis servicios</div>
-        <div class="chip" onclick="toggleChip(this)">Generar leads / contactos</div>
-        <div class="chip" onclick="toggleChip(this)">Tienda en línea</div>
-        <div class="chip" onclick="toggleChip(this)">Redirigir desde redes sociales</div>
-        <div class="chip" onclick="toggleChip(this)">Posicionamiento en Google</div>
-        <div class="chip" onclick="toggleChip(this)">Presentarme a clientes corporativos</div>
-        <div class="chip" onclick="toggleChip(this)">Otro</div>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Mostrar mis servicios</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Generar leads / contactos</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Tienda en línea</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Redirigir desde redes sociales</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Posicionamiento en Google</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Presentarme a clientes corporativos</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Otro</span></label>
       </div>
     </div>
 
@@ -549,9 +551,9 @@
     <div class="field-group">
       <label for="f-url-actual">¿Tienes sitio web actualmente?</label>
       <div class="chip-group" id="chips-sitio-actual">
-        <div class="chip" onclick="singleChip(this,'chips-sitio-actual')" data-target="sitio-url-block" data-show="no">No, es el primero</div>
-        <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">Sí, pero quiero rediseño total</div>
-        <div class="chip" onclick="singleChip(this,'chips-sitio-actual')">Sí, solo quiero mejoras</div>
+        <label class="chip"><input type="radio" name="chips-sitio-actual" onchange="singleChip(this,'chips-sitio-actual')" data-target="sitio-url-block" data-show="no" /><span>No, es el primero</span></label>
+        <label class="chip"><input type="radio" name="chips-sitio-actual" onchange="singleChip(this,'chips-sitio-actual')" /><span>Sí, pero quiero rediseño total</span></label>
+        <label class="chip"><input type="radio" name="chips-sitio-actual" onchange="singleChip(this,'chips-sitio-actual')" /><span>Sí, solo quiero mejoras</span></label>
       </div>
     </div>
 
@@ -577,29 +579,29 @@
     <div class="field-group">
       <label for="f-referencias">¿Tienes logo?</label>
       <div class="chip-group" id="chips-logo">
-        <div class="chip" onclick="singleChip(this,'chips-logo')">Sí, tengo logo</div>
-        <div class="chip" onclick="singleChip(this,'chips-logo')">Tengo algo pero quiero mejorarlo</div>
-        <div class="chip" onclick="singleChip(this,'chips-logo')">No, necesito uno</div>
+        <label class="chip"><input type="radio" name="chips-logo" onchange="singleChip(this,'chips-logo')" /><span>Sí, tengo logo</span></label>
+        <label class="chip"><input type="radio" name="chips-logo" onchange="singleChip(this,'chips-logo')" /><span>Tengo algo pero quiero mejorarlo</span></label>
+        <label class="chip"><input type="radio" name="chips-logo" onchange="singleChip(this,'chips-logo')" /><span>No, necesito uno</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿En qué formatos tienes tu logo? <span class="hint">(elige los que tienes)</span></label>
       <div class="chip-group" id="chips-formatos">
-        <div class="chip" onclick="toggleChip(this)">PNG</div>
-        <div class="chip" onclick="toggleChip(this)">SVG</div>
-        <div class="chip" onclick="toggleChip(this)">AI / EPS</div>
-        <div class="chip" onclick="toggleChip(this)">PDF</div>
-        <div class="chip" onclick="toggleChip(this)">Solo en Word o PPT</div>
-        <div class="chip exclusive" onclick="exclusiveChip(this)">No tengo</div>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>PNG</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>SVG</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>AI / EPS</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>PDF</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Solo en Word o PPT</span></label>
+        <label class="chip"><input type="checkbox" class="chip-exclusive" onchange="exclusiveChip(this)" /><span>No tengo</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Tienes colores corporativos definidos?</label>
       <div class="chip-group" id="chips-colores">
-        <div class="chip" onclick="singleChip(this,'chips-colores')" data-target="color-block" data-show="si">Sí</div>
-        <div class="chip" onclick="singleChip(this,'chips-colores')" data-target="color-block" data-show="no">No</div>
+        <label class="chip"><input type="radio" name="chips-colores" onchange="singleChip(this,'chips-colores')" data-target="color-block" data-show="si" /><span>Sí</span></label>
+        <label class="chip"><input type="radio" name="chips-colores" onchange="singleChip(this,'chips-colores')" data-target="color-block" data-show="no" /><span>No</span></label>
       </div>
       <div id="color-block" style="display:none; margin-top:12px;">
       <div id="color-rows">
@@ -621,8 +623,8 @@
     <div class="field-group">
       <label>¿Usas tipografías específicas?</label>
       <div class="chip-group" id="chips-tipografia">
-        <div class="chip" onclick="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="si">Sí</div>
-        <div class="chip" onclick="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="no">No</div>
+        <label class="chip"><input type="radio" name="chips-tipografia" onchange="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="si" /><span>Sí</span></label>
+        <label class="chip"><input type="radio" name="chips-tipografia" onchange="singleChip(this,'chips-tipografia')" data-target="fuente-block" data-show="no" /><span>No</span></label>
       </div>
       <div id="fuente-block" style="display:none; margin-top:12px;">
         <input type="text" id="f-fuentes" placeholder="Ej. Montserrat para títulos, Open Sans para textos" />
@@ -632,12 +634,12 @@
     <div class="field-group">
       <label>¿Cómo quieres que se sienta tu sitio?</label>
       <div class="chip-group" id="chips-tono">
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Profesional y serio</div>
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Moderno y tecnológico</div>
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Cálido y cercano</div>
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Creativo y disruptivo</div>
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Minimalista y limpio</div>
-        <div class="chip" onclick="singleChip(this,'chips-tono')">Lujoso y premium</div>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Profesional y serio</span></label>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Moderno y tecnológico</span></label>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Cálido y cercano</span></label>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Creativo y disruptivo</span></label>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Minimalista y limpio</span></label>
+        <label class="chip"><input type="radio" name="chips-tono" onchange="singleChip(this,'chips-tono')" /><span>Lujoso y premium</span></label>
       </div>
     </div>
 
@@ -673,13 +675,13 @@
     <div class="field-group">
       <label for="f-preguntas-cliente">¿Desde dónde llegará la gente a tu sitio?</label>
       <div class="chip-group" id="chips-trafico">
-        <div class="chip" onclick="toggleChip(this)">Google (búsqueda)</div>
-        <div class="chip" onclick="toggleChip(this)">Instagram</div>
-        <div class="chip" onclick="toggleChip(this)">Facebook</div>
-        <div class="chip" onclick="toggleChip(this)">LinkedIn</div>
-        <div class="chip" onclick="toggleChip(this)">Recomendación directa</div>
-        <div class="chip" onclick="toggleChip(this)">Email / newsletter</div>
-        <div class="chip exclusive" onclick="exclusiveChip(this)">No sé todavía</div>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Google (búsqueda)</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Instagram</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Facebook</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>LinkedIn</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Recomendación directa</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Email / newsletter</span></label>
+        <label class="chip"><input type="checkbox" class="chip-exclusive" onchange="exclusiveChip(this)" /><span>No sé todavía</span></label>
       </div>
     </div>
 
@@ -715,50 +717,50 @@
     <div class="field-group">
       <label for="f-servicios">¿Qué páginas necesita tu sitio? <span class="hint">(elige las que apliquen)</span></label>
       <div class="chip-group" id="chips-paginas">
-        <div class="chip" onclick="toggleChip(this)">Inicio (Home)</div>
-        <div class="chip" onclick="toggleChip(this)">Nosotros / Quiénes somos</div>
-        <div class="chip" onclick="toggleChip(this)">Servicios</div>
-        <div class="chip" onclick="toggleChip(this)">Portafolio / Casos de éxito</div>
-        <div class="chip" onclick="toggleChip(this)">Blog</div>
-        <div class="chip" onclick="toggleChip(this)">Contacto</div>
-        <div class="chip" onclick="toggleChip(this)">Tienda / Catálogo</div>
-        <div class="chip" onclick="toggleChip(this)">Área de clientes / Login</div>
-        <div class="chip" onclick="toggleChip(this)">FAQ / Preguntas frecuentes</div>
-        <div class="chip" onclick="toggleChip(this)">Landing page específica</div>
-        <div class="chip exclusive" onclick="exclusiveChip(this)">No sé todavía, ayúdame a decidir</div>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Inicio (Home)</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Nosotros / Quiénes somos</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Servicios</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Portafolio / Casos de éxito</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Blog</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Contacto</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Tienda / Catálogo</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Área de clientes / Login</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>FAQ / Preguntas frecuentes</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Landing page específica</span></label>
+        <label class="chip"><input type="checkbox" class="chip-exclusive" onchange="exclusiveChip(this)" /><span>No sé todavía, ayúdame a decidir</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Necesitas formulario de contacto?</label>
       <div class="chip-group" id="chips-formulario">
-        <div class="chip" onclick="singleChip(this,'chips-formulario')">Sí, básico (nombre, email, mensaje)</div>
-        <div class="chip" onclick="singleChip(this,'chips-formulario')">Sí, con campos específicos</div>
-        <div class="chip" onclick="singleChip(this,'chips-formulario')">No, prefiero botón de WhatsApp</div>
-        <div class="chip" onclick="singleChip(this,'chips-formulario')">Ambos</div>
+        <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>Sí, básico (nombre, email, mensaje)</span></label>
+        <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>Sí, con campos específicos</span></label>
+        <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>No, prefiero botón de WhatsApp</span></label>
+        <label class="chip"><input type="radio" name="chips-formulario" onchange="singleChip(this,'chips-formulario')" /><span>Ambos</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Funcionalidades especiales?</label>
       <div class="chip-group" id="chips-funciones">
-        <div class="chip" onclick="toggleChip(this)">Chat o WhatsApp flotante</div>
-        <div class="chip" onclick="toggleChip(this)">Galería de imágenes / portafolio</div>
-        <div class="chip" onclick="toggleChip(this)">Videos embebidos</div>
-        <div class="chip" onclick="toggleChip(this)">Mapa de Google</div>
-        <div class="chip" onclick="toggleChip(this)">Integración con redes sociales</div>
-        <div class="chip" onclick="toggleChip(this)">Sistema de pagos</div>
-        <div class="chip" onclick="toggleChip(this)">Descarga de archivos / catálogos</div>
-        <div class="chip exclusive" onclick="exclusiveChip(this)">Nada especial por ahora</div>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Chat o WhatsApp flotante</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Galería de imágenes / portafolio</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Videos embebidos</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Mapa de Google</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Integración con redes sociales</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Sistema de pagos</span></label>
+        <label class="chip"><input type="checkbox" onchange="toggleChip(this)" /><span>Descarga de archivos / catálogos</span></label>
+        <label class="chip"><input type="checkbox" class="chip-exclusive" onchange="exclusiveChip(this)" /><span>Nada especial por ahora</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿El sitio debe verse bien en celular? <span class="hint">(responsive)</span></label>
       <div class="chip-group" id="chips-mobile">
-        <div class="chip" onclick="singleChip(this,'chips-mobile')">Sí, mis clientes entran desde el cel</div>
-        <div class="chip" onclick="singleChip(this,'chips-mobile')">Principalmente desde computadora</div>
-        <div class="chip" onclick="singleChip(this,'chips-mobile')">No sé, que funcione en ambos</div>
+        <label class="chip"><input type="radio" name="chips-mobile" onchange="singleChip(this,'chips-mobile')" /><span>Sí, mis clientes entran desde el cel</span></label>
+        <label class="chip"><input type="radio" name="chips-mobile" onchange="singleChip(this,'chips-mobile')" /><span>Principalmente desde computadora</span></label>
+        <label class="chip"><input type="radio" name="chips-mobile" onchange="singleChip(this,'chips-mobile')" /><span>No sé, que funcione en ambos</span></label>
       </div>
     </div>
 
@@ -779,29 +781,29 @@
     <div class="field-group">
       <label>¿Tienes los textos del sitio listos?</label>
       <div class="chip-group" id="chips-textos">
-        <div class="chip" onclick="singleChip(this,'chips-textos')">Sí, tengo todo redactado</div>
-        <div class="chip" onclick="singleChip(this,'chips-textos')">Tengo algo pero hay que mejorarlo</div>
-        <div class="chip" onclick="singleChip(this,'chips-textos')">No, necesito ayuda para redactar</div>
-        <div class="chip" onclick="singleChip(this,'chips-textos')">Solo tengo información dispersa (PPT, Word, etc.)</div>
+        <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>Sí, tengo todo redactado</span></label>
+        <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>Tengo algo pero hay que mejorarlo</span></label>
+        <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>No, necesito ayuda para redactar</span></label>
+        <label class="chip"><input type="radio" name="chips-textos" onchange="singleChip(this,'chips-textos')" /><span>Solo tengo información dispersa (PPT, Word, etc.)</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Tienes fotografías o imágenes propias?</label>
       <div class="chip-group" id="chips-fotos">
-        <div class="chip" onclick="singleChip(this,'chips-fotos')">Sí, fotos profesionales</div>
-        <div class="chip" onclick="singleChip(this,'chips-fotos')">Solo fotos de celular</div>
-        <div class="chip" onclick="singleChip(this,'chips-fotos')">No, usaremos banco de imágenes</div>
-        <div class="chip" onclick="singleChip(this,'chips-fotos')">Necesito sesión fotográfica</div>
+        <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>Sí, fotos profesionales</span></label>
+        <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>Solo fotos de celular</span></label>
+        <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>No, usaremos banco de imágenes</span></label>
+        <label class="chip"><input type="radio" name="chips-fotos" onchange="singleChip(this,'chips-fotos')" /><span>Necesito sesión fotográfica</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Tienes videos?</label>
       <div class="chip-group" id="chips-videos">
-        <div class="chip" onclick="singleChip(this,'chips-videos')">Sí, en YouTube o Vimeo</div>
-        <div class="chip" onclick="singleChip(this,'chips-videos')">Sí, archivos propios</div>
-        <div class="chip" onclick="singleChip(this,'chips-videos')">No</div>
+        <label class="chip"><input type="radio" name="chips-videos" onchange="singleChip(this,'chips-videos')" /><span>Sí, en YouTube o Vimeo</span></label>
+        <label class="chip"><input type="radio" name="chips-videos" onchange="singleChip(this,'chips-videos')" /><span>Sí, archivos propios</span></label>
+        <label class="chip"><input type="radio" name="chips-videos" onchange="singleChip(this,'chips-videos')" /><span>No</span></label>
       </div>
     </div>
 
@@ -845,18 +847,18 @@
     <div class="field-group">
       <label for="f-recordatorios">¿Usas Google Calendar?</label>
       <div class="chip-group" id="chips-calendar">
-        <div class="chip" onclick="singleChip(this,'chips-calendar')">Sí, todos los días</div>
-        <div class="chip" onclick="singleChip(this,'chips-calendar')">A veces</div>
-        <div class="chip" onclick="singleChip(this,'chips-calendar')">No lo uso</div>
+        <label class="chip"><input type="radio" name="chips-calendar" onchange="singleChip(this,'chips-calendar')" /><span>Sí, todos los días</span></label>
+        <label class="chip"><input type="radio" name="chips-calendar" onchange="singleChip(this,'chips-calendar')" /><span>A veces</span></label>
+        <label class="chip"><input type="radio" name="chips-calendar" onchange="singleChip(this,'chips-calendar')" /><span>No lo uso</span></label>
       </div>
     </div>
 
     <div class="field-group">
       <label>¿Prefieres que tus pacientes agenden solas desde la página?</label>
       <div class="chip-group" id="chips-agenda-online">
-        <div class="chip" onclick="singleChip(this,'chips-agenda-online')">Sí, que agenden solas</div>
-        <div class="chip" onclick="singleChip(this,'chips-agenda-online')">Prefiero controlar yo la agenda</div>
-        <div class="chip" onclick="singleChip(this,'chips-agenda-online')">No estoy segura</div>
+        <label class="chip"><input type="radio" name="chips-agenda-online" onchange="singleChip(this,'chips-agenda-online')" /><span>Sí, que agenden solas</span></label>
+        <label class="chip"><input type="radio" name="chips-agenda-online" onchange="singleChip(this,'chips-agenda-online')" /><span>Prefiero controlar yo la agenda</span></label>
+        <label class="chip"><input type="radio" name="chips-agenda-online" onchange="singleChip(this,'chips-agenda-online')" /><span>No estoy segura</span></label>
       </div>
     </div>
 
@@ -878,9 +880,9 @@
     <div class="field-group">
       <label>¿Tienes dominio propio (tunegocio.com)?</label>
       <div class="chip-group" id="chips-dominio">
-        <div class="chip" onclick="singleChip(this,'chips-dominio')">Sí, ya lo tengo</div>
-        <div class="chip" onclick="singleChip(this,'chips-dominio')">No, hay que comprarlo</div>
-        <div class="chip" onclick="singleChip(this,'chips-dominio')">No sé qué es eso</div>
+        <label class="chip"><input type="radio" name="chips-dominio" onchange="singleChip(this,'chips-dominio')" /><span>Sí, ya lo tengo</span></label>
+        <label class="chip"><input type="radio" name="chips-dominio" onchange="singleChip(this,'chips-dominio')" /><span>No, hay que comprarlo</span></label>
+        <label class="chip"><input type="radio" name="chips-dominio" onchange="singleChip(this,'chips-dominio')" /><span>No sé qué es eso</span></label>
       </div>
     </div>
 
@@ -939,32 +941,29 @@
   function next(idx) { goTo(idx + 1); }
   function prev(idx) { goTo(idx - 1); }
 
-  function toggleChip(el) {
-    el.classList.toggle('selected');
-    // Si se marca una opción normal, se desmarca la exclusiva del grupo
-    if (el.classList.contains('selected')) {
-      const group = el.parentElement;
-      if (group) group.querySelectorAll('.chip.exclusive').forEach(c => c.classList.remove('selected'));
+  // Los chips son campos reales: <label class="chip"><input …><span>texto</span></label>
+  // El navegador ya maneja la exclusividad de los radio; el estado visual lo pinta el CSS.
+
+  function toggleChip(input) {
+    // Si se marca un checkbox normal, se desmarca la opción exclusiva del grupo
+    if (input.checked) {
+      const group = input.closest('.chip-group');
+      if (group) group.querySelectorAll('input.chip-exclusive').forEach(i => { i.checked = false; });
     }
   }
 
-  // Opción exclusiva ("No tengo", "No sé", "Nada especial"): marca solo esa
-  function exclusiveChip(el) {
-    const group = el.parentElement;
-    const wasSelected = el.classList.contains('selected');
-    if (group) group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-    if (!wasSelected) el.classList.add('selected');
+  // Opción exclusiva ("No tengo", "No sé", "Nada especial"): al marcarla, desmarca el resto
+  function exclusiveChip(input) {
+    const group = input.closest('.chip-group');
+    if (!group) return;
+    if (input.checked) {
+      group.querySelectorAll('input[type="checkbox"]').forEach(i => { if (i !== input) i.checked = false; });
+    }
   }
 
-  function singleChip(el, groupId) {
-    const group = document.getElementById(groupId);
-    if (group) {
-      group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-    } else {
-      el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-    }
-    el.classList.add('selected');
-    applyConditions(el);
+  function singleChip(input, groupId) {
+    // Los radio con el mismo name ya son excluyentes por sí solos
+    applyConditions(input);
   }
 
   // Muestra u oculta un bloque según la opción elegida (data-target / data-show)
@@ -1005,7 +1004,11 @@
 
   function getChips(groupEl) {
     if (!groupEl) return '—';
-    const selected = [...groupEl.querySelectorAll('.chip.selected')].map(c => c.textContent.trim());
+    const selected = [...groupEl.querySelectorAll('input:checked')].map(i => {
+      const chip = i.closest('.chip');
+      const s = chip ? chip.querySelector('span') : null;
+      return s ? s.textContent.trim() : '';
+    }).filter(Boolean);
     return selected.length ? selected.join(', ') : '—';
   }
 
