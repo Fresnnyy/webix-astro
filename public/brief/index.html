@@ -1298,10 +1298,12 @@
 
     // 1) Correo con el PDF adjunto (Web3Forms)
     let pdfOk = false;
+    let web3msg = '';
     if (WEB3FORMS_KEY && window.jspdf) {
       try {
         const logo = await loadLogoDataUrl();
         const blob = buildBriefPDF(logo).output('blob');
+        const pdfFile = new File([blob], 'brief-webix.pdf', { type: 'application/pdf' });
         const fd = new FormData();
         fd.append('access_key', WEB3FORMS_KEY);
         fd.append('subject', 'Nuevo brief de proyecto' + (empresa ? ': ' + empresa : ''));
@@ -1309,11 +1311,17 @@
         fd.append('empresa', empresa);
         fd.append('contacto', contacto);
         fd.append('resumen', resumen);
-        fd.append('attachment', blob, 'brief-webix.pdf');
+        fd.append('attachment', pdfFile, 'brief-webix.pdf');
         const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
         const j = await r.json();
         pdfOk = !!(j && j.success);
-      } catch (e) { pdfOk = false; }
+        if (!pdfOk) web3msg = (j && j.message) ? j.message : ('HTTP ' + r.status);
+      } catch (e) {
+        pdfOk = false;
+        web3msg = (e && e.message) ? e.message : 'error de red';
+      }
+    } else {
+      web3msg = WEB3FORMS_KEY ? 'no carg\u00f3 el generador de PDF' : 'sin access key configurada';
     }
 
     // 2) Respaldo en el panel de Netlify (siempre, en texto)
@@ -1329,7 +1337,7 @@
 
     if (status) {
       if (pdfOk) status.textContent = 'Enviado: lleg\u00f3 con el PDF adjunto. \u00a1Gracias!';
-      else if (respaldoOk) status.textContent = 'Enviado al panel de Webix (sin PDF adjunto). \u00a1Gracias!';
+      else if (respaldoOk) status.textContent = 'Enviado al panel de Webix (sin PDF adjunto). Detalle: ' + web3msg;
       else status.textContent = 'No se pudo enviar. Usa el bot\u00f3n de WhatsApp o descarga el PDF.';
     }
     if (btn) {
