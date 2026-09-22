@@ -388,6 +388,60 @@
     .footer-bar .brand { color: var(--white); font-size: 18px; }
     .footer-bar p { font-size: 12px; color: rgba(255,255,255,0.45); }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .header-bar { padding: 16px 28px; }
+      .hero { padding: 32px 28px 28px; }
+      .hero h1 { font-size: 28px; }
+      .progress-wrap { padding: 0 28px; }
+      .form-wrap { padding: 32px 28px 64px; }
+      .footer-bar { padding: 18px 28px; }
+    }
+
+    @media (max-width: 720px) {
+      .header-bar { padding: 12px 18px; }
+      .header-bar img { height: 32px !important; }
+      .badge { font-size: 9px; padding: 4px 10px; letter-spacing: 1px; }
+
+      .hero { padding: 24px 18px 22px; }
+      .hero h1 { font-size: 24px; }
+      .hero p { font-size: 13px; }
+
+      /* El stepper se desplaza en horizontal en vez de aplastarse */
+      .progress-wrap { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .prog-step { flex: 0 0 auto; padding: 12px 10px 10px; font-size: 10px; white-space: nowrap; }
+
+      .form-wrap { padding: 24px 18px 56px; }
+      .section-title { font-size: 21px; }
+      .section-desc { font-size: 13px; margin-bottom: 24px; }
+
+      .two-col { grid-template-columns: 1fr; gap: 0; }
+
+      /* 16px evita el zoom automático de iOS al tocar un campo */
+      input[type="text"], input[type="email"], input[type="url"], textarea, select { font-size: 16px; }
+
+      .chip { padding: 9px 15px; font-size: 13px; }
+      .chip-group { gap: 7px; }
+
+      .color-row { flex-wrap: wrap; }
+      .color-row input[type="text"] { width: 104px; }
+
+      .nav-row { flex-direction: column-reverse; align-items: stretch; gap: 10px; margin-top: 28px; }
+      .nav-row > span { display: none; }
+      .nav-row .btn { width: 100%; padding: 13px 20px; }
+
+      .summary-header { padding: 22px 18px; }
+      .summary-header h2 { font-size: 21px; }
+      .checkmark { font-size: 38px; margin-bottom: 8px; }
+      .summary-row { grid-template-columns: 1fr; gap: 3px; padding: 11px 16px; }
+      .summary-section-title { padding: 10px 16px; }
+
+      .btn-pdf { width: 100%; justify-content: center; }
+
+      .footer-bar { padding: 16px 18px; flex-direction: column; gap: 10px; text-align: center; }
+      .footer-bar img { height: 32px !important; }
+    }
+
     /* ── PRINT STYLES ── */
     @page { size: A4; margin: 12mm; }
     @media print {
