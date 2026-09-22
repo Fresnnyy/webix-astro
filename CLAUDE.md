@@ -83,6 +83,29 @@ navegador pide `/favicon.ico` por defecto y muestra **el cohete de Astro** (los 
 
 ---
 
+## Regla 7 — Respaldo antes de editar
+
+**Antes de editar el formulario del brief (o cualquier archivo que NO esté en git), hacer
+una copia con fecha.**
+
+- El maestro vive en `/Volumes/Webix/Webix/doctos/index.html` y **no está bajo git** — un
+  edit que lo rompa no tiene vuelta atrás.
+- `webix-astro/public/brief/index.html` **sí está en git**: cada commit es un respaldo, y
+  se puede recuperar cualquier versión con `git show <commit>:public/brief/index.html`.
+- Respaldos en `doctos/respaldos/<fecha>-<hora>-<estado>/`.
+
+```sh
+cd /Volumes/Webix/Webix/doctos
+mkdir -p respaldos/$(date +%Y-%m-%d-%H%M)
+cp index.html respaldos/$(date +%Y-%m-%d-%H%M)/
+```
+
+> **Por qué existe esta regla:** el 2026-09-22 el agente editó el formulario decenas de
+> veces —una cirugía de 1,100 líneas— sin un solo respaldo previo. Rossy lo señaló:
+> *"¿y no puedes hacer respaldos antes de los cambios por si algo se rompe?"*.
+
+---
+
 ## Mapa del proyecto
 
 - `src/` — sitio Astro (blog en MDX, páginas).
