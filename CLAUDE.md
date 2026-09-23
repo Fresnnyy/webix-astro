@@ -137,6 +137,39 @@ Todo en `/Volumes/Webix/Webix/doctos/`:
   puede hacer el agente y qué no, cómo se activan las skills. **Leerlo antes de proponer
   trabajo nuevo o integraciones.**
 
+## Organización de la documentación (no la cambies sin razón)
+
+**Ojo: hay dos carpetas que se llaman "clientes" y NO son lo mismo.**
+
+- `/Volumes/Webix/Webix/clientes/` — el **trabajo**: los sitios, repos y archivos de cada
+  proyecto (qar, cm-marketing, bronea…).
+- `/Volumes/Webix/Webix/doctos/clientes/` — el **papel**: fichas, briefs, decisiones, dominios.
+
+**`doctos/` está organizado en tres niveles** — el mismo principio de D1 (template
+parametrizado), aplicado al papel:
+
+| Dónde | Qué va | ¿Se reutiliza? |
+|---|---|---|
+| `doctos/clientes/<nombre>/` | Todo lo **personalizado** de esa clienta: brief, ficha, dominios, su home | No — es suyo |
+| `doctos/sector/<tema>.md` | Conocimiento del **sector**: cómo busca la gente, qué pregunta antes de agendar | **Sí — sirve para la siguiente clienta** |
+| `doctos/brief-clienta-v1.0.md` | **Plantilla** de brief | Sí — cualquiera |
+
+**Regla de oro: si algo le sirve a la SIGUIENTE clienta, va a `sector/` o a una plantilla —
+nunca a la carpeta de una sola.**
+
+Al documentar:
+
+- Cada cosa en su carpeta, y el índice `doctos/clientes/README.md` actualizado.
+- Las decisiones llevan **fecha** y quién las tomó.
+- Lo que no se pudo verificar **se marca**; no se rellena.
+- **No se crean carpetas universales vacías**: se crean cuando existe la segunda clienta y
+  de verdad hacen falta.
+
+> **Por qué existe esto:** el 2026-09-22 la investigación del sector estaba dentro de la
+> carpeta de una clienta (Nancy), contaminando lo compartido con lo personal. Rossy lo
+> detectó y pidió dejarlo documentado: *"déjalo bien documentado para que ningún agente lo
+> olvide"*.
+
 ## Pendientes vivos (2026-09-22)
 
 - **H4:** hay dos teléfonos contradictorios (`+52-55-3314-5233` en el schema,
